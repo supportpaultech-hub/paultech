@@ -16,19 +16,16 @@ const About = () => {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[180px] bg-gradient-to-r from-orange-500/20 via-amber-500/20 to-emerald-500/15 blur-[90px] rounded-full pointer-events-none"></div>
 
         <div className="max-w-3xl mx-auto relative z-10">
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/10 border border-white/15 shadow-xs backdrop-blur-md mb-2 sm:mb-2.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span className="text-slate-200 text-[10px] sm:text-xs font-semibold uppercase tracking-widest">
-              About PaulTech
-            </span>
-          </div>
+          <p className="text-orange-400 text-xs sm:text-sm font-semibold uppercase tracking-wider mb-2">
+            About PaulTech
+          </p>
 
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight leading-tight mb-2">
-            Building The <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-400 to-emerald-400">Future of IT</span>
+            Building The Future of IT
           </h1>
 
           <p className="text-slate-300 text-xs sm:text-sm max-w-xl mx-auto font-light leading-relaxed">
-            We are a visionary IT company transforming bold ideas into world-class digital products and enterprise software.
+            We are an IT company transforming bold ideas into world-class digital products and enterprise software.
           </p>
         </div>
       </section>
@@ -40,7 +37,6 @@ const About = () => {
           <div className="w-full lg:w-1/2">
             <h4 className="text-blue-600 font-semibold tracking-widest text-xs sm:text-sm uppercase mb-2">Our Story</h4>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-800 mb-4 sm:mb-6">Driven By Innovation, Built On Trust.</h2>
-            <div className="w-16 h-1 bg-gradient-to-r from-blue-600 to-cyan-500 mb-6 sm:mb-8 rounded-full"></div>
             <p className="text-slate-600 text-sm sm:text-base lg:text-lg leading-relaxed mb-4 sm:mb-6">
               PaulTech Software Services Pvt Ltd. started with a simple yet powerful mission: to bring Silicon Valley-level technology and engineering practices to businesses in India and beyond. 
             </p>
@@ -73,135 +69,140 @@ const About = () => {
       </section>
 
       {/* 2.5 Founders Spotlight Section */}
-      <section className="py-12 sm:py-16 md:py-20 bg-slate-900 text-white relative overflow-hidden">
+      <section className="py-10 sm:py-16 md:py-20 bg-slate-900 text-white relative overflow-hidden">
         {/* Ambient glow accent background */}
-        <div className="absolute top-1/2 left-0 -translate-y-1/2 w-96 h-96 bg-orange-500/15 blur-[100px] rounded-full pointer-events-none"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-500/15 blur-[100px] rounded-full pointer-events-none"></div>
+        <div className="absolute top-1/2 left-0 -translate-y-1/2 w-96 h-96 bg-orange-500/10 blur-[100px] rounded-full pointer-events-none"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-500/10 blur-[100px] rounded-full pointer-events-none"></div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
-          <div className="text-center mb-10 sm:mb-14">
-            <span className="text-orange-400 font-semibold tracking-widest text-xs sm:text-sm uppercase bg-orange-500/10 px-3.5 py-1.5 rounded-full border border-orange-500/20">
-              Visionary Leadership
-            </span>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white mt-3 tracking-tight">
-              Meet Our Founders & Leadership
+          <div className="text-center mb-8 sm:mb-12">
+            <p className="text-orange-400 text-xs sm:text-sm font-semibold tracking-wider uppercase mb-2">
+              Leadership
+            </p>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
+              Meet Our Founders
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-orange-500 via-amber-400 to-cyan-400 mx-auto mt-4 rounded-full"></div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-6 lg:gap-8 items-stretch">
             {/* Box 1: Left - Abhijeet Paul */}
-            <div className="bg-slate-800/90 backdrop-blur-xl rounded-3xl p-6 sm:p-8 border border-slate-700/60 shadow-2xl flex flex-col justify-between hover:border-orange-500/40 transition-all duration-300 group">
-              <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row items-center sm:items-start lg:items-center xl:items-start gap-6">
-                {/* Image */}
-                <div className="shrink-0 w-52 sm:w-56 lg:w-48 xl:w-52 aspect-[4/5] relative rounded-2xl overflow-hidden shadow-2xl border-2 border-orange-500/30">
-                  <img 
-                    src="/images/team/abhijeet-paul.jpg" 
-                    alt="Mr. Abhijeet Paul - Co-Founder & Director" 
-                    className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                    onError={(e) => {
-                      e.target.onerror = null;
-                      e.target.src = "https://ui-avatars.com/api/?name=Abhijeet+Paul&background=F97316&color=fff&size=500";
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-transparent to-transparent"></div>
-                  <div className="absolute bottom-3 left-3 right-3 text-center">
-                    <h3 className="text-lg font-bold text-white tracking-wide">Abhijeet Paul</h3>
-                    <p className="text-orange-400 text-[11px] font-semibold uppercase tracking-wider mt-0.5">Co-Founder & Director</p>
+            <div className="bg-slate-800/85 backdrop-blur-md rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-7 border border-slate-700/60 shadow-xl flex flex-col justify-between hover:border-slate-600 transition-all duration-300">
+              <div>
+                {/* Header: Photo + Name/Role side-by-side */}
+                <div className="flex items-center sm:items-start gap-3.5 sm:gap-5 mb-3.5 sm:mb-4">
+                  <div className="w-20 h-24 sm:w-36 sm:h-44 md:w-40 md:h-48 shrink-0 rounded-xl sm:rounded-2xl overflow-hidden border border-slate-700/80 shadow-md bg-slate-900">
+                    <img 
+                      src="/images/team/abhijeet-paul.jpg" 
+                      alt="Abhijeet Paul - Co-Founder & Director" 
+                      className="w-full h-full object-cover object-top"
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = "https://ui-avatars.com/api/?name=Abhijeet+Paul&background=1e293b&color=f97316&size=500";
+                      }}
+                    />
+                  </div>
+
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-lg sm:text-xl font-bold text-white tracking-wide">
+                      Abhijeet Paul
+                    </h3>
+                    <p className="text-orange-400 text-xs sm:text-sm font-semibold mt-0.5">
+                      Co-Founder & Director
+                    </p>
+                    <p className="text-slate-400 text-[11px] sm:text-xs mt-1">
+                      SAP Specialist • Tata Steel Foundation (TSF)
+                    </p>
+                    <p className="hidden sm:block text-slate-300 text-xs sm:text-sm mt-2.5 leading-relaxed font-light">
+                      Graduated in Commerce and earned his MBA from Shobhit University. Over 10 years of active experience in IT and enterprise administration.
+                    </p>
                   </div>
                 </div>
 
-                {/* Info & Bio */}
-                <div className="flex-1 min-w-0 space-y-3.5 text-center sm:text-left lg:text-center xl:text-left">
-                  <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-300 text-xs font-semibold">
-                    <span>⭐ 10+ Yrs IT & SAP Leadership | TSF</span>
-                  </div>
+                {/* Mobile Bio */}
+                <p className="sm:hidden text-slate-300 text-xs leading-relaxed font-light mb-3">
+                  Graduated in Commerce with an MBA from Shobhit University. Over 10 years of active IT experience with Tata Steel Foundation (TSF) and expertise in SAP modules (FICO, MM, PS, SD).
+                </p>
 
-                  <h4 className="text-base sm:text-lg font-bold text-white leading-snug">
-                    "Vast expertise in SAP Technology, enterprise administration, and strategic decision-making."
-                  </h4>
-
-                  <p className="text-slate-300 text-xs sm:text-sm leading-relaxed font-light">
-                    <strong className="text-white font-semibold">Abhijeet Paul</strong> graduated in Commerce and earned his <strong className="text-white font-semibold">MBA from Shobhit University</strong>. Associated with <strong className="text-white font-semibold">Tata Steel Foundation (TSF)</strong>, he brings over 10 years of active experience in IT.
-                  </p>
-
-                  <p className="text-slate-300 text-xs sm:text-sm leading-relaxed font-light">
-                    He possesses hands-on expertise in core SAP modules (<strong className="text-white font-semibold">FICO, MM, PS, SD</strong>) and leads corporate administration, governance, and business expansion.
-                  </p>
-                </div>
+                {/* Desktop Additional Bio */}
+                <p className="hidden sm:block text-slate-300 text-xs sm:text-sm leading-relaxed font-light mb-4">
+                  Possesses vast hands-on expertise in core SAP modules including <strong className="text-white font-medium">SAP FICO, MM, PS, and SD</strong>. Leads corporate administration, strategic expansion, and operational growth.
+                </p>
               </div>
 
-              {/* Stat badges */}
-              <div className="grid grid-cols-3 gap-2.5 pt-4 mt-5 border-t border-slate-700/60 text-center">
-                <div className="bg-slate-900/70 p-2.5 rounded-xl border border-slate-700/50">
-                  <div className="text-orange-400 text-xs font-bold">SAP Modules</div>
-                  <div className="text-slate-400 text-[11px] mt-0.5">FICO, MM, PS, SD</div>
+              {/* Highlights */}
+              <div className="grid grid-cols-3 gap-2 pt-3 sm:pt-4 border-t border-slate-700/60 text-center">
+                <div className="bg-slate-900/60 p-2 sm:p-2.5 rounded-lg sm:rounded-xl border border-slate-700/40">
+                  <div className="text-orange-400 text-[11px] sm:text-xs font-bold">SAP Modules</div>
+                  <div className="text-slate-400 text-[10px] sm:text-[11px] mt-0.5 truncate">FICO, MM, PS, SD</div>
                 </div>
-                <div className="bg-slate-900/70 p-2.5 rounded-xl border border-slate-700/50">
-                  <div className="text-emerald-400 text-xs font-bold">Education</div>
-                  <div className="text-slate-400 text-[11px] mt-0.5">MBA, Shobhit Univ.</div>
+                <div className="bg-slate-900/60 p-2 sm:p-2.5 rounded-lg sm:rounded-xl border border-slate-700/40">
+                  <div className="text-slate-200 text-[11px] sm:text-xs font-bold">Education</div>
+                  <div className="text-slate-400 text-[10px] sm:text-[11px] mt-0.5 truncate">MBA, Shobhit</div>
                 </div>
-                <div className="bg-slate-900/70 p-2.5 rounded-xl border border-slate-700/50">
-                  <div className="text-amber-400 text-xs font-bold">Experience</div>
-                  <div className="text-slate-400 text-[11px] mt-0.5">10+ Years IT</div>
+                <div className="bg-slate-900/60 p-2 sm:p-2.5 rounded-lg sm:rounded-xl border border-slate-700/40">
+                  <div className="text-slate-200 text-[11px] sm:text-xs font-bold">Experience</div>
+                  <div className="text-slate-400 text-[10px] sm:text-[11px] mt-0.5 truncate">10+ Years IT</div>
                 </div>
               </div>
             </div>
 
             {/* Box 2: Right - Surjit Paul */}
-            <div className="bg-slate-800/90 backdrop-blur-xl rounded-3xl p-6 sm:p-8 border border-slate-700/60 shadow-2xl flex flex-col justify-between hover:border-cyan-500/40 transition-all duration-300 group">
-              <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row items-center sm:items-start lg:items-center xl:items-start gap-6">
-                {/* Image */}
-                <div className="shrink-0 w-52 sm:w-56 lg:w-48 xl:w-52 aspect-[4/5] relative rounded-2xl overflow-hidden shadow-2xl border-2 border-cyan-500/30">
-                  <img 
-                    src="/images/team/surjit-paul.jpg" 
-                    alt="Mr. Surjit Paul - Co-Founder" 
-                    className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                    onError={(e) => {
-                      e.target.onerror = null;
-                      e.target.src = "/images/team/default-avatar.svg";
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-transparent to-transparent"></div>
-                  <div className="absolute bottom-3 left-3 right-3 text-center">
-                    <h3 className="text-lg font-bold text-white tracking-wide">Surjit Paul</h3>
-                    <p className="text-cyan-400 text-[11px] font-semibold uppercase tracking-wider mt-0.5">Co-Founder</p>
+            <div className="bg-slate-800/85 backdrop-blur-md rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-7 border border-slate-700/60 shadow-xl flex flex-col justify-between hover:border-slate-600 transition-all duration-300">
+              <div>
+                {/* Header: Photo + Name/Role side-by-side */}
+                <div className="flex items-center sm:items-start gap-3.5 sm:gap-5 mb-3.5 sm:mb-4">
+                  <div className="w-20 h-24 sm:w-36 sm:h-44 md:w-40 md:h-48 shrink-0 rounded-xl sm:rounded-2xl overflow-hidden border border-slate-700/80 shadow-md bg-slate-900">
+                    <img 
+                      src="/images/team/surjit-paul.jpg" 
+                      alt="Surjit Paul - Co-Founder" 
+                      className="w-full h-full object-cover object-top"
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = "/images/team/default-avatar.svg";
+                      }}
+                    />
+                  </div>
+
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-lg sm:text-xl font-bold text-white tracking-wide">
+                      Surjit Paul
+                    </h3>
+                    <p className="text-cyan-400 text-xs sm:text-sm font-semibold mt-0.5">
+                      Co-Founder
+                    </p>
+                    <p className="text-slate-400 text-[11px] sm:text-xs mt-1">
+                      Ph.D. Scholar, IIT Kharagpur • GATE & NET
+                    </p>
+                    <p className="hidden sm:block text-slate-300 text-xs sm:text-sm mt-2.5 leading-relaxed font-light">
+                      B.Sc IT (Hons), MCA, and M.Tech in CSE from Ranchi University, BPUT, and NIT Jamshedpur. Qualified GATE and NET in Computer Science.
+                    </p>
                   </div>
                 </div>
 
-                {/* Info & Bio */}
-                <div className="flex-1 min-w-0 space-y-3.5 text-center sm:text-left lg:text-center xl:text-left">
-                  <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 text-xs font-semibold">
-                    <span>🎓 Ph.D. Scholar IIT Kharagpur | GATE & NET</span>
-                  </div>
+                {/* Mobile Bio */}
+                <p className="sm:hidden text-slate-300 text-xs leading-relaxed font-light mb-3">
+                  B.Sc IT (Hons), MCA, and M.Tech from Ranchi Univ., BPUT, and NIT Jamshedpur. GATE & NET qualified with IIM Indore summer internship. Currently pursuing Ph.D. in InfoSec at IIT Kharagpur.
+                </p>
 
-                  <h4 className="text-base sm:text-lg font-bold text-white leading-snug">
-                    "Pioneering research in Information Systems Security and advanced computing systems."
-                  </h4>
-
-                  <p className="text-slate-300 text-xs sm:text-sm leading-relaxed font-light">
-                    <strong className="text-white font-semibold">Surjit Paul</strong> obtained his <strong className="text-white font-semibold">B.Sc IT (Hons), MCA, and M.Tech (CSE)</strong> from <strong className="text-white font-semibold">Ranchi University</strong>, <strong className="text-white font-semibold">BPUT</strong>, and <strong className="text-white font-semibold">NIT Jamshedpur</strong>. He qualified <strong className="text-white font-semibold">GATE and NET</strong> in Computer Science.
-                  </p>
-
-                  <p className="text-slate-300 text-xs sm:text-sm leading-relaxed font-light">
-                    He completed an M.Tech summer internship at <strong className="text-white font-semibold">IIM Indore</strong> and worked in the IT industry for nearly a year. Currently, he is pursuing his <strong className="text-white font-semibold">Ph.D. in Information Systems Security at IIT Kharagpur</strong>.
-                  </p>
-                </div>
+                {/* Desktop Additional Bio */}
+                <p className="hidden sm:block text-slate-300 text-xs sm:text-sm leading-relaxed font-light mb-4">
+                  Completed an M.Tech summer internship at <strong className="text-white font-medium">IIM Indore</strong> and worked in the IT industry for nearly a year. Currently pursuing his <strong className="text-white font-medium">Ph.D. in Information Systems Security at IIT Kharagpur</strong>.
+                </p>
               </div>
 
-              {/* Stat badges */}
-              <div className="grid grid-cols-3 gap-2.5 pt-4 mt-5 border-t border-slate-700/60 text-center">
-                <div className="bg-slate-900/70 p-2.5 rounded-xl border border-slate-700/50">
-                  <div className="text-cyan-400 text-xs font-bold">Ph.D. Research</div>
-                  <div className="text-slate-400 text-[11px] mt-0.5">IIT Kharagpur</div>
+              {/* Highlights */}
+              <div className="grid grid-cols-3 gap-2 pt-3 sm:pt-4 border-t border-slate-700/60 text-center">
+                <div className="bg-slate-900/60 p-2 sm:p-2.5 rounded-lg sm:rounded-xl border border-slate-700/40">
+                  <div className="text-cyan-400 text-[11px] sm:text-xs font-bold">Ph.D. Research</div>
+                  <div className="text-slate-400 text-[10px] sm:text-[11px] mt-0.5 truncate">IIT Kharagpur</div>
                 </div>
-                <div className="bg-slate-900/70 p-2.5 rounded-xl border border-slate-700/50">
-                  <div className="text-emerald-400 text-xs font-bold">Post Graduation</div>
-                  <div className="text-slate-400 text-[11px] mt-0.5">M.Tech (NIT), MCA</div>
+                <div className="bg-slate-900/60 p-2 sm:p-2.5 rounded-lg sm:rounded-xl border border-slate-700/40">
+                  <div className="text-slate-200 text-[11px] sm:text-xs font-bold">Post Grad</div>
+                  <div className="text-slate-400 text-[10px] sm:text-[11px] mt-0.5 truncate">M.Tech (NIT), MCA</div>
                 </div>
-                <div className="bg-slate-900/70 p-2.5 rounded-xl border border-slate-700/50">
-                  <div className="text-amber-400 text-xs font-bold">Internship & IT</div>
-                  <div className="text-slate-400 text-[11px] mt-0.5">IIM Indore & IT Exp</div>
+                <div className="bg-slate-900/60 p-2 sm:p-2.5 rounded-lg sm:rounded-xl border border-slate-700/40">
+                  <div className="text-slate-200 text-[11px] sm:text-xs font-bold">Qualifications</div>
+                  <div className="text-slate-400 text-[10px] sm:text-[11px] mt-0.5 truncate">GATE, NET, IIM</div>
                 </div>
               </div>
             </div>
