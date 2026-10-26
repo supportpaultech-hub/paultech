@@ -67,23 +67,23 @@ const getStatusBadge = (status) => {
   switch (status) {
     case 'Approved':
       return (
-        <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
-          <FiCheckCircle className="text-emerald-500" />
+        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+          <FiCheckCircle className="text-emerald-500" size={12} />
           Approved
         </span>
       );
     case 'Rejected':
       return (
-        <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold bg-rose-50 text-rose-700 border border-rose-200">
-          <FiXCircle className="text-rose-500" />
+        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold bg-rose-50 text-rose-700 border border-rose-200">
+          <FiXCircle className="text-rose-500" size={12} />
           Rejected
         </span>
       );
     default:
       return (
-        <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold bg-amber-50 text-amber-700 border border-amber-200 animate-pulse">
-          <FiClock className="text-amber-500" />
-          Pending Approval
+        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold bg-amber-50 text-amber-700 border border-amber-200">
+          <FiClock className="text-amber-500" size={12} />
+          Pending
         </span>
       );
   }
@@ -586,17 +586,17 @@ const ManageLeaves = () => {
         ) : (
           <>
             {/* Desktop Table */}
-            <div className="hidden lg:block overflow-x-auto">
+            <div className="hidden lg:block overflow-x-auto scrollbar-thin">
               <table className="w-full text-left border-collapse text-xs">
                 <thead>
                   <tr className="bg-slate-50 border-b border-slate-200 text-[11px] font-extrabold text-slate-500 uppercase tracking-wider">
-                    <th className="py-3.5 px-4">Employee</th>
-                    <th className="py-3.5 px-4">Leave Type</th>
-                    <th className="py-3.5 px-4">Duration & Dates</th>
-                    <th className="py-3.5 px-4">Reason</th>
-                    <th className="py-3.5 px-4">Applied On</th>
-                    <th className="py-3.5 px-4 text-center">Status</th>
-                    <th className="py-3.5 px-4 text-center">Admin Actions</th>
+                    <th className="py-3 px-3.5">Employee</th>
+                    <th className="py-3 px-3">Leave Type</th>
+                    <th className="py-3 px-3">Duration & Dates</th>
+                    <th className="py-3 px-3">Reason</th>
+                    <th className="py-3 px-3">Applied On</th>
+                    <th className="py-3 px-3 text-center">Status</th>
+                    <th className="py-3 px-3.5 text-right">Admin Actions</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100 text-slate-700">
@@ -606,9 +606,9 @@ const ManageLeaves = () => {
                       <tr key={leave._id} className="hover:bg-slate-50/70 transition-colors">
                         
                         {/* Employee Name, Image, Emp ID & Role */}
-                        <td className="py-3.5 px-4">
-                          <div className="flex items-center gap-3">
-                            <div className="w-9 h-9 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center font-bold text-xs shrink-0 overflow-hidden border border-orange-200 shadow-sm">
+                        <td className="py-3 px-3.5 align-middle">
+                          <div className="flex items-center gap-2.5">
+                            <div className="w-8 h-8 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center font-bold text-xs shrink-0 overflow-hidden border border-orange-200 shadow-xs">
                               {leave.img ? (
                                 <img src={leave.img} alt={leave.employeeName} className="w-full h-full object-cover" />
                               ) : (
@@ -616,75 +616,75 @@ const ManageLeaves = () => {
                               )}
                             </div>
                             <div className="min-w-0">
-                              <p className="font-bold text-slate-900 text-xs leading-tight">{leave.employeeName}</p>
+                              <p className="font-bold text-slate-900 text-xs leading-tight truncate">{leave.employeeName}</p>
                               <div className="flex items-center gap-1.5 text-[10px] mt-0.5">
-                                <span className="px-1.5 py-0.5 rounded bg-slate-100 text-slate-800 font-mono font-bold border border-slate-200/80 shrink-0">
+                                <span className="px-1.5 py-0.2 rounded bg-slate-100 text-slate-800 font-mono font-bold border border-slate-200/80 shrink-0">
                                   {leave.employeeId || 'N/A'}
                                 </span>
-                                <span className="font-semibold text-orange-600 truncate">
+                                <span className="font-semibold text-orange-600 truncate max-w-[120px]">
                                   {leave.designation || leave.role || 'Team Member'}
                                 </span>
                               </div>
-                              <p className="text-[10px] text-slate-400 font-mono truncate max-w-[150px]">{leave.employeeEmail}</p>
+                              <p className="text-[10px] text-slate-400 font-mono truncate max-w-[130px]">{leave.employeeEmail}</p>
                             </div>
                           </div>
                         </td>
 
                         {/* Leave Type */}
-                        <td className="py-3.5 px-4 whitespace-nowrap">
-                          <span className={`inline-block px-2.5 py-1 rounded-lg text-[10px] font-extrabold border ${getLeaveTypeBadgeClass(leave.leaveType)}`}>
+                        <td className="py-3 px-3 align-middle whitespace-nowrap">
+                          <span className={`inline-block px-2 py-0.5 rounded-md text-[10px] font-bold border ${getLeaveTypeBadgeClass(leave.leaveType)}`}>
                             {leave.leaveType}
                           </span>
                         </td>
 
                         {/* Duration & Dates */}
-                        <td className="py-3.5 px-4 whitespace-nowrap">
+                        <td className="py-3 px-3 align-middle whitespace-nowrap">
                           <div className="flex flex-col gap-0.5">
-                            <span className="font-bold text-slate-900 text-xs">
-                              {leave.startDate} <span className="text-slate-400 font-normal">to</span> {leave.endDate}
+                            <span className="font-bold text-slate-800 text-[11px]">
+                              {leave.startDate} <span className="text-slate-400 font-normal">→</span> {leave.endDate}
                             </span>
-                            <span className="inline-flex items-center gap-1 text-[10px] font-bold text-orange-600">
-                              <FiClock size={11} />
+                            <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-orange-600">
+                              <FiClock size={10} />
                               {leave.totalDays} {leave.totalDays === 1 ? 'Day' : 'Days'} Total
                             </span>
                           </div>
                         </td>
 
                         {/* Reason */}
-                        <td className="py-3.5 px-4 max-w-xs">
-                          <p className="text-slate-600 text-xs line-clamp-2" title={leave.reason}>
+                        <td className="py-3 px-3 align-middle max-w-[150px] xl:max-w-[200px]">
+                          <p className="text-slate-600 text-xs truncate" title={leave.reason}>
                             {leave.reason}
                           </p>
                           {leave.adminRemarks && (
-                            <p className="text-[10px] text-emerald-700 font-medium mt-1 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 inline-block">
+                            <p className="text-[10px] text-emerald-700 font-medium mt-0.5 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200 inline-block truncate max-w-full">
                               Remark: {leave.adminRemarks}
                             </p>
                           )}
                         </td>
 
                         {/* Applied On */}
-                        <td className="py-3.5 px-4 whitespace-nowrap text-slate-400 text-[11px] font-medium">
+                        <td className="py-3 px-3 align-middle whitespace-nowrap text-slate-400 text-[11px] font-medium">
                           {leave.appliedAt ? new Date(leave.appliedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : '-'}
                         </td>
 
                         {/* Status */}
-                        <td className="py-3.5 px-4 text-center whitespace-nowrap">
+                        <td className="py-3 px-3 align-middle text-center whitespace-nowrap">
                           {getStatusBadge(leave.status)}
                         </td>
 
                         {/* Admin Action Buttons */}
-                        <td className="py-3.5 px-4 text-center whitespace-nowrap">
-                          <div className="flex items-center justify-center gap-1.5">
+                        <td className="py-3 px-3.5 align-middle text-right whitespace-nowrap">
+                          <div className="flex items-center justify-end gap-1.5">
                             
                             {/* Approve Button */}
                             {leave.status !== 'Approved' && (
                               <button
                                 onClick={() => handleApprove(leave)}
                                 disabled={isProcessing}
-                                className="px-2.5 py-1.5 bg-emerald-500 hover:bg-emerald-600 text-white rounded-lg text-xs font-bold flex items-center gap-1 transition-all shadow-sm hover:scale-105 active:scale-95 disabled:opacity-50"
+                                className="px-2 py-1 bg-emerald-500 hover:bg-emerald-600 text-white rounded-md text-[11px] font-semibold flex items-center gap-1 transition-all shadow-xs hover:scale-102 active:scale-98 disabled:opacity-50"
                                 title="Approve Leave"
                               >
-                                <FiCheck size={13} />
+                                <FiCheck size={12} />
                                 <span>Approve</span>
                               </button>
                             )}
@@ -694,10 +694,10 @@ const ManageLeaves = () => {
                               <button
                                 onClick={() => openRejectModal(leave)}
                                 disabled={isProcessing}
-                                className="px-2.5 py-1.5 bg-rose-50 hover:bg-rose-100 text-rose-600 border border-rose-200 rounded-lg text-xs font-bold flex items-center gap-1 transition-all hover:scale-105 active:scale-95 disabled:opacity-50"
+                                className="px-2 py-1 bg-rose-50 hover:bg-rose-100 text-rose-600 border border-rose-200 rounded-md text-[11px] font-semibold flex items-center gap-1 transition-all hover:scale-102 active:scale-98 disabled:opacity-50"
                                 title="Reject Leave"
                               >
-                                <FiX size={13} />
+                                <FiX size={12} />
                                 <span>Reject</span>
                               </button>
                             )}
@@ -708,20 +708,20 @@ const ManageLeaves = () => {
                                 setSelectedLeaveForModal(leave);
                                 setIsRejectingModal(false);
                               }}
-                              className="p-1.5 text-slate-500 hover:text-slate-800 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors"
+                              className="p-1.5 text-slate-500 hover:text-slate-800 bg-slate-100 hover:bg-slate-200 rounded-md transition-colors"
                               title="View Details"
                             >
-                              <FiEye size={14} />
+                              <FiEye size={13} />
                             </button>
 
                             {/* Delete Button */}
                             <button
                               onClick={() => handleDeleteLeave(leave._id)}
                               disabled={isProcessing}
-                              className="p-1.5 text-slate-400 hover:text-rose-600 bg-slate-50 hover:bg-rose-50 rounded-lg transition-colors"
+                              className="p-1.5 text-slate-400 hover:text-rose-600 bg-slate-50 hover:bg-rose-50 rounded-md transition-colors"
                               title="Delete Record"
                             >
-                              <FiTrash2 size={14} />
+                              <FiTrash2 size={13} />
                             </button>
                           </div>
                         </td>
