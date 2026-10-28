@@ -847,12 +847,17 @@ const Home = () => {
               Why Choose <br /> PaulTech Software Services?
             </h2>
             <div className="w-14 sm:w-20 h-1 sm:h-1.5 bg-gradient-to-r from-orange-500 to-green-500 mb-4 sm:mb-8 rounded-full"></div>
-            <p className="text-slate-600 leading-relaxed text-xs sm:text-base lg:text-lg mb-3 sm:mb-6">
-              Based in the industrial heart of Jamshedpur, PaulTech Software Services Pvt. Ltd. provides customized software solutions, ERP software, IT services, and digital marketing solutions to help businesses work smarter and grow faster. We are committed to delivering innovative, reliable, and practical solutions that simplify business operations, strengthen online presence, and help our clients stay ahead in today’s competitive market.
-            </p>
-            <p className="text-slate-600 leading-relaxed text-xs sm:text-base">
-              We specialize in creating tailored solutions that align with your unique business needs, from streamlining workflows and improving efficiency to enhancing digital visibility and reaching the right audience through effective digital marketing strategies. With a strong focus on quality, scalability, and timely delivery, we believe in building lasting client relationships through trust, transparency, and continuous support helping your business grow with confidence in an ever-evolving digital world.
-            </p>
+            <div className="space-y-3 sm:space-y-4">
+              <p className="text-slate-600 leading-relaxed text-xs sm:text-base text-justify">
+                Based in the industrial hub of Jamshedpur, Jharkhand, <strong className="font-bold text-slate-900">PaulTech Software Services Pvt. Ltd.</strong> is committed to delivering customized software development, comprehensive IT solutions, and Customize Enterprise ERP services that address the evolving needs of modern businesses.
+              </p>
+              <p className="text-slate-600 leading-relaxed text-xs sm:text-base text-justify">
+                We specialize in developing tailored, technology-driven solutions that align with each client's unique business objectives. With a strong emphasis on quality, scalability, innovation, and timely delivery, we strive to help organizations streamline operations, enhance productivity, and achieve sustainable growth.
+              </p>
+              <p className="text-slate-600 leading-relaxed text-xs sm:text-base text-justify">
+                Our customer-centric approach, technical expertise, and commitment to service excellence enable us to build lasting business relationships and deliver solutions that create meaningful value in today's dynamic digital landscape.
+              </p>
+            </div>
           </div>
 
           {/* Right Column: 3D PaulTech "P" Particle Scatter Showcase & Revolving Services */}
