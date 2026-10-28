@@ -811,10 +811,10 @@ const Services = () => {
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <a
-                  href="tel:+919471174144"
+                  href="tel:+917209986943"
                   className="w-full sm:w-auto px-6 py-4 bg-white/10 hover:bg-white/15 text-slate-200 hover:text-white font-bold rounded-xl border border-white/15 transition-all text-center text-sm sm:text-base"
                 >
-                  Call +91 94711 74144
+                  Call +91 72099 86943
                 </a>
               </div>
             </div>
