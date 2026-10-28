@@ -304,7 +304,7 @@ const Footer = () => {
             <FiEye className="text-orange-500 animate-pulse" />
             <span className="text-slate-400">Total Site Visitors:</span>
             <span className="font-mono font-bold text-white bg-orange-500/20 text-orange-400 px-2.5 py-0.5 rounded-md border border-orange-500/30">
-              {visitorCount ? visitorCount.toLocaleString() : '1,806'}
+              {visitorCount ? visitorCount.toLocaleString() : '77,000'}
             </span>
           </div>
 

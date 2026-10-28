@@ -1,14 +1,20 @@
 const Visitor = require('../models/Visitor');
 
+const BASE_VISITOR_COUNT = 77000;
+
 // Get and increment visitor count
 exports.incrementVisitorCount = async (req, res) => {
   try {
     let visitor = await Visitor.findOne();
     if (!visitor) {
-      visitor = new Visitor({ count: 1248 });
+      visitor = new Visitor({ count: BASE_VISITOR_COUNT });
       await visitor.save();
     } else {
-      visitor.count += 1;
+      if (!visitor.count || visitor.count < BASE_VISITOR_COUNT) {
+        visitor.count = BASE_VISITOR_COUNT;
+      } else {
+        visitor.count += 1;
+      }
       visitor.updatedAt = Date.now();
       await visitor.save();
     }

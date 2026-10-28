@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const visitorSchema = new mongoose.Schema({
-  count: { type: Number, default: 1248 },
+  count: { type: Number, default: 77000 },
   updatedAt: { type: Date, default: Date.now }
 });
 
