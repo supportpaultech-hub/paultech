@@ -671,6 +671,16 @@ const Home = () => {
       imgClass: "h-9 sm:h-11 md:h-12 max-w-[75%]"
     },
     { 
+      name: "Amrit Packers and Movers", 
+      img: "/amrit-packers-logo.jpg",
+      imgClass: "h-9 sm:h-11 md:h-12 max-w-[80%]"
+    },
+    { 
+      name: "Madadsathi", 
+      img: "/madadsathi-logo.jpg",
+      imgClass: "h-10 sm:h-12 md:h-13 max-w-[75%]"
+    },
+    { 
       name: "Infosys", 
       img: "/infosys-logo.svg",
       imgClass: "h-6 sm:h-7 md:h-8 max-w-[75%]"
