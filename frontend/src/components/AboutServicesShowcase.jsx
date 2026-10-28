@@ -7,12 +7,10 @@ const rotatingServices = [
   {
     id: 'software-dev',
     name: 'Software Dev',
-    tag: 'Web & Mobile Apps',
     borderColor: 'border-cyan-500/30 hover:border-cyan-400',
     glowShadow: 'hover:shadow-[0_0_20px_rgba(6,182,212,0.4)]',
     badgeBg: 'bg-cyan-500/15',
     badgeBorder: 'border-cyan-500/30',
-    dotColor: 'bg-cyan-400',
     icon: (
       <svg className="w-4 h-4 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <polyline points="16 18 22 12 16 6" />
@@ -24,12 +22,10 @@ const rotatingServices = [
   {
     id: 'cloud-services',
     name: 'Cloud Services',
-    tag: 'AWS & DevOps Infra',
     borderColor: 'border-sky-500/30 hover:border-sky-400',
     glowShadow: 'hover:shadow-[0_0_20px_rgba(14,165,233,0.4)]',
     badgeBg: 'bg-sky-500/15',
     badgeBorder: 'border-sky-500/30',
-    dotColor: 'bg-sky-400',
     icon: (
       <svg className="w-4 h-4 text-sky-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" />
@@ -41,12 +37,10 @@ const rotatingServices = [
   {
     id: 'ai-automation',
     name: 'AI & Automation',
-    tag: 'Neural & Smart Bots',
     borderColor: 'border-purple-500/30 hover:border-purple-400',
     glowShadow: 'hover:shadow-[0_0_20px_rgba(168,85,247,0.4)]',
     badgeBg: 'bg-purple-500/15',
     badgeBorder: 'border-purple-500/30',
-    dotColor: 'bg-purple-400',
     icon: (
       <svg className="w-4 h-4 text-purple-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <rect x="4" y="4" width="16" height="16" rx="2" />
@@ -65,12 +59,10 @@ const rotatingServices = [
   {
     id: 'data-analysis',
     name: 'Data Analysis',
-    tag: 'BI & Analytics',
     borderColor: 'border-pink-500/30 hover:border-pink-400',
     glowShadow: 'hover:shadow-[0_0_20px_rgba(236,72,153,0.4)]',
     badgeBg: 'bg-pink-500/15',
     badgeBorder: 'border-pink-500/30',
-    dotColor: 'bg-pink-400',
     icon: (
       <svg className="w-4 h-4 text-pink-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <line x1="18" y1="20" x2="18" y2="10" />
@@ -81,14 +73,12 @@ const rotatingServices = [
     )
   },
   {
-    id: 'erp-solutions',
-    name: 'ERP Solutions',
-    tag: 'Enterprise SAP',
+    id: 'erp-software',
+    name: 'ERP Software',
     borderColor: 'border-amber-500/30 hover:border-amber-400',
     glowShadow: 'hover:shadow-[0_0_20px_rgba(245,158,11,0.4)]',
     badgeBg: 'bg-amber-500/15',
     badgeBorder: 'border-amber-500/30',
-    dotColor: 'bg-amber-400',
     icon: (
       <svg className="w-4 h-4 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <ellipse cx="12" cy="5" rx="9" ry="3" />
@@ -98,18 +88,16 @@ const rotatingServices = [
     )
   },
   {
-    id: 'cyber-security',
-    name: 'Cyber Security',
-    tag: 'Zero-Trust Sec',
+    id: 'it-consulting',
+    name: 'IT Consulting',
     borderColor: 'border-emerald-500/30 hover:border-emerald-400',
     glowShadow: 'hover:shadow-[0_0_20px_rgba(16,185,129,0.4)]',
     badgeBg: 'bg-emerald-500/15',
     badgeBorder: 'border-emerald-500/30',
-    dotColor: 'bg-emerald-400',
     icon: (
       <svg className="w-4 h-4 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-        <polyline points="9 12 11 14 15 10" />
+        <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
       </svg>
     )
   }
@@ -234,24 +222,18 @@ const AboutServicesShowcase = () => {
                 >
                   <Link 
                     to="/services"
-                    className={`block bg-slate-900/90 hover:bg-slate-850 border ${service.borderColor} rounded-full py-0.5 px-2 sm:py-2 sm:px-3.5 backdrop-blur-xl shadow-[0_6px_20px_rgba(0,0,0,0.5)] ${service.glowShadow} transition-all duration-300 group/pill hover:scale-105 sm:hover:scale-110 active:scale-95`}
+                    className={`block bg-slate-900/90 hover:bg-slate-850 border ${service.borderColor} rounded-full py-1 sm:py-1.5 px-2 sm:px-3.5 backdrop-blur-xl shadow-[0_6px_20px_rgba(0,0,0,0.5)] ${service.glowShadow} transition-all duration-300 group/pill hover:scale-105 sm:hover:scale-110 active:scale-95`}
                   >
-                    <div className="flex items-center gap-1 sm:gap-2.5">
+                    <div className="flex items-center gap-1.5 sm:gap-2.5">
                        {/* Round Icon Disc */}
-                      <div className={`w-5 h-5 sm:w-8 sm:h-8 rounded-full ${service.badgeBg} border ${service.badgeBorder} flex items-center justify-center shrink-0 shadow-sm group-hover/pill:scale-110 transition-transform [&>svg]:w-2.5 [&>svg]:h-2.5 sm:[&>svg]:w-4 sm:[&>svg]:h-4`}>
+                      <div className={`w-5 h-5 sm:w-7 sm:h-7 rounded-full ${service.badgeBg} border ${service.badgeBorder} flex items-center justify-center shrink-0 shadow-sm group-hover/pill:scale-110 transition-transform [&>svg]:w-2.5 [&>svg]:h-2.5 sm:[&>svg]:w-3.5 sm:[&>svg]:h-3.5`}>
                         {service.icon}
                       </div>
                       {/* Service Info */}
                       <div className="text-left pr-0.5 sm:pr-2">
-                        <h4 className="text-[8.5px] sm:text-xs font-bold text-slate-100 tracking-wide whitespace-nowrap group-hover/pill:text-white">
+                        <h4 className="text-[9px] sm:text-xs font-bold text-slate-100 tracking-wide whitespace-nowrap group-hover/pill:text-white">
                           {service.name}
                         </h4>
-                        <div className="flex items-center gap-1 sm:gap-1.5">
-                          <span className={`w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full ${service.dotColor} animate-pulse`} />
-                          <span className="text-[7px] sm:text-[9px] text-slate-400 font-medium whitespace-nowrap group-hover/pill:text-slate-300">
-                            {service.tag}
-                          </span>
-                        </div>
                       </div>
                     </div>
                   </Link>
