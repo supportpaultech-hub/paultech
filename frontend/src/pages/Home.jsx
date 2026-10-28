@@ -849,7 +849,7 @@ const Home = () => {
             <div className="w-14 sm:w-20 h-1 sm:h-1.5 bg-gradient-to-r from-orange-500 to-green-500 mb-4 sm:mb-8 rounded-full"></div>
             <div className="space-y-3 sm:space-y-4">
               <p className="text-slate-600 leading-relaxed text-xs sm:text-base text-justify">
-                Based in the industrial hub of Jamshedpur, Jharkhand, <strong className="font-bold text-slate-900">PaulTech Software Services Pvt. Ltd.</strong> is committed to delivering customized software development, comprehensive IT solutions, and Customize Enterprise ERP services that address the evolving needs of modern businesses.
+                Based in the industrial hub of Jamshedpur, Jharkhand, <strong className="font-bold text-slate-900">PaulTech Software Services Pvt. Ltd.</strong> is committed to delivering customized software development, comprehensive IT solutions, and Customize Enterprise ERP Softwares that address the evolving needs of modern businesses.
               </p>
               <p className="text-slate-600 leading-relaxed text-xs sm:text-base text-justify">
                 We specialize in developing tailored, technology-driven solutions that align with each client's unique business objectives. With a strong emphasis on quality, scalability, innovation, and timely delivery, we strive to help organizations streamline operations, enhance productivity, and achieve sustainable growth.

@@ -88,16 +88,17 @@ const rotatingServices = [
     )
   },
   {
-    id: 'it-consulting',
-    name: 'IT Consulting',
+    id: 'web-development',
+    name: 'Web Development',
     borderColor: 'border-emerald-500/30 hover:border-emerald-400',
     glowShadow: 'hover:shadow-[0_0_20px_rgba(16,185,129,0.4)]',
     badgeBg: 'bg-emerald-500/15',
     badgeBorder: 'border-emerald-500/30',
     icon: (
       <svg className="w-4 h-4 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
-        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+        <circle cx="12" cy="12" r="10" />
+        <line x1="2" y1="12" x2="22" y2="12" />
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
       </svg>
     )
   }
