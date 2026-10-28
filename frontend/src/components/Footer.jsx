@@ -78,7 +78,7 @@ const Footer = () => {
               </div>
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-slate-300 text-xs font-medium w-full">
                 <FiCheckCircle className="text-emerald-400 shrink-0" />
-                <span className="truncate">MoU Partner with 4+ Leading Universities</span>
+                <span className="truncate">MoU Partner with 6+ Leading Universities & Colleges</span>
               </div>
             </div>
 

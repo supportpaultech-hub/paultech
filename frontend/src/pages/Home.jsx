@@ -622,6 +622,20 @@ const Home = () => {
       date: "11th April 2025",
       img: "/images/mou/arka-jain-university.jpg",
       desc: "offer industrial training and internship opportunities specifically for Computer Science and Engineering students. This collaboration will provide students with real-world experience, skill enhancement, networking opportunities, and improved employability."
+    },
+    {
+      name: "Templecity Institute of Technology & Engineering (TITE), Odisha",
+      date: "Academic Year 2025",
+      img: "/images/mou/tite-odisha.jpg",
+      desc: "provide industrial training and internship opportunities for students pursuing Computer Science and Engineering.",
+      customText: "We are delighted to announce the signing of a Memorandum of Understanding (MoU) with TITE, Templecity Institute of Technology & Engineering, Odisha marking the beginning of a valuable collaboration focused on empowering the next generation of technology professionals. This strategic partnership has been established to provide industrial training and internship opportunities for students pursuing Computer Science and Engineering. By connecting academic learning with practical industry experience, the initiative aims to equip students with the skills, knowledge, and confidence required to excel in today's competitive professional environment."
+    },
+    {
+      name: "St. Xavier's College, Dumka",
+      date: "Academic Year 2025",
+      img: "/images/mou/st-xaviers-college-dumka.webp",
+      desc: "create a strong platform for students to learn, innovate, and prepare for successful careers in the ever-evolving technology sector.",
+      customText: "We are delighted and proud to announce that we have signed a Memorandum of Understanding (MoU) with St. Xavier College, Dumka, Jharkhand. We believe that this partnership will create a strong platform for students to learn, innovate, and prepare for successful careers in the ever-evolving technology sector. By working together, we aim to nurture future-ready professionals equipped with the skills and experience needed to excel in the industry. We look forward to a fruitful and long-lasting association with St. Xavier College, Dumka."
     }
   ];
 
@@ -1725,18 +1739,18 @@ const Home = () => {
         <div className="absolute top-0 right-0 w-64 h-64 bg-orange-400/5 rounded-full blur-[80px] pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-600/5 rounded-full blur-[100px] pointer-events-none"></div>
 
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
           <div className="text-center mb-6 sm:mb-12 md:mb-16">
             <h4 className="text-orange-500 font-semibold tracking-widest text-xs sm:text-sm uppercase mb-1 sm:mb-3">Partnerships</h4>
             <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-slate-800">MoU Announcements</h2>
             <div className="w-14 sm:w-20 h-1 sm:h-1.5 bg-gradient-to-r from-orange-500 to-green-500 mx-auto mt-2 sm:mt-4 rounded-full"></div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8 lg:gap-12 max-w-md md:max-w-none mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-none mx-auto">
             {mous.map((mou, index) => (
               <div key={index} className="group bg-white rounded-xl sm:rounded-2xl shadow-lg border border-slate-200 overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-1 sm:hover:-translate-y-2 hover:shadow-2xl">
                 {/* Landscape Image Section */}
-                <div className="w-full aspect-[16/9] sm:aspect-video relative overflow-hidden bg-slate-100 max-h-40 sm:max-h-none">
+                <div className="w-full aspect-[16/10] sm:aspect-video relative overflow-hidden bg-slate-100 max-h-48 sm:max-h-56">
                   <div className="absolute inset-0 bg-slate-900/10 group-hover:bg-transparent transition-colors z-10"></div>
                   <img src={mou.img} alt={mou.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
 
@@ -1748,11 +1762,15 @@ const Home = () => {
                 </div>
 
                 {/* Content Section */}
-                <div className="p-4 sm:p-6 md:p-8 flex-grow flex flex-col">
-                  <h3 className="font-bold text-sm sm:text-lg md:text-xl text-slate-800 mb-1.5 sm:mb-3 group-hover:text-blue-600 transition-colors leading-snug">{mou.name}</h3>
-                  <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mb-3 sm:mb-6 flex-grow line-clamp-3 sm:line-clamp-none">
-                    We are proud to announce that we have signed an <strong>MoU</strong> with <strong>{mou.name.split(',')[0]}</strong> on <strong>{mou.date}</strong>, to {mou.desc}
-                  </p>
+                <div className="p-4 sm:p-6 md:p-7 flex-grow flex flex-col justify-between">
+                  <div>
+                    <h3 className="font-bold text-sm sm:text-base md:text-lg text-slate-800 mb-2 group-hover:text-blue-600 transition-colors leading-snug min-h-[2.5rem] sm:min-h-[3.25rem] line-clamp-2">{mou.name}</h3>
+                    <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4 text-justify line-clamp-5 sm:line-clamp-6">
+                      {mou.customText || (
+                        <>We are proud to announce that we have signed an <strong>MoU</strong> with <strong>{mou.name.split(',')[0]}</strong> on <strong>{mou.date}</strong>, to {mou.desc}</>
+                      )}
+                    </p>
+                  </div>
 
                   <div>
                     <span className="inline-flex items-center text-xs sm:text-sm font-semibold text-orange-500 group-hover:text-orange-600 transition-colors cursor-pointer">

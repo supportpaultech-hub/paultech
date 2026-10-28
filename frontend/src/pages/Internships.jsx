@@ -122,7 +122,9 @@ const UNIVERSITY_PARTNERS = [
   "Netaji Subhas University",
   "Srinath University",
   "AL Kabir Polytechnic College",
-  "Arka Jain University"
+  "Arka Jain University",
+  "Templecity Institute of Technology & Engineering (TITE)",
+  "St. Xavier's College, Dumka"
 ];
 
 const PRESET_DOMAINS = [
