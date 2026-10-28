@@ -838,10 +838,10 @@ const Home = () => {
             </h2>
             <div className="w-14 sm:w-20 h-1 sm:h-1.5 bg-gradient-to-r from-orange-500 to-green-500 mb-4 sm:mb-8 rounded-full"></div>
             <p className="text-slate-600 leading-relaxed text-xs sm:text-base lg:text-lg mb-3 sm:mb-6">
-              Based in the industrial heart of Jamshedpur, PaulTech Software Services Pvt Ltd. provides the best customized software, IT solutions & ERP (SAP) services to its clients. We are recognized as one of the most innovative and cutting-edge software service providers in the region.
+              Based in the industrial heart of Jamshedpur, PaulTech Software Services Pvt. Ltd. provides customized software solutions, ERP software, IT services, and digital marketing solutions to help businesses work smarter and grow faster. We are committed to delivering innovative, reliable, and practical solutions that simplify business operations, strengthen online presence, and help our clients stay ahead in today’s competitive market.
             </p>
             <p className="text-slate-600 leading-relaxed text-xs sm:text-base">
-              We excel in crafting tailored solutions that meet your exact business needs. With an unwavering focus on quality, scalability, and timely delivery, our commitment to customer satisfaction drives us to build long-term partnerships that empower your business in today's dynamic market.
+              We specialize in creating tailored solutions that align with your unique business needs, from streamlining workflows and improving efficiency to enhancing digital visibility and reaching the right audience through effective digital marketing strategies. With a strong focus on quality, scalability, and timely delivery, we believe in building lasting client relationships through trust, transparency, and continuous support helping your business grow with confidence in an ever-evolving digital world.
             </p>
           </div>
 

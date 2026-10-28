@@ -98,8 +98,7 @@ const AdminLogin = ({ onLoginSuccess }) => {
                 required
                 value={formData.email}
                 onChange={(e) => setFormData({...formData, email: e.target.value})}
-                className="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 sm:py-3.5 pl-11 pr-4 text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-4 focus:ring-orange-500/10 focus:border-orange-500 focus:bg-white transition-all duration-300"
-                placeholder="admin@gmail.com"
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 sm:py-3.5 pl-11 pr-4 text-xs sm:text-sm text-slate-900 focus:outline-none focus:ring-4 focus:ring-orange-500/10 focus:border-orange-500 focus:bg-white transition-all duration-300"
               />
             </div>
           </div>
@@ -118,8 +117,7 @@ const AdminLogin = ({ onLoginSuccess }) => {
                 required
                 value={formData.password}
                 onChange={(e) => setFormData({...formData, password: e.target.value})}
-                className="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 sm:py-3.5 pl-11 pr-4 text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-4 focus:ring-orange-500/10 focus:border-orange-500 focus:bg-white transition-all duration-300"
-                placeholder="••••••••"
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 sm:py-3.5 pl-11 pr-4 text-xs sm:text-sm text-slate-900 focus:outline-none focus:ring-4 focus:ring-orange-500/10 focus:border-orange-500 focus:bg-white transition-all duration-300"
               />
             </div>
           </div>
