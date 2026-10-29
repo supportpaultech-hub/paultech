@@ -48,21 +48,126 @@ const Contact = () => {
     subject: '', 
     message: '' 
   });
+  const [errors, setErrors] = useState({});
   const [status, setStatus] = useState('idle');
   const [openFaqIndex, setOpenFaqIndex] = useState(null);
 
+  const DOMAIN_TYPOS = {
+    'gamil.com': 'gmail.com',
+    'gmai.com': 'gmail.com',
+    'gmaill.com': 'gmail.com',
+    'gmial.com': 'gmail.com',
+    'gamil.co': 'gmail.com',
+    'gmaill.co': 'gmail.com',
+    'gmil.com': 'gmail.com',
+    'gmail.co': 'gmail.com',
+    'yaho.com': 'yahoo.com',
+    'yahooo.com': 'yahoo.com',
+    'outlok.com': 'outlook.com',
+    'outloo.com': 'outlook.com',
+    'hotmial.com': 'hotmail.com'
+  };
+
+  const DISPOSABLE_DOMAINS = new Set([
+    'tempmail.com', '10minutemail.com', 'mailinator.com', 'guerrillamail.com',
+    'throwawaymail.com', 'temp-mail.org', 'fakeinbox.com', 'trashmail.com',
+    'getnada.com', 'yopmail.com', 'mohmal.com', 'dispostable.com',
+    'sharklasers.com', 'crazymailing.com', 'emailondeck.com'
+  ]);
+
+  const validateEmail = (email) => {
+    if (!email || !email.trim()) return 'Please enter your email address';
+    const trimmed = email.trim().toLowerCase();
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(trimmed)) return 'Enter a valid email';
+
+    const parts = trimmed.split('@');
+    if (parts.length !== 2) return 'Enter a valid email';
+    const [username, domain] = parts;
+
+    if (DOMAIN_TYPOS[domain]) {
+      return `Did you mean @${DOMAIN_TYPOS[domain]}?`;
+    }
+
+    if (DISPOSABLE_DOMAINS.has(domain)) {
+      return 'Temporary / disposable emails are not allowed';
+    }
+
+    if (domain === 'gmail.com') {
+      if (username.length < 6 || username.length > 30) {
+        return 'Gmail username must be 6-30 characters';
+      }
+      if (username.startsWith('.') || username.endsWith('.')) {
+        return 'Gmail username cannot start or end with a dot';
+      }
+      if (username.includes('..')) {
+        return 'Gmail username cannot contain consecutive dots (..)';
+      }
+      if (!/^[a-z0-9.]+$/.test(username)) {
+        return 'Gmail username can only contain letters, numbers, and dots';
+      }
+    }
+
+    return '';
+  };
+
+  const validatePhone = (phone) => {
+    if (!phone || !phone.trim()) return 'Please enter a 10-digit mobile number';
+    const clean = phone.replace(/\D/g, '');
+    if (clean.length !== 10) return 'Mobile number must be exactly 10 digits';
+    if (!/^[6-9]/.test(clean)) return 'Indian numbers must start with 6, 7, 8, or 9';
+    return '';
+  };
+
+  const handleEmailChange = (e) => {
+    const val = e.target.value;
+    setFormData(prev => ({ ...prev, email: val }));
+    if (errors.email) {
+      setErrors(prev => ({ ...prev, email: validateEmail(val) }));
+    }
+  };
+
+  const handlePhoneChange = (e) => {
+    // Only accept numbers and restrict to 10 digits
+    const clean = e.target.value.replace(/\D/g, '').slice(0, 10);
+    setFormData(prev => ({ ...prev, phone: clean }));
+    if (errors.phone) {
+      setErrors(prev => ({ ...prev, phone: validatePhone(clean) }));
+    }
+  };
+
+  const handleEmailBlur = () => {
+    if (formData.email) {
+      setErrors(prev => ({ ...prev, email: validateEmail(formData.email) }));
+    }
+  };
+
+  const handlePhoneBlur = () => {
+    if (formData.phone) {
+      setErrors(prev => ({ ...prev, phone: validatePhone(formData.phone) }));
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const emailErr = validateEmail(formData.email);
+    const phoneErr = validatePhone(formData.phone);
+
+    if (emailErr || phoneErr) {
+      setErrors({ email: emailErr, phone: phoneErr });
+      return;
+    }
+
+    setErrors({});
     setStatus('sending');
     
-    // Combine phone into message to maintain backend schema compatibility
     const payload = {
-      name: formData.name,
-      email: formData.email,
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      phone: formData.phone.trim(),
       subject: formData.subject,
-      message: formData.phone 
-        ? `[Contact Phone: ${formData.phone}]\n\n${formData.message}` 
-        : formData.message
+      message: formData.message.trim()
     };
 
     try {
@@ -72,11 +177,21 @@ const Contact = () => {
         body: JSON.stringify(payload)
       });
       
+      const resData = await response.json().catch(() => ({}));
+
       if (response.ok) {
         setStatus('success');
         setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+        setErrors({});
       } else {
         setStatus('error');
+        if (resData.message) {
+          if (resData.message.toLowerCase().includes('email')) {
+            setErrors(prev => ({ ...prev, email: resData.message }));
+          } else if (resData.message.toLowerCase().includes('mobile') || resData.message.toLowerCase().includes('phone')) {
+            setErrors(prev => ({ ...prev, phone: resData.message }));
+          }
+        }
       }
     } catch (error) {
       console.error('Contact submission error:', error);
@@ -264,7 +379,7 @@ const Contact = () => {
                   {/* Email Address */}
                   <div className="space-y-1.5">
                     <label className="block text-xs sm:text-sm font-semibold text-slate-700">
-                      Business Email <span className="text-orange-500">*</span>
+                      Business Email / Gmail <span className="text-orange-500">*</span>
                     </label>
                     <div className="relative">
                       <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
@@ -273,12 +388,23 @@ const Contact = () => {
                       <input 
                         type="email" 
                         placeholder="Enter your email address" 
-                        className="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all duration-200 focus:bg-white"
+                        className={`w-full pl-10 pr-4 py-3 bg-slate-50 border rounded-xl text-sm text-slate-900 placeholder-slate-400 focus:outline-none transition-all duration-200 focus:bg-white ${
+                          errors.email 
+                            ? 'border-rose-400 focus:border-rose-500 focus:ring-2 focus:ring-rose-500/20' 
+                            : 'border-slate-200 focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500'
+                        }`}
                         value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        onChange={handleEmailChange}
+                        onBlur={handleEmailBlur}
                         required 
                       />
                     </div>
+                    {errors.email && (
+                      <p className="text-xs text-rose-500 font-medium flex items-center gap-1 mt-1">
+                        <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                        <span>{errors.email}</span>
+                      </p>
+                    )}
                   </div>
 
                 </div>
@@ -286,23 +412,41 @@ const Contact = () => {
                 {/* Row 2: Phone & Service Selection */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   
-                  {/* Phone Number */}
+                  {/* Phone Number (Strict 10-Digit Indian Mobile Number) */}
                   <div className="space-y-1.5">
                     <label className="block text-xs sm:text-sm font-semibold text-slate-700">
-                      Phone / WhatsApp Number
+                      Mobile / WhatsApp Number <span className="text-orange-500">*</span>
                     </label>
                     <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-                        <Phone className="w-4 h-4" />
+                      <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500 text-xs font-bold select-none">
+                        <span>🇮🇳 +91</span>
+                        <span className="text-slate-300 ml-1.5 mr-0.5">|</span>
                       </div>
                       <input 
                         type="tel" 
-                        placeholder="Enter your phone number" 
-                        className="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all duration-200 focus:bg-white"
+                        inputMode="numeric"
+                        maxLength={10}
+                        placeholder="10-digit mobile number" 
+                        className={`w-full pl-20 pr-12 py-3 bg-slate-50 border rounded-xl text-sm text-slate-900 placeholder-slate-400 focus:outline-none transition-all duration-200 focus:bg-white tracking-wide font-medium ${
+                          errors.phone 
+                            ? 'border-rose-400 focus:border-rose-500 focus:ring-2 focus:ring-rose-500/20' 
+                            : 'border-slate-200 focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500'
+                        }`}
                         value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        onChange={handlePhoneChange}
+                        onBlur={handlePhoneBlur}
+                        required
                       />
+                      <div className="absolute inset-y-0 right-0 pr-3.5 flex items-center pointer-events-none text-slate-400 text-[11px] font-semibold">
+                        {formData.phone ? `${formData.phone.length}/10` : ''}
+                      </div>
                     </div>
+                    {errors.phone && (
+                      <p className="text-xs text-rose-500 font-medium flex items-center gap-1 mt-1">
+                        <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                        <span>{errors.phone}</span>
+                      </p>
+                    )}
                   </div>
 
                   {/* Service Needed */}

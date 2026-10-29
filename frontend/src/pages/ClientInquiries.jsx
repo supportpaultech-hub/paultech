@@ -26,13 +26,14 @@ const ClientInquiries = () => {
   }, []);
 
   const handleDelete = async (id) => {
-    if (!window.confirm("Are you sure you want to delete this inquiry?")) return;
+    if (!window.confirm("Are you sure you want to permanently delete this client inquiry from database?")) return;
     try {
       await axios.delete(`${API_BASE_URL}/api/contact/${id}`);
       setInquiries(prev => prev.filter(inq => inq._id !== id));
       if (selectedInquiry?._id === id) setSelectedInquiry(null);
     } catch (error) {
       console.error('Error deleting inquiry:', error);
+      alert('Failed to delete inquiry from database. Please try again.');
     }
   };
 
@@ -244,14 +245,23 @@ const ClientInquiries = () => {
               </div>
             </div>
 
-            <div className="text-xs text-slate-400 pt-2 flex justify-between items-center">
+            <div className="text-xs text-slate-400 pt-3 border-t border-slate-100 flex flex-wrap gap-2 justify-between items-center">
               <span>Received: {new Date(selectedInquiry.createdAt || Date.now()).toLocaleString()}</span>
-              <a
-                href={`mailto:${selectedInquiry.email}?subject=Re: ${encodeURIComponent(selectedInquiry.subject || 'Inquiry')}`}
-                className="px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white font-bold rounded-xl transition-colors inline-flex items-center gap-1.5"
-              >
-                <FiMail size={14} /> Reply Email
-              </a>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => handleDelete(selectedInquiry._id)}
+                  className="px-3.5 py-2 bg-rose-50 hover:bg-rose-100 text-rose-600 font-bold rounded-xl transition-colors inline-flex items-center gap-1.5"
+                >
+                  <FiTrash2 size={14} /> Delete
+                </button>
+                <a
+                  href={`mailto:${selectedInquiry.email}?subject=Re: ${encodeURIComponent(selectedInquiry.subject || 'Inquiry')}`}
+                  className="px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white font-bold rounded-xl transition-colors inline-flex items-center gap-1.5"
+                >
+                  <FiMail size={14} /> Reply Email
+                </a>
+              </div>
             </div>
           </div>
         </div>
