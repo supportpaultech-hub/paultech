@@ -112,43 +112,43 @@ const About = () => {
                       Co-Founder & Director
                     </p>
                     <p className="text-slate-400 text-[11px] sm:text-xs mt-1">
-                      SAP Specialist • Tata Steel Foundation (TSF)
+                      SAP Specialist • Tata Steel & Banking Sector Exposure
                     </p>
                     <p className="hidden sm:block text-slate-300 text-xs sm:text-sm mt-2.5 leading-relaxed font-light">
-                      Graduated in Commerce and earned his MBA from Shobhit University. Over 10 years of active experience in IT and enterprise administration.
+                      Accomplished IT professional with over 15 years of experience in SAP-IT systems and enterprise solutions, aligning technology with strategic business growth.
                     </p>
                   </div>
                 </div>
 
                 {/* Mobile Bio */}
                 <p className="sm:hidden text-slate-300 text-xs leading-relaxed font-light mb-3">
-                  Graduated in Commerce with an MBA from Shobhit University. Over 10 years of active IT experience with Tata Steel Foundation (TSF) and expertise in SAP modules (FICO, MM, PS, SD).
+                  15+ years in SAP & enterprise systems with Tata Steel Ltd. and the banking sector. Successfully heads three Jamshedpur ventures delivering tech, consulting, and workforce solutions nationwide.
                 </p>
 
                 {/* Desktop Additional Bio */}
                 <p className="hidden sm:block text-slate-300 text-xs sm:text-sm leading-relaxed font-light mb-4">
-                  Possesses vast hands-on expertise in core SAP modules including <strong className="text-white font-medium">SAP FICO, MM, PS, and SD</strong>. Leads corporate administration, strategic expansion, and operational growth.
+                  Brings valuable corporate and financial industry exposure through associations with <strong className="text-white font-medium">Tata Steel Ltd.</strong> and the banking sector. As an entrepreneur, he successfully leads three organizations in Jamshedpur, providing technology, consulting, recruitment, and workforce solutions across India.
                 </p>
               </div>
 
               {/* Highlights */}
               <div className="grid grid-cols-3 gap-2 pt-3 sm:pt-4 border-t border-slate-700/60 text-center">
                 <div className="bg-slate-900/60 p-2 sm:p-2.5 rounded-lg sm:rounded-xl border border-slate-700/40">
-                  <div className="text-orange-400 text-[11px] sm:text-xs font-bold">SAP Modules</div>
-                  <div className="text-slate-400 text-[10px] sm:text-[11px] mt-0.5 truncate">FICO, MM, PS, SD</div>
+                  <div className="text-orange-400 text-[11px] sm:text-xs font-bold">Expertise</div>
+                  <div className="text-slate-400 text-[10px] sm:text-[11px] mt-0.5 truncate">SAP & Enterprise</div>
                 </div>
                 <div className="bg-slate-900/60 p-2 sm:p-2.5 rounded-lg sm:rounded-xl border border-slate-700/40">
-                  <div className="text-slate-200 text-[11px] sm:text-xs font-bold">Education</div>
-                  <div className="text-slate-400 text-[10px] sm:text-[11px] mt-0.5 truncate">MBA, Shobhit</div>
+                  <div className="text-slate-200 text-[11px] sm:text-xs font-bold">Ventures</div>
+                  <div className="text-slate-400 text-[10px] sm:text-[11px] mt-0.5 truncate">3 Organizations</div>
                 </div>
                 <div className="bg-slate-900/60 p-2 sm:p-2.5 rounded-lg sm:rounded-xl border border-slate-700/40">
                   <div className="text-slate-200 text-[11px] sm:text-xs font-bold">Experience</div>
-                  <div className="text-slate-400 text-[10px] sm:text-[11px] mt-0.5 truncate">10+ Years IT</div>
+                  <div className="text-slate-400 text-[10px] sm:text-[11px] mt-0.5 truncate">15+ Years IT</div>
                 </div>
               </div>
             </div>
 
-            {/* Box 2: Right - Surjit Paul */}
+            {/* Box 2: Right - Dr. Surjit Paul */}
             <div className="bg-slate-800/85 backdrop-blur-md rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-7 border border-slate-700/60 shadow-xl flex flex-col justify-between hover:border-slate-600 transition-all duration-300">
               <div>
                 {/* Header: Photo + Name/Role side-by-side */}
@@ -156,7 +156,7 @@ const About = () => {
                   <div className="w-20 h-24 sm:w-36 sm:h-44 md:w-40 md:h-48 shrink-0 rounded-xl sm:rounded-2xl overflow-hidden border border-slate-700/80 shadow-md bg-slate-900">
                     <img 
                       src="/images/team/surjit-paul.jpg" 
-                      alt="Surjit Paul - Co-Founder" 
+                      alt="Dr. Surjit Paul - Co-Founder" 
                       className="w-full h-full object-cover object-top"
                       onError={(e) => {
                         e.target.onerror = null;
@@ -167,35 +167,35 @@ const About = () => {
 
                   <div className="flex-1 min-w-0">
                     <h3 className="text-lg sm:text-xl font-bold text-white tracking-wide">
-                      Surjit Paul
+                      Dr. Surjit Paul
                     </h3>
                     <p className="text-cyan-400 text-xs sm:text-sm font-semibold mt-0.5">
                       Co-Founder
                     </p>
                     <p className="text-slate-400 text-[11px] sm:text-xs mt-1">
-                      Ph.D. Scholar, IIT Kharagpur • GATE & NET
+                      Ph.D., IIT Kharagpur • M.Tech (NIT) • GATE & NET
                     </p>
                     <p className="hidden sm:block text-slate-300 text-xs sm:text-sm mt-2.5 leading-relaxed font-light">
-                      B.Sc IT (Hons), MCA, and M.Tech in CSE from Ranchi University, BPUT, and NIT Jamshedpur. Qualified GATE and NET in Computer Science.
+                      Holds a Ph.D. in Information Systems Security from IIT Kharagpur, with M.Tech in CSE from NIT Jamshedpur, MCA, and GATE/NET qualifications.
                     </p>
                   </div>
                 </div>
 
                 {/* Mobile Bio */}
                 <p className="sm:hidden text-slate-300 text-xs leading-relaxed font-light mb-3">
-                  B.Sc IT (Hons), MCA, and M.Tech from Ranchi Univ., BPUT, and NIT Jamshedpur. GATE & NET qualified with IIM Indore summer internship. Currently pursuing Ph.D. in InfoSec at IIT Kharagpur.
+                  Ph.D. in InfoSec from IIT Kharagpur, M.Tech from NIT Jamshedpur, GATE & NET qualified with an IIM Indore internship. Specializes in cybersecurity, data protection, and robust software architectures.
                 </p>
 
                 {/* Desktop Additional Bio */}
                 <p className="hidden sm:block text-slate-300 text-xs sm:text-sm leading-relaxed font-light mb-4">
-                  Completed an M.Tech summer internship at <strong className="text-white font-medium">IIM Indore</strong> and worked in the IT industry for nearly a year. Currently pursuing his <strong className="text-white font-medium">Ph.D. in Information Systems Security at IIT Kharagpur</strong>.
+                  Completed an M.Tech summer internship at <strong className="text-white font-medium">IIM Indore</strong> and worked in the IT industry. His specialized research at <strong className="text-white font-medium">IIT Kharagpur</strong> focuses on cybersecurity, information systems security, data protection, and emerging technologies.
                 </p>
               </div>
 
               {/* Highlights */}
               <div className="grid grid-cols-3 gap-2 pt-3 sm:pt-4 border-t border-slate-700/60 text-center">
                 <div className="bg-slate-900/60 p-2 sm:p-2.5 rounded-lg sm:rounded-xl border border-slate-700/40">
-                  <div className="text-cyan-400 text-[11px] sm:text-xs font-bold">Ph.D. Research</div>
+                  <div className="text-cyan-400 text-[11px] sm:text-xs font-bold">Doctorate</div>
                   <div className="text-slate-400 text-[10px] sm:text-[11px] mt-0.5 truncate">IIT Kharagpur</div>
                 </div>
                 <div className="bg-slate-900/60 p-2 sm:p-2.5 rounded-lg sm:rounded-xl border border-slate-700/40">
