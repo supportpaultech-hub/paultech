@@ -14,6 +14,7 @@ const EditEmployeeModal = ({ isOpen, onClose, onSuccess, employee }) => {
     experience: '',
     phone: '',
     education: '',
+    projects: '',
     skills: '',
     bio: '',
     github: '',
@@ -36,6 +37,7 @@ const EditEmployeeModal = ({ isOpen, onClose, onSuccess, employee }) => {
         experience: employee.experience || '',
         phone: employee.phone || '',
         education: employee.education || '',
+        projects: employee.projects || '',
         skills: employee.skills ? employee.skills.join(', ') : '',
         bio: employee.bio || '',
         github: employee.github || '',
@@ -73,6 +75,7 @@ const EditEmployeeModal = ({ isOpen, onClose, onSuccess, employee }) => {
     submitData.append('experience', formData.experience);
     submitData.append('phone', formData.phone);
     submitData.append('education', formData.education);
+    submitData.append('projects', formData.projects || '');
     submitData.append('skills', skillsArray.join(','));
     submitData.append('bio', formData.bio || '');
     submitData.append('github', formData.github || '');
@@ -188,8 +191,8 @@ const EditEmployeeModal = ({ isOpen, onClose, onSuccess, employee }) => {
                 <input type="tel" name="phone" value={formData.phone} onChange={handleChange} className="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 px-4 text-sm text-slate-900 focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all" />
               </div>
               <div className="space-y-2">
-                <label className="block text-sm font-bold text-slate-700">Education</label>
-                <input type="text" name="education" value={formData.education} onChange={handleChange} className="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 px-4 text-sm text-slate-900 focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all" />
+                <label className="block text-sm font-bold text-slate-700">Projects (e.g. 5+ Web Apps, ERP)</label>
+                <input type="text" name="projects" placeholder="e.g. 10+ Enterprise Apps, Cloud CRM" value={formData.projects} onChange={handleChange} className="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 px-4 text-sm text-slate-900 focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all" />
               </div>
             </div>
 

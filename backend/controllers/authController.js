@@ -55,7 +55,7 @@ const registerEmployee = async (req, res) => {
   const { 
     employeeId, username, password, firstName, lastName, 
     designation, department, experience, phone, education, skills,
-    bio, github, linkedin 
+    bio, projects, github, linkedin 
   } = req.body;
   
   let img = '';
@@ -86,6 +86,7 @@ const registerEmployee = async (req, res) => {
       education,
       skills: skills ? (typeof skills === 'string' ? skills.split(',').map(s => s.trim()).filter(Boolean) : skills) : [],
       bio: bio || '',
+      projects: projects || '',
       github: github || '',
       linkedin: linkedin || '',
       img
@@ -131,7 +132,7 @@ const updateEmployee = async (req, res) => {
     const { 
       employeeId, firstName, lastName, 
       designation, department, experience, phone, education, skills,
-      bio, github, linkedin
+      bio, projects, github, linkedin
     } = req.body;
 
     const updates = {
@@ -147,6 +148,7 @@ const updateEmployee = async (req, res) => {
     };
 
     if (bio !== undefined) updates.bio = bio;
+    if (projects !== undefined) updates.projects = projects;
     if (github !== undefined) updates.github = github;
     if (linkedin !== undefined) updates.linkedin = linkedin;
 

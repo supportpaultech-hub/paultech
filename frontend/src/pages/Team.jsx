@@ -4,12 +4,10 @@ import {
   FiMail, 
   FiGithub, 
   FiLinkedin, 
-  FiRotateCw, 
   FiBriefcase, 
   FiCode, 
   FiUser, 
-  FiUsers,
-  FiSearch
+  FiFolder
 } from 'react-icons/fi';
 import { API_BASE_URL } from '../student-app/config';
 import { CardGridSkeleton } from '../components/SkeletonLoader';
@@ -18,8 +16,7 @@ const MemberCard = ({ member }) => {
   const fullName = `${member.firstName || ''} ${member.lastName || ''}`.trim() || 'Team Member';
   const designation = member.designation || member.role || 'Software Developer';
   const imageSrc = member.img || `https://ui-avatars.com/api/?name=${encodeURIComponent(fullName)}&background=1e293b&color=f97316&size=600&bold=true`;
-  const defaultBio = `${member.firstName || 'This team member'} is a core ${designation} at PaulTech Software Services, dedicated to engineering robust, scalable software architectures and innovative digital solutions.`;
-  const bio = member.bio || defaultBio;
+  const bio = member.bio || '';
   const skills = Array.isArray(member.skills) 
     ? member.skills 
     : (typeof member.skills === 'string' && member.skills ? member.skills.split(',') : []);
@@ -54,22 +51,8 @@ const MemberCard = ({ member }) => {
           {/* Subtle Inner Ring Border */}
           <div className="absolute inset-0 rounded-[28px] ring-1 ring-inset ring-white/15 pointer-events-none" />
 
-          {/* Top-Right Turn/Flip Hint Pill */}
-          <div className="absolute top-4 right-4 z-20">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/50 backdrop-blur-md border border-white/20 text-white text-[11px] font-medium shadow-md transition-all group-hover:bg-orange-600 group-hover:border-orange-500">
-              <FiRotateCw className="w-3.5 h-3.5 transition-transform duration-500 group-hover:rotate-180" />
-              <span>Flip for Bio</span>
-            </span>
-          </div>
-
-          {/* Bottom-Left Overlay: Name, Designation & Department */}
+          {/* Bottom-Left Overlay: Name & Designation */}
           <div className="absolute bottom-6 left-6 right-6 text-left z-20">
-            {member.department && (
-              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-orange-500/25 backdrop-blur-md border border-orange-400/40 text-orange-300 text-[10px] font-bold tracking-wider uppercase mb-2">
-                {member.department}
-              </span>
-            )}
-            
             <h3 className="text-2xl sm:text-[26px] font-black text-white tracking-tight leading-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">
               {fullName}
             </h3>
@@ -81,7 +64,7 @@ const MemberCard = ({ member }) => {
             {member.experience && (
               <p className="text-[11px] font-medium text-slate-300 mt-1.5 flex items-center gap-1.5">
                 <FiBriefcase className="text-orange-400 shrink-0" size={12} />
-                <span>{member.experience} Experience</span>
+                <span>{member.experience}</span>
               </p>
             )}
 
@@ -90,7 +73,7 @@ const MemberCard = ({ member }) => {
           </div>
         </div>
 
-        {/* ================= BACK FACE (3D Flip: Developer Ke Baare Me & Skills) ================= */}
+        {/* ================= BACK FACE (3D Flip) ================= */}
         <div className="absolute inset-0 w-full h-full rounded-[28px] overflow-hidden [backface-visibility:hidden] [transform:rotateY(180deg)] bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 border-2 border-orange-500/40 p-6 sm:p-7 flex flex-col justify-between text-left text-white shadow-2xl relative">
           
           {/* Ambient Glows */}
@@ -99,32 +82,29 @@ const MemberCard = ({ member }) => {
 
           {/* Back Top: Mini Header */}
           <div className="relative z-10">
-            <div className="flex items-center justify-between pb-3 border-b border-white/10">
-              <div className="flex items-center gap-2.5">
-                <div className="w-9 h-9 rounded-xl bg-orange-500/20 border border-orange-500/40 text-orange-400 flex items-center justify-center font-bold text-sm shrink-0">
-                  {member.firstName?.charAt(0) || 'P'}
-                </div>
-                <div className="min-w-0">
-                  <h4 className="text-sm font-bold text-white truncate">{fullName}</h4>
-                  <p className="text-[11px] text-orange-400 font-medium truncate">{designation}</p>
-                </div>
+            <div className="flex items-center gap-2.5 pb-3 border-b border-white/10">
+              <div className="w-9 h-9 rounded-xl bg-orange-500/20 border border-orange-500/40 text-orange-400 flex items-center justify-center font-bold text-sm shrink-0">
+                {member.firstName?.charAt(0) || 'P'}
               </div>
-              <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 text-[10px] font-bold">
-                {member.department || 'PaulTech'}
-              </span>
+              <div className="min-w-0">
+                <h4 className="text-sm font-bold text-white truncate">{fullName}</h4>
+                <p className="text-[11px] text-orange-400 font-medium truncate">{designation}</p>
+              </div>
             </div>
           </div>
 
-          {/* Back Middle: Developer Ke Baare Me (Bio) & Skills */}
+          {/* Back Middle: About (Only if user has written bio) + Skills + Projects */}
           <div className="relative z-10 space-y-3.5 my-auto py-2">
-            <div>
-              <span className="text-[10px] font-extrabold text-orange-400 uppercase tracking-widest flex items-center gap-1.5 mb-1.5">
-                <FiUser size={12} /> About The Developer
-              </span>
-              <p className="text-slate-300 text-xs sm:text-[13px] leading-relaxed font-light line-clamp-5 bg-white/[0.04] p-3.5 rounded-2xl border border-white/5 backdrop-blur-xs">
-                "{bio}"
-              </p>
-            </div>
+            {bio && bio.trim() && (
+              <div>
+                <span className="text-[10px] font-extrabold text-orange-400 uppercase tracking-widest flex items-center gap-1.5 mb-1.5">
+                  <FiUser size={12} /> About
+                </span>
+                <p className="text-slate-300 text-xs sm:text-[13px] leading-relaxed font-light line-clamp-5 bg-white/[0.04] p-3.5 rounded-2xl border border-white/5 backdrop-blur-xs">
+                  "{bio}"
+                </p>
+              </div>
+            )}
 
             {/* Tech Stack / Skills Badges */}
             {skills.length > 0 && (
@@ -132,7 +112,7 @@ const MemberCard = ({ member }) => {
                 <span className="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest flex items-center gap-1.5 mb-1.5">
                   <FiCode size={12} /> Tech Stack & Skills
                 </span>
-                <div className="flex flex-wrap gap-1.5 max-h-20 overflow-y-auto custom-scrollbar">
+                <div className="flex flex-wrap gap-1.5 max-h-24 overflow-y-auto custom-scrollbar">
                   {skills.map((skill, idx) => (
                     <span 
                       key={idx}
@@ -145,18 +125,22 @@ const MemberCard = ({ member }) => {
               </div>
             )}
 
-            {/* Meta Tags: Experience & Education */}
+            {/* Experience & Projects (No Education) */}
             <div className="grid grid-cols-2 gap-2 pt-1 text-[11px]">
               {member.experience && (
-                <div className="bg-white/5 px-2.5 py-1.5 rounded-xl border border-white/5">
-                  <span className="text-slate-400 text-[10px] block">Experience</span>
-                  <span className="font-semibold text-slate-200 truncate block">{member.experience}</span>
+                <div className="bg-white/5 px-3 py-2 rounded-xl border border-white/5">
+                  <span className="text-slate-400 text-[10px] block flex items-center gap-1">
+                    <FiBriefcase size={11} className="text-orange-400" /> Experience
+                  </span>
+                  <span className="font-semibold text-slate-200 truncate block mt-0.5">{member.experience}</span>
                 </div>
               )}
-              {member.education && (
-                <div className="bg-white/5 px-2.5 py-1.5 rounded-xl border border-white/5">
-                  <span className="text-slate-400 text-[10px] block">Education</span>
-                  <span className="font-semibold text-slate-200 truncate block">{member.education}</span>
+              {member.projects && (
+                <div className="bg-white/5 px-3 py-2 rounded-xl border border-white/5">
+                  <span className="text-slate-400 text-[10px] block flex items-center gap-1">
+                    <FiFolder size={11} className="text-orange-400" /> Project
+                  </span>
+                  <span className="font-semibold text-slate-200 truncate block mt-0.5">{member.projects}</span>
                 </div>
               )}
             </div>
@@ -165,7 +149,7 @@ const MemberCard = ({ member }) => {
           {/* Back Bottom: Socials & Connect */}
           <div className="relative z-10 pt-3 border-t border-white/10 flex items-center justify-between">
             <span className="text-[11px] text-slate-400 font-mono">
-              {member.employeeId ? `ID: ${member.employeeId}` : 'PaulTech Member'}
+              {member.employeeId ? `ID: ${member.employeeId}` : 'PaulTech Core'}
             </span>
 
             <div className="flex items-center gap-2">
@@ -212,8 +196,6 @@ const MemberCard = ({ member }) => {
 
 const Team = () => {
   const [teamMembers, setTeamMembers] = useState([]);
-  const [selectedDept, setSelectedDept] = useState('All');
-  const [searchQuery, setSearchQuery] = useState('');
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -233,20 +215,34 @@ const Team = () => {
     fetchTeam();
   }, []);
 
-  // Compute departments list dynamically from database
-  const departments = ['All', ...new Set(teamMembers.map(m => m.department).filter(Boolean))];
+  // Top Leaders (Daljeet Paul & Devashis Kumar kept at the top as requested)
+  const leaders = [
+    {
+      _id: 'leader-1',
+      firstName: 'Daljeet',
+      lastName: 'Paul',
+      designation: 'CFO',
+      experience: '8+ Years in HR & Finance',
+      projects: 'Finance & HR Strategy',
+      img: '/images/team/daljeet-paul.png',
+      bio: ''
+    },
+    {
+      _id: 'leader-2',
+      firstName: 'Devashis',
+      lastName: 'Kumar',
+      designation: 'Project Manager',
+      experience: '5+ Years in IT Field',
+      projects: 'IT Delivery & Operations',
+      img: '/images/team/devashis-kumar.jpg',
+      bio: ''
+    }
+  ];
 
-  // Dynamic filtering based on search and department
-  const filteredMembers = teamMembers.filter(member => {
-    const fullName = `${member.firstName || ''} ${member.lastName || ''}`.toLowerCase();
-    const designation = (member.designation || '').toLowerCase();
-    const skills = Array.isArray(member.skills) ? member.skills.join(' ').toLowerCase() : '';
-    const q = searchQuery.toLowerCase();
-
-    const matchesSearch = fullName.includes(q) || designation.includes(q) || skills.includes(q);
-    const matchesDept = selectedDept === 'All' || member.department === selectedDept;
-
-    return matchesSearch && matchesDept;
+  // Core team members from database (excluding Daljeet and Devashis to avoid duplicate cards)
+  const coreMembers = teamMembers.filter(m => {
+    const fName = (m.firstName || '').toLowerCase().trim();
+    return fName !== 'daljeet' && fName !== 'devashis' && fName !== 'devashish';
   });
 
   return (
@@ -260,75 +256,56 @@ const Team = () => {
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 border border-white/15 shadow-xs backdrop-blur-md mb-3">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
             <span className="text-slate-200 text-xs font-semibold uppercase tracking-widest">
-              Our People & Experts
+              Our People
             </span>
           </div>
 
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight mb-3">
-            Meet Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-400 to-emerald-400">Engineering & Tech Team</span>
+            Meet The <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-400 to-emerald-400">Leadership & Team</span>
           </h1>
 
           <p className="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto font-light leading-relaxed">
-            The skilled engineers, architects, and analysts driving innovation, scalability, and digital excellence at PaulTech Software Services.
+            The innovative minds and industry experts guiding PaulTech Software Services toward digital excellence.
           </p>
-
-          {/* Quick Filter & Search Bar */}
-          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 max-w-xl mx-auto">
-            <div className="relative w-full">
-              <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
-              <input
-                type="text"
-                placeholder="Search by name, role, or skills..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-11 pr-4 py-2.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl text-xs sm:text-sm text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-orange-500/40 focus:border-orange-500"
-              />
-            </div>
-
-            {/* Department Filter Pills if multiple departments exist */}
-            {departments.length > 2 && (
-              <div className="flex flex-wrap items-center justify-center gap-1.5 shrink-0">
-                {departments.map((dept) => (
-                  <button
-                    key={dept}
-                    onClick={() => setSelectedDept(dept)}
-                    className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
-                      selectedDept === dept
-                        ? 'bg-orange-600 text-white shadow-md shadow-orange-600/30'
-                        : 'bg-white/10 text-slate-300 hover:bg-white/20'
-                    }`}
-                  >
-                    {dept}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
         </div>
       </section>
 
       {/* Main Members Grid Container */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 space-y-12 sm:space-y-16">
         {isLoading ? (
-          <CardGridSkeleton count={3} />
-        ) : filteredMembers.length === 0 ? (
-          <div className="text-center py-20 bg-white rounded-3xl border border-slate-200/80 p-8 shadow-sm max-w-md mx-auto space-y-3">
-            <div className="w-16 h-16 rounded-2xl bg-orange-100 text-orange-600 flex items-center justify-center mx-auto text-2xl">
-              <FiUsers />
-            </div>
-            <h3 className="text-lg font-bold text-slate-900">No Team Members Found</h3>
-            <p className="text-slate-500 text-xs sm:text-sm">
-              {searchQuery ? 'Try clearing your search term to see all members.' : 'Our team is growing! Check back soon.'}
-            </p>
-          </div>
+          <CardGridSkeleton count={4} />
         ) : (
-          <div className="flex flex-wrap justify-center items-stretch gap-8 sm:gap-10">
-            {filteredMembers.map((member) => (
-              <div key={member._id} className="flex justify-center">
-                <MemberCard member={member} />
-              </div>
-            ))}
-          </div>
+          <>
+            {/* Top Superiors / Leadership Section */}
+            <div className="flex flex-wrap justify-center items-stretch gap-8 sm:gap-10 max-w-5xl mx-auto">
+              {leaders.map((leader) => (
+                <div key={leader._id} className="flex justify-center">
+                  <MemberCard member={leader} />
+                </div>
+              ))}
+            </div>
+
+            {/* Core Team Section from Database */}
+            <div className="pt-8 sm:pt-12 border-t border-slate-200">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-center mb-8 sm:mb-10 text-slate-800">
+                Our Core Team
+              </h2>
+
+              {coreMembers.length === 0 ? (
+                <div className="text-center py-10 text-slate-500 text-sm">
+                  Our team is growing! Check back later to meet them.
+                </div>
+              ) : (
+                <div className="flex flex-wrap justify-center items-stretch gap-8 sm:gap-10 max-w-7xl mx-auto">
+                  {coreMembers.map((member) => (
+                    <div key={member._id} className="flex justify-center">
+                      <MemberCard member={member} />
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </>
         )}
       </div>
     </div>
