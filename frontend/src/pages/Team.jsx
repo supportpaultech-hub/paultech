@@ -13,6 +13,7 @@ import { API_BASE_URL } from '../student-app/config';
 import { CardGridSkeleton } from '../components/SkeletonLoader';
 
 const MemberCard = ({ member, isLeader = false }) => {
+  const [isFlipped, setIsFlipped] = useState(false);
   const fullName = `${member.firstName || ''} ${member.lastName || ''}`.trim() || 'Team Member';
   const designation = member.designation || member.role || 'Software Developer';
   const imageSrc = member.img || `https://ui-avatars.com/api/?name=${encodeURIComponent(fullName)}&background=1e293b&color=f97316&size=600&bold=true`;
@@ -37,10 +38,22 @@ const MemberCard = ({ member, isLeader = false }) => {
   const paddingClasses = isLeader ? "p-6 sm:p-7" : "p-5 sm:p-6";
   const bottomOverlayClasses = isLeader ? "bottom-6 left-6 right-6" : "bottom-5 left-5 right-5";
 
+  // Mobile view toggle flip handler: 1st tap flips to back, 2nd tap flips to front
+  const handleCardClick = () => {
+    if (typeof window !== 'undefined' && (window.innerWidth < 768 || window.matchMedia('(hover: none)').matches)) {
+      setIsFlipped(prev => !prev);
+    }
+  };
+
   return (
-    <div className={`group [perspective:1400px] ${cardSizeClasses} shrink-0 cursor-pointer select-none`}>
+    <div 
+      onClick={handleCardClick}
+      className={`group [perspective:1400px] ${cardSizeClasses} shrink-0 cursor-pointer select-none`}
+    >
       {/* 3D Flipper Box */}
-      <div className="relative w-full h-full rounded-[24px] sm:rounded-[28px] transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] shadow-[0_12px_35px_-8px_rgba(0,0,0,0.18)] group-hover:shadow-[0_20px_45px_-6px_rgba(249,115,22,0.32)]">
+      <div className={`relative w-full h-full rounded-[24px] sm:rounded-[28px] transition-transform duration-700 [transform-style:preserve-3d] ${
+        isFlipped ? '[transform:rotateY(180deg)] shadow-[0_20px_45px_-6px_rgba(249,115,22,0.32)]' : ''
+      } md:group-hover:[transform:rotateY(180deg)] shadow-[0_12px_35px_-8px_rgba(0,0,0,0.18)] md:group-hover:shadow-[0_20px_45px_-6px_rgba(249,115,22,0.32)]`}>
         
         {/* ================= FRONT FACE (Full Box Image + Vignette + Bottom Left Name & Designation) ================= */}
         <div className="absolute inset-0 w-full h-full rounded-[24px] sm:rounded-[28px] overflow-hidden [backface-visibility:hidden] bg-slate-900 border border-slate-200/40">
@@ -170,6 +183,7 @@ const MemberCard = ({ member, isLeader = false }) => {
                   href={member.linkedin} 
                   target="_blank" 
                   rel="noreferrer" 
+                  onClick={(e) => e.stopPropagation()}
                   className="p-1.5 rounded-lg bg-white/10 hover:bg-orange-600 text-white transition-all hover:scale-110"
                   title="LinkedIn Profile"
                 >
@@ -181,6 +195,7 @@ const MemberCard = ({ member, isLeader = false }) => {
                   href={member.github} 
                   target="_blank" 
                   rel="noreferrer" 
+                  onClick={(e) => e.stopPropagation()}
                   className="p-1.5 rounded-lg bg-white/10 hover:bg-orange-600 text-white transition-all hover:scale-110"
                   title="GitHub Profile"
                 >
