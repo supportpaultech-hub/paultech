@@ -226,18 +226,27 @@ const About = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             
             {/* Mission Card (Orange / Amber Glow) */}
-            <div className="group relative rounded-2xl sm:rounded-3xl p-[1.5px] bg-slate-800/80 overflow-hidden cursor-pointer hover:-translate-y-2 hover:scale-[1.015] transition-all duration-500 shadow-xl hover:shadow-[0_20px_50px_-10px_rgba(249,115,22,0.35)] flex flex-col">
-              {/* Rotating Border Beam on Hover */}
+            <div className="group relative rounded-2xl sm:rounded-3xl p-[3.5px] sm:p-[4.5px] md:p-[5px] bg-slate-800/80 overflow-hidden cursor-pointer hover:-translate-y-2 hover:scale-[1.015] transition-all duration-500 shadow-xl hover:shadow-[0_0_35px_rgba(249,115,22,0.45)] flex flex-col">
+              {/* Luminous Neon Diffusion Layer (Thick Radiant Aura) */}
+              <div 
+                className="absolute inset-[-150%] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none blur-[6px]"
+                style={{
+                  background: 'conic-gradient(from 0deg, transparent 0deg 180deg, rgba(249,115,22,0.4) 240deg, #ea580c 290deg, #f97316 335deg, #ffffff 360deg)',
+                  animation: 'borderBeamRotate 3.2s linear infinite'
+                }}
+              />
+
+              {/* Crisp High-Intensity Border Beam Layer (Bold Visible Width) */}
               <div 
                 className="absolute inset-[-150%] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                 style={{
-                  background: 'conic-gradient(from 0deg, transparent 0deg 280deg, rgba(249,115,22,0.85) 325deg, #f97316 360deg)',
-                  animation: 'borderBeamRotate 3.5s linear infinite'
+                  background: 'conic-gradient(from 0deg, transparent 0deg 180deg, rgba(249,115,22,0.7) 240deg, #f97316 295deg, #fed7aa 345deg, #ffffff 360deg)',
+                  animation: 'borderBeamRotate 3.2s linear infinite'
                 }}
               />
 
               {/* Inner Dark Graphite Card */}
-              <div className="relative z-10 w-full h-full bg-[#0B0F19] rounded-[calc(1rem-1.5px)] sm:rounded-[calc(1.5rem-1.5px)] p-6 sm:p-7 md:p-8 overflow-hidden flex flex-col justify-between flex-grow">
+              <div className="relative z-10 w-full h-full bg-[#0B0F19] rounded-[calc(1rem-3.5px)] sm:rounded-[calc(1.5rem-5px)] p-6 sm:p-7 md:p-8 overflow-hidden flex flex-col justify-between flex-grow">
                 {/* Light Sheen Sweep Overlay */}
                 <div className="pointer-events-none absolute -inset-full w-[200%] h-[200%] bg-gradient-to-tr from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
 
@@ -263,18 +272,27 @@ const About = () => {
             </div>
 
             {/* Vision Card (Electric Cyan / Royal Blue Glow) */}
-            <div className="group relative rounded-2xl sm:rounded-3xl p-[1.5px] bg-slate-800/80 overflow-hidden cursor-pointer hover:-translate-y-2 hover:scale-[1.015] transition-all duration-500 shadow-xl hover:shadow-[0_20px_50px_-10px_rgba(6,182,212,0.35)] flex flex-col">
-              {/* Rotating Border Beam on Hover */}
+            <div className="group relative rounded-2xl sm:rounded-3xl p-[3.5px] sm:p-[4.5px] md:p-[5px] bg-slate-800/80 overflow-hidden cursor-pointer hover:-translate-y-2 hover:scale-[1.015] transition-all duration-500 shadow-xl hover:shadow-[0_0_35px_rgba(6,182,212,0.45)] flex flex-col">
+              {/* Luminous Neon Diffusion Layer (Thick Radiant Aura) */}
+              <div 
+                className="absolute inset-[-150%] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none blur-[6px]"
+                style={{
+                  background: 'conic-gradient(from 0deg, transparent 0deg 180deg, rgba(6,182,212,0.4) 240deg, #0284c7 290deg, #38bdf8 335deg, #ffffff 360deg)',
+                  animation: 'borderBeamRotate 3.2s linear infinite'
+                }}
+              />
+
+              {/* Crisp High-Intensity Border Beam Layer (Bold Visible Width) */}
               <div 
                 className="absolute inset-[-150%] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                 style={{
-                  background: 'conic-gradient(from 0deg, transparent 0deg 280deg, rgba(6,182,212,0.85) 325deg, #38bdf8 360deg)',
-                  animation: 'borderBeamRotate 3.5s linear infinite'
+                  background: 'conic-gradient(from 0deg, transparent 0deg 180deg, rgba(6,182,212,0.7) 240deg, #06b6d4 295deg, #bae6fd 345deg, #ffffff 360deg)',
+                  animation: 'borderBeamRotate 3.2s linear infinite'
                 }}
               />
 
               {/* Inner Dark Graphite Card */}
-              <div className="relative z-10 w-full h-full bg-[#0B0F19] rounded-[calc(1rem-1.5px)] sm:rounded-[calc(1.5rem-1.5px)] p-6 sm:p-7 md:p-8 overflow-hidden flex flex-col justify-between flex-grow">
+              <div className="relative z-10 w-full h-full bg-[#0B0F19] rounded-[calc(1rem-3.5px)] sm:rounded-[calc(1.5rem-5px)] p-6 sm:p-7 md:p-8 overflow-hidden flex flex-col justify-between flex-grow">
                 {/* Light Sheen Sweep Overlay */}
                 <div className="pointer-events-none absolute -inset-full w-[200%] h-[200%] bg-gradient-to-tr from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
 
