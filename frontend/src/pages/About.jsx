@@ -95,7 +95,7 @@ const About = () => {
                   <div className="w-20 h-24 sm:w-36 sm:h-44 md:w-40 md:h-48 shrink-0 rounded-xl sm:rounded-2xl overflow-hidden border border-slate-700/80 shadow-md bg-slate-900">
                     <img 
                       src="/images/team/abhijeet-paul.jpg" 
-                      alt="Abhijeet Paul - Co-Founder & Director" 
+                      alt="Abhijeet Paul - Founder & Director" 
                       className="w-full h-full object-cover object-top"
                       onError={(e) => {
                         e.target.onerror = null;
@@ -109,10 +109,10 @@ const About = () => {
                       Abhijeet Paul
                     </h3>
                     <p className="text-orange-400 text-xs sm:text-sm font-semibold mt-0.5">
-                      Co-Founder & Director
+                      Founder & Director
                     </p>
                     <p className="text-slate-400 text-[11px] sm:text-xs mt-1">
-                      SAP Specialist • Tata Steel & Banking Sector Exposure
+                      SAP Techno-Functional • Tata Steel & Banking Sector Exposure
                     </p>
                     <p className="hidden sm:block text-slate-300 text-xs sm:text-sm mt-2.5 leading-relaxed font-light">
                       Accomplished IT professional with over 15 years of experience in SAP-IT systems and enterprise solutions, aligning technology with strategic business growth.
