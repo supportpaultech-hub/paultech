@@ -612,10 +612,10 @@ const Home = () => {
       desc: "offer industrial training and internship opportunities specifically for IT, Finance, HR & Marketing students. This collaboration will provide students with real-world experience, skill enhancement, networking opportunities, and improved employability."
     },
     {
-      name: "AL KABIR POLYTECHNIC COLLEGE, Jamshedpur",
-      date: "12th MARCH 2025",
+      name: "Al Kabir Polytechnic College, Jamshedpur",
+      date: "12th March 2025",
       img: "/images/mou/al-kabir-polytechnic.jpg",
-      desc: "offer industrial training and internship opportunities specifically for Computer Science and Engineering students. This collaboration will provide students with Real-world experience, Skill enhancement, Networking opportunities, Improved employability."
+      desc: "offer industrial training and internship opportunities specifically for Computer Science and Engineering students. This collaboration will provide students with real-world experience, skill enhancement, networking opportunities, and improved employability."
     },
     {
       name: "Arka Jain University, Jamshedpur",

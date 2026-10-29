@@ -121,7 +121,7 @@ const INTERNSHIP_TRACKS = [
 const UNIVERSITY_PARTNERS = [
   "Netaji Subhas University",
   "Srinath University",
-  "AL Kabir Polytechnic College",
+  "Al Kabir Polytechnic College",
   "Arka Jain University",
   "Templecity Institute of Technology & Engineering (TITE)",
   "St. Xavier's College, Dumka"
