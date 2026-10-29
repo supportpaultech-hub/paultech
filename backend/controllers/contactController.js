@@ -37,9 +37,6 @@ const submitContact = async (req, res) => {
             subject: (subject || 'General Inquiry').trim(), 
             message: message.trim() 
         });
-            subject: (subject || 'General Inquiry').trim(), 
-            message: message.trim() 
-        });
         await newContact.save();
         
         res.status(201).json({ message: 'Message sent successfully' });
