@@ -251,23 +251,20 @@ const Team = () => {
   return (
     <div className="bg-slate-50 min-h-screen">
       {/* Team Hero Header */}
-      <section className="bg-slate-950 py-10 sm:py-14 md:py-16 px-4 sm:px-6 text-center text-white border-b border-white/10 relative overflow-hidden">
+      <section className="bg-slate-950 py-6 sm:py-8 md:py-10 px-4 sm:px-6 text-center text-white border-b border-white/10 relative overflow-hidden">
         {/* Glow ambient effects */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[220px] bg-gradient-to-r from-orange-500/20 via-amber-500/20 to-emerald-500/15 blur-[100px] rounded-full pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[180px] bg-gradient-to-r from-orange-500/20 via-amber-500/20 to-emerald-500/15 blur-[90px] rounded-full pointer-events-none"></div>
 
         <div className="max-w-3xl mx-auto relative z-10">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 border border-white/15 shadow-xs backdrop-blur-md mb-3">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span className="text-slate-200 text-xs font-semibold uppercase tracking-widest">
-              Our People
-            </span>
-          </div>
+          <p className="text-orange-400 text-xs sm:text-sm font-semibold uppercase tracking-wider mb-2">
+            Our People
+          </p>
 
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight mb-3">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight leading-tight mb-2">
             Meet The <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-400 to-emerald-400">Leadership & Team</span>
           </h1>
 
-          <p className="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto font-light leading-relaxed">
+          <p className="text-slate-300 text-xs sm:text-sm max-w-xl mx-auto font-light leading-relaxed">
             The innovative minds and industry experts guiding PaulTech Software Services toward digital excellence.
           </p>
         </div>
