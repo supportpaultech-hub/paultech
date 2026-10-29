@@ -21,21 +21,21 @@ const MemberCard = ({ member, isLeader = false }) => {
     ? member.skills 
     : (typeof member.skills === 'string' && member.skills ? member.skills.split(',') : []);
 
-  // Leaders retain their original executive size; Core team members get uniform, slightly more compact dimensions
+  // Leaders retain their original executive size; Core team members get uniform, nicely proportioned dimensions
   const cardSizeClasses = isLeader
     ? "w-[300px] sm:w-[330px] md:w-[350px] h-[470px] sm:h-[490px]"
-    : "w-[250px] sm:w-[265px] md:w-[275px] h-[380px] sm:h-[400px]";
+    : "w-[285px] sm:w-[305px] md:w-[315px] h-[430px] sm:h-[450px]";
 
   const titleSizeClasses = isLeader
     ? "text-2xl sm:text-[26px]"
-    : "text-lg sm:text-xl";
+    : "text-xl sm:text-[22px]";
 
   const designationSizeClasses = isLeader
     ? "text-sm sm:text-base"
-    : "text-xs sm:text-[13px]";
+    : "text-xs sm:text-sm";
 
-  const paddingClasses = isLeader ? "p-6 sm:p-7" : "p-4 sm:p-5";
-  const bottomOverlayClasses = isLeader ? "bottom-6 left-6 right-6" : "bottom-4 left-4 right-4";
+  const paddingClasses = isLeader ? "p-6 sm:p-7" : "p-5 sm:p-6";
+  const bottomOverlayClasses = isLeader ? "bottom-6 left-6 right-6" : "bottom-5 left-5 right-5";
 
   return (
     <div className={`group [perspective:1400px] ${cardSizeClasses} shrink-0 cursor-pointer select-none`}>
@@ -312,7 +312,7 @@ const Team = () => {
                   Our team is growing! Check back later to meet them.
                 </div>
               ) : (
-                <div className="flex flex-wrap justify-center items-stretch gap-6 sm:gap-8 max-w-6xl mx-auto">
+                <div className="flex flex-wrap justify-center items-stretch gap-8 sm:gap-10 md:gap-12 max-w-[1140px] mx-auto">
                   {coreMembers.map((member) => (
                     <div key={member._id} className="flex justify-center">
                       <MemberCard member={member} isLeader={false} />
