@@ -328,16 +328,69 @@ const About = () => {
         
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
           {[
-            { title: 'Agile Startup Culture', desc: 'We move fast, adapt quickly, and implement the latest tech stacks without legacy corporate red tape.', icon: 'M13 10V3L4 14h7v7l9-11h-7z' },
-            { title: 'Enterprise Quality', desc: 'Startup speed meets enterprise reliability. Our code goes through rigorous QA for flawless execution.', icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z' },
-            { title: 'Dedicated Partnership', desc: 'We don’t just write code and disappear. We work alongside you like an in-house team, with transparent communication and ongoing support.', icon: 'M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z' }
+            { 
+              title: 'Agile Startup Culture', 
+              desc: 'We move fast, adapt quickly, and implement the latest tech stacks without legacy corporate red tape.', 
+              icon: 'M13 10V3L4 14h7v7l9-11h-7z',
+              topGradient: 'from-orange-500 via-amber-400 to-orange-600',
+              iconBg: 'bg-orange-50 text-orange-600 group-hover:bg-orange-500 group-hover:text-white group-hover:shadow-orange-500/30',
+              hoverTitle: 'group-hover:text-orange-600',
+              glowBg: 'bg-orange-500/10',
+              hoverBorder: 'hover:border-orange-200 hover:shadow-[0_20px_45px_-15px_rgba(249,115,22,0.18)]'
+            },
+            { 
+              title: 'Enterprise Quality', 
+              desc: 'Startup speed meets enterprise reliability. Our code goes through rigorous QA for flawless execution.', 
+              icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
+              topGradient: 'from-blue-600 via-cyan-400 to-blue-700',
+              iconBg: 'bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white group-hover:shadow-blue-500/30',
+              hoverTitle: 'group-hover:text-blue-600',
+              glowBg: 'bg-blue-500/10',
+              hoverBorder: 'hover:border-blue-200 hover:shadow-[0_20px_45px_-15px_rgba(37,99,235,0.18)]'
+            },
+            { 
+              title: 'Dedicated Partnership', 
+              desc: 'We don’t just write code and disappear. We work alongside you like an in-house team, with transparent communication and ongoing support.', 
+              icon: 'M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z',
+              topGradient: 'from-emerald-500 via-teal-400 to-emerald-600',
+              iconBg: 'bg-emerald-50 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white group-hover:shadow-emerald-500/30',
+              hoverTitle: 'group-hover:text-emerald-600',
+              glowBg: 'bg-emerald-500/10',
+              hoverBorder: 'hover:border-emerald-200 hover:shadow-[0_20px_45px_-15px_rgba(16,185,129,0.18)]'
+            }
           ].map((item, idx) => (
-            <div key={idx} className="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-xl hover:border-blue-200 transition-all duration-300">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-4 sm:mb-6">
-                <svg className="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={item.icon}></path></svg>
+            <div 
+              key={idx} 
+              className={`group relative bg-white p-6 sm:p-8 rounded-2xl sm:rounded-3xl border border-slate-100 overflow-hidden cursor-pointer hover:-translate-y-2 hover:scale-[1.01] transition-all duration-300 flex flex-col justify-between ${item.hoverBorder}`}
+            >
+              {/* Animated Top Border Accent Line on Hover */}
+              <div 
+                className={`absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r ${item.topGradient} scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`} 
+              />
+
+              {/* Ambient Corner Radial Glow on Hover */}
+              <div 
+                className={`absolute -right-10 -bottom-10 w-36 h-36 ${item.glowBg} rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none group-hover:scale-125`} 
+              />
+
+              <div className="relative z-10">
+                {/* Reactive Icon Container with Scale, Rotation & Color Fill */}
+                <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 transition-all duration-300 group-hover:scale-110 group-hover:rotate-6 group-hover:shadow-lg ${item.iconBg}`}>
+                  <svg className="w-6 h-6 sm:w-7 sm:h-7 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={item.icon} />
+                  </svg>
+                </div>
+
+                {/* Title with smooth color highlight */}
+                <h3 className={`text-lg sm:text-xl font-bold text-slate-800 mb-2 sm:mb-3 transition-colors duration-200 ${item.hoverTitle}`}>
+                  {item.title}
+                </h3>
+
+                {/* Description */}
+                <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                  {item.desc}
+                </p>
               </div>
-              <h3 className="text-lg sm:text-xl font-bold text-slate-800 mb-2 sm:mb-4">{item.title}</h3>
-              <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">{item.desc}</p>
             </div>
           ))}
         </div>
