@@ -343,13 +343,26 @@ const About = () => {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="bg-slate-900 text-white py-12 sm:py-16 md:py-20 text-center">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">Let's Build Something Great Together</h2>
-          <p className="text-slate-400 mb-8 sm:mb-10 text-sm sm:text-base lg:text-lg">Looking for a reliable technology partner? We are ready to take your project to the next level.</p>
-          <Link to="/contact" className="bg-orange-500 hover:bg-orange-600 text-white px-8 sm:px-10 py-3.5 sm:py-4 rounded-xl font-bold text-base sm:text-lg transition-colors duration-300 shadow-xl shadow-orange-500/20 inline-block">
-            Start A Conversation
+      {/* CTA Section */}
+      <section className="bg-white border-t border-slate-200 py-12 sm:py-16 md:py-20 text-center relative overflow-hidden">
+        {/* Subtle ambient background glow for depth */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[220px] bg-gradient-to-r from-orange-100/50 via-blue-50/60 to-orange-100/50 blur-3xl rounded-full pointer-events-none -z-0" />
+
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 relative z-10">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 tracking-tight mb-3 sm:mb-4">
+            Let's Build Something Great Together
+          </h2>
+          <p className="text-slate-600 text-sm sm:text-base max-w-xl mx-auto mb-6 sm:mb-8 leading-relaxed font-normal">
+            Looking for a reliable technology partner? We are ready to take your project to the next level.
+          </p>
+          <Link 
+            to="/contact" 
+            className="group inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold text-sm sm:text-base px-6 py-2.5 sm:px-7 sm:py-3 rounded-xl shadow-md shadow-orange-500/20 hover:shadow-lg hover:shadow-orange-500/30 transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0"
+          >
+            <span>Start A Conversation</span>
+            <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
           </Link>
         </div>
       </section>
