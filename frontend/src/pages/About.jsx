@@ -322,7 +322,7 @@ const About = () => {
       {/* 4. Why Choose Us Grid */}
       <section className="py-12 sm:py-16 md:py-20 max-w-6xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-10 sm:mb-16">
-          <h4 className="text-blue-600 font-semibold tracking-widest text-xs sm:text-sm uppercase mb-2">The PaulTech Advantage</h4>
+          <h4 className="text-blue-600 font-semibold tracking-widest text-xs sm:text-sm uppercase mb-2">What Sets Us Apart</h4>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-800">Why Partner With Us?</h2>
         </div>
         
@@ -330,7 +330,7 @@ const About = () => {
           {[
             { title: 'Agile Startup Culture', desc: 'We move fast, adapt quickly, and implement the latest tech stacks without legacy corporate red tape.', icon: 'M13 10V3L4 14h7v7l9-11h-7z' },
             { title: 'Enterprise Quality', desc: 'Startup speed meets enterprise reliability. Our code goes through rigorous QA for flawless execution.', icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z' },
-            { title: 'Client-Centric DNA', desc: 'Your success is our KPI. We act as an extension of your own team, fully invested in your digital growth.', icon: 'M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z' }
+            { title: 'Dedicated Partnership', desc: 'We don’t just write code and disappear. We work alongside you like an in-house team, with transparent communication and ongoing support.', icon: 'M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z' }
           ].map((item, idx) => (
             <div key={idx} className="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-xl hover:border-blue-200 transition-all duration-300">
               <div className="w-12 h-12 sm:w-14 sm:h-14 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-4 sm:mb-6">
