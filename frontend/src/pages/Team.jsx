@@ -162,13 +162,9 @@ const MemberCard = ({ member, isLeader = false }) => {
             </div>
           </div>
 
-          {/* Back Bottom: Socials & Connect */}
-          <div className="relative z-10 pt-2.5 border-t border-white/10 flex items-center justify-between">
-            <span className="text-[10px] text-slate-400 font-mono truncate max-w-[120px]">
-              {member.employeeId ? `ID: ${member.employeeId}` : 'PaulTech Core'}
-            </span>
-
-            <div className="flex items-center gap-1.5">
+          {/* Back Bottom: Social Links (LinkedIn & GitHub if present) */}
+          {(member.linkedin || member.github) && (
+            <div className="relative z-10 pt-2.5 border-t border-white/10 flex items-center justify-end gap-2">
               {member.linkedin && (
                 <a 
                   href={member.linkedin} 
@@ -191,17 +187,8 @@ const MemberCard = ({ member, isLeader = false }) => {
                   <FiGithub size={13} />
                 </a>
               )}
-              {member.username && (
-                <a 
-                  href={`mailto:${member.username}`}
-                  className="p-1.5 rounded-lg bg-orange-600 hover:bg-orange-700 text-white transition-all hover:scale-110"
-                  title="Send Corporate Email"
-                >
-                  <FiMail size={13} />
-                </a>
-              )}
             </div>
-          </div>
+          )}
 
         </div>
 
