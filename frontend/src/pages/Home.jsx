@@ -1740,10 +1740,10 @@ const Home = () => {
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-600/5 rounded-full blur-[100px] pointer-events-none"></div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
-          <div className="text-center mb-6 sm:mb-12 md:mb-16">
-            <h4 className="text-orange-500 font-semibold tracking-widest text-xs sm:text-sm uppercase mb-1 sm:mb-3">Partnerships</h4>
-            <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-slate-800">MoU Partners with IT Leading Universities</h2>
-            <div className="w-14 sm:w-20 h-1 sm:h-1.5 bg-gradient-to-r from-orange-500 to-green-500 mx-auto mt-2 sm:mt-4 rounded-full"></div>
+          <div className="text-center mb-6 sm:mb-10 md:mb-12">
+            <h4 className="text-orange-500 font-semibold tracking-widest text-xs sm:text-sm uppercase mb-1 sm:mb-2.5">Partnerships</h4>
+            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-[26px] font-bold text-slate-800 tracking-tight">MoU Partners with IT Leading Universities</h2>
+            <div className="w-12 sm:w-16 h-1 bg-gradient-to-r from-orange-500 to-green-500 mx-auto mt-2 sm:mt-3 rounded-full"></div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-none mx-auto">
