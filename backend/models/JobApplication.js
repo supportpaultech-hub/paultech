@@ -67,6 +67,10 @@ const jobApplicationSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  localResumePath: {
+    type: String,
+    default: ''
+  },
   registrationFee: {
     type: Number,
     default: 1000

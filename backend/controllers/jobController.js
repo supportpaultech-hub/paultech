@@ -3,17 +3,73 @@ const JobApplication = require('../models/JobApplication');
 const Student = require('../models/Student');
 const fs = require('fs');
 const path = require('path');
+const https = require('https');
+const http = require('http');
 const cloudinary = require('../config/cloudinary');
 const { logActivity } = require('./activityController');
 const { sendPaymentReceiptEmail } = require('../utils/mailer');
 
+// Helper to stream remote file to response (follows redirects, sets inline PDF headers)
+const streamRemoteFile = (targetUrl, res, filename = 'resume.pdf', maxRedirects = 4) => {
+  if (maxRedirects <= 0) {
+    return res.redirect(targetUrl);
+  }
+
+  try {
+    const client = targetUrl.startsWith('https:') ? https : http;
+    const request = client.get(targetUrl, (remoteRes) => {
+      // Follow HTTP redirects (301, 302, 307, 308)
+      if (remoteRes.statusCode >= 300 && remoteRes.statusCode < 400 && remoteRes.headers.location) {
+        let redirectUrl = remoteRes.headers.location;
+        if (!redirectUrl.startsWith('http')) {
+          const parsed = new URL(targetUrl);
+          redirectUrl = new URL(redirectUrl, parsed.origin).href;
+        }
+        return streamRemoteFile(redirectUrl, res, filename, maxRedirects - 1);
+      }
+
+      if (remoteRes.statusCode === 200) {
+        const contentType = remoteRes.headers['content-type'] || 'application/pdf';
+        res.setHeader('Content-Type', contentType);
+        res.setHeader('Content-Disposition', `inline; filename="${filename}"`);
+        return remoteRes.pipe(res);
+      }
+
+      // If remote returned an error status, fallback to redirect
+      console.warn(`Remote server returned status ${remoteRes.statusCode} for resume, redirecting`);
+      return res.redirect(targetUrl);
+    });
+
+    request.on('error', (err) => {
+      console.error('Error in resume streaming proxy:', err);
+      if (!res.headersSent) {
+        return res.redirect(targetUrl);
+      }
+    });
+
+    request.setTimeout(15000, () => {
+      request.destroy();
+      if (!res.headersSent) {
+        return res.redirect(targetUrl);
+      }
+    });
+  } catch (err) {
+    console.error('Exception in streamRemoteFile:', err);
+    if (!res.headersSent) {
+      return res.redirect(targetUrl);
+    }
+  }
+};
+
 // Helper to upload resume to Cloudinary
 const uploadResumeToCloudinary = async (filePath) => {
   try {
+    const isPdf = (filePath || '').toLowerCase().endsWith('.pdf');
     const result = await cloudinary.uploader.upload(filePath, {
       folder: 'paultech_resumes',
-      resource_type: 'raw',
-      access_mode: 'public'
+      resource_type: isPdf ? 'image' : 'raw',
+      access_mode: 'public',
+      type: 'upload'
     });
     return result.secure_url;
   } catch (err) {
@@ -144,6 +200,7 @@ exports.applyForJob = async (req, res) => {
       experience: experience || 'Fresher',
       coverNote: coverNote || '',
       resumeUrl: resumePath,
+      localResumePath: req.file ? `/uploads/${req.file.filename}` : '',
       registrationFee: registrationFee ? parseInt(registrationFee, 10) : 1000,
       paymentStatus: paymentStatus || 'Completed',
       paymentId: paymentId || '',
@@ -203,7 +260,7 @@ exports.getApplications = async (req, res) => {
   }
 };
 
-// 6. Get/View Candidate Resume File (Admin Proxy)
+// 6. Get/View Candidate Resume File (Admin Proxy & Secure Streaming)
 exports.getResume = async (req, res) => {
   try {
     const application = await JobApplication.findById(req.params.id);
@@ -212,23 +269,75 @@ exports.getResume = async (req, res) => {
     }
 
     const resumeUrl = application.resumeUrl;
+    const safeName = (application.candidateName || 'Candidate').replace(/[^a-zA-Z0-9_-]/g, '_');
+    const safeFilename = `${safeName}_Resume.pdf`;
 
-    // A. If saved as local upload
+    // A. Check explicit localResumePath if stored
+    if (application.localResumePath) {
+      const explicitLocal = path.join(__dirname, '..', application.localResumePath);
+      if (fs.existsSync(explicitLocal)) {
+        res.setHeader('Content-Type', 'application/pdf');
+        res.setHeader('Content-Disposition', `inline; filename="${safeFilename}"`);
+        return res.sendFile(explicitLocal);
+      }
+    }
+
+    // B. If saved directly as local /uploads/ URL
     if (resumeUrl.startsWith('/uploads/')) {
       const localPath = path.join(__dirname, '..', resumeUrl);
       if (fs.existsSync(localPath)) {
+        res.setHeader('Content-Type', 'application/pdf');
+        res.setHeader('Content-Disposition', `inline; filename="${safeFilename}"`);
         return res.sendFile(localPath);
       }
     }
 
-    // B. If saved as Cloudinary URL
-    if (resumeUrl.startsWith('http')) {
-      let targetUrl = resumeUrl.replace('/fl_attachment/', '/');
-      // Convert Cloudinary PDF image URL to .jpg to bypass Cloudinary restricted PDF delivery
-      if (targetUrl.includes('/image/upload/') && targetUrl.toLowerCase().endsWith('.pdf')) {
-        targetUrl = targetUrl.replace(/\.pdf$/i, '.jpg');
+    // C. Check uploads directory for matching file or basename
+    const uploadsDir = path.join(__dirname, '../uploads');
+    if (fs.existsSync(uploadsDir)) {
+      try {
+        const basename = path.basename(resumeUrl);
+        const candidateLocal = path.join(uploadsDir, basename);
+        if (fs.existsSync(candidateLocal)) {
+          res.setHeader('Content-Type', 'application/pdf');
+          res.setHeader('Content-Disposition', `inline; filename="${safeFilename}"`);
+          return res.sendFile(candidateLocal);
+        }
+      } catch (checkErr) {
+        // Proceed to remote retrieval
       }
-      return res.redirect(targetUrl);
+    }
+
+    // D. If saved as Cloudinary or remote URL
+    if (resumeUrl.startsWith('http')) {
+      // 1. Raw PDF Upload (Subject to Cloudinary ACL 401 on restricted accounts)
+      if (resumeUrl.includes('/raw/upload/')) {
+        const rawMatch = resumeUrl.match(/\/raw\/upload\/(?:v\d+\/)?(.+)$/);
+        if (rawMatch && rawMatch[1]) {
+          const publicId = decodeURIComponent(rawMatch[1]);
+          try {
+            // Generate authorized signed download URL using API Secret
+            const signedDownloadUrl = cloudinary.utils.private_download_url(publicId, '', {
+              resource_type: 'raw',
+              type: 'upload',
+              expires_at: Math.floor(Date.now() / 1000) + 3600 // 1 hour validity
+            });
+
+            return streamRemoteFile(signedDownloadUrl, res, safeFilename);
+          } catch (signErr) {
+            console.error('Error generating signed download URL for raw resume:', signErr);
+          }
+        }
+      }
+
+      // 2. Image Upload PDF
+      if (resumeUrl.includes('/image/upload/')) {
+        let targetUrl = resumeUrl.replace('/fl_attachment/', '/');
+        return streamRemoteFile(targetUrl, res, safeFilename);
+      }
+
+      // 3. Fallback for any other remote URL
+      return streamRemoteFile(resumeUrl, res, safeFilename);
     }
 
     res.status(404).send('Resume asset unavailable');

@@ -275,7 +275,7 @@ const ManageInternships = () => {
               <div className="flex flex-wrap items-center gap-2.5 w-full lg:w-auto pt-3 lg:pt-0 border-t lg:border-t-0 border-slate-100">
                 {app.resumeUrl && (
                   <a
-                    href={formatResumeUrl(app.resumeUrl)}
+                    href={app._id ? `${API_BASE_URL}/api/jobs/applications/${app._id}/resume` : formatResumeUrl(app.resumeUrl)}
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-700 text-xs font-semibold transition-all"

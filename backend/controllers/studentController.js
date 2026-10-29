@@ -4,10 +4,12 @@ const cloudinary = require('../config/cloudinary');
 // Helper to upload resume to Cloudinary
 const uploadResumeToCloudinary = async (filePath) => {
   try {
+    const isPdf = (filePath || '').toLowerCase().endsWith('.pdf');
     const result = await cloudinary.uploader.upload(filePath, {
       folder: 'paultech_resumes',
-      resource_type: 'raw',
-      access_mode: 'public'
+      resource_type: isPdf ? 'image' : 'raw',
+      access_mode: 'public',
+      type: 'upload'
     });
     return result.secure_url;
   } catch (err) {
