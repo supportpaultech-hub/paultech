@@ -37,12 +37,14 @@ const About = () => {
           <div className="w-full lg:w-1/2">
             <h4 className="text-blue-600 font-semibold tracking-widest text-xs sm:text-sm uppercase mb-2">Our Story</h4>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-800 mb-4 sm:mb-6">Driven By Innovation, Built On Trust.</h2>
-            <p className="text-slate-600 text-sm sm:text-base lg:text-lg leading-relaxed mb-4 sm:mb-6">
-              PaulTech Software Services Pvt Ltd. started with a simple yet powerful mission: to bring Silicon Valley-level technology and engineering practices to businesses in India and beyond. 
-            </p>
-            <p className="text-slate-600 text-sm sm:text-base lg:text-lg leading-relaxed mb-6 sm:mb-8">
-              We specialize in custom software, ERP implementations, and mobile apps. Our agile startup culture allows us to move fast, adapt to cutting-edge technologies, and deliver unmatched value to our clients—from local enterprises to global brands.
-            </p>
+            <div className="space-y-4 mb-6 sm:mb-8 text-slate-600 text-sm sm:text-base leading-relaxed text-justify">
+              <p>
+                Based in Jamshedpur, Jharkhand, <strong className="font-bold text-slate-900">PaulTech Software Services Pvt. Ltd.</strong> was established to bring modern technology, industry best practices, and innovative engineering solutions to businesses in India and beyond. We specialize in customized software development, enterprise ERP implementation &amp; support, mobile applications, and comprehensive IT solutions tailored to diverse enterprise needs.
+              </p>
+              <p>
+                Driven by innovation, agility, and a commitment to excellence, we combine deep technical expertise with business insight to deliver scalable, secure, and cost-effective digital architectures. Alongside our core engineering services, we offer industry-oriented training and internship programs to prepare the next generation of tech talent. At <strong className="font-bold text-slate-900">PaulTech</strong>, we are committed to building enduring partnerships grounded in quality, transparency, and continuous learning.
+              </p>
+            </div>
             <div className="flex flex-wrap sm:flex-nowrap items-center justify-between sm:justify-start gap-4 sm:gap-8">
               <div>
                 <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-800">10+</h3>
