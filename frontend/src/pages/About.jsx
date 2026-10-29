@@ -212,62 +212,88 @@ const About = () => {
         </div>
       </section>
 
-      {/* 3. Mission & Vision (Modern Cards) */}
+      {/* 3. Mission & Vision (Modern Cards with Visual Harmony & Interactive Border Beam) */}
       <section className="py-10 sm:py-14 md:py-16 bg-white border-y border-slate-200">
+        {/* Keyframe for Interactive Border Beam */}
+        <style>{`
+          @keyframes borderBeamRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+          }
+        `}</style>
+
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             
-            {/* Mission */}
-            <div className="group relative bg-[#0B0F19] border border-white/10 hover:border-orange-500/50 rounded-2xl sm:rounded-3xl p-6 sm:p-7 md:p-8 overflow-hidden cursor-pointer shadow-lg hover:shadow-[0_20px_50px_-10px_rgba(249,115,22,0.30)] hover:-translate-y-2 hover:scale-[1.015] transition-all duration-500 flex flex-col justify-between">
-              {/* Top Accent Line on Hover */}
-              <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-orange-500 via-amber-400 to-orange-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            {/* Mission Card (Orange / Amber Glow) */}
+            <div className="group relative rounded-2xl sm:rounded-3xl p-[1.5px] bg-slate-800/80 overflow-hidden cursor-pointer hover:-translate-y-2 hover:scale-[1.015] transition-all duration-500 shadow-xl hover:shadow-[0_20px_50px_-10px_rgba(249,115,22,0.35)] flex flex-col">
+              {/* Rotating Border Beam on Hover */}
+              <div 
+                className="absolute inset-[-150%] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                style={{
+                  background: 'conic-gradient(from 0deg, transparent 0deg 280deg, rgba(249,115,22,0.85) 325deg, #f97316 360deg)',
+                  animation: 'borderBeamRotate 3.5s linear infinite'
+                }}
+              />
 
-              {/* Light Sheen Sweep Overlay */}
-              <div className="pointer-events-none absolute -inset-full w-[200%] h-[200%] bg-gradient-to-tr from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
+              {/* Inner Dark Graphite Card */}
+              <div className="relative z-10 w-full h-full bg-[#0B0F19] rounded-[calc(1rem-1.5px)] sm:rounded-[calc(1.5rem-1.5px)] p-6 sm:p-7 md:p-8 overflow-hidden flex flex-col justify-between flex-grow">
+                {/* Light Sheen Sweep Overlay */}
+                <div className="pointer-events-none absolute -inset-full w-[200%] h-[200%] bg-gradient-to-tr from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
 
-              {/* Ambient Glow */}
-              <div className="absolute -top-12 -right-12 w-64 h-64 bg-orange-500/20 blur-[70px] rounded-full group-hover:scale-125 group-hover:bg-orange-500/40 transition-all duration-700 pointer-events-none"></div>
+                {/* Orange / Amber Ambient Glow */}
+                <div className="absolute -top-12 -right-12 w-64 h-64 bg-orange-500/20 blur-[70px] rounded-full group-hover:scale-125 group-hover:bg-orange-500/40 transition-all duration-700 pointer-events-none" />
 
-              <div className="relative z-10">
-                <div className="w-11 h-11 sm:w-13 sm:h-13 bg-white/10 rounded-xl sm:rounded-2xl flex items-center justify-center mb-3.5 sm:mb-4 backdrop-blur-md border border-white/10 group-hover:border-orange-500/40 group-hover:scale-110 group-hover:rotate-6 group-hover:bg-orange-500/20 transition-all duration-500 shadow-sm">
-                  {/* Modern Precision Target / Crosshair Icon for Mission */}
-                  <svg className="w-5 h-5 sm:w-6 sm:h-6 text-orange-400 group-hover:text-orange-300 transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="12" r="10" />
-                    <circle cx="12" cy="12" r="6" />
-                    <circle cx="12" cy="12" r="2" />
-                    <path d="M12 2v3m0 14v3M2 12h3m14 0h3" />
-                  </svg>
+                <div className="relative z-10">
+                  <div className="w-11 h-11 sm:w-13 sm:h-13 bg-white/10 rounded-xl sm:rounded-2xl flex items-center justify-center mb-3.5 sm:mb-4 backdrop-blur-md border border-white/10 group-hover:border-orange-500/40 group-hover:scale-110 group-hover:rotate-6 group-hover:bg-orange-500/20 transition-all duration-500 shadow-sm">
+                    {/* Modern Precision Target / Crosshair Icon for Mission */}
+                    <svg className="w-5 h-5 sm:w-6 sm:h-6 text-orange-400 group-hover:text-orange-300 transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="12" r="10" />
+                      <circle cx="12" cy="12" r="6" />
+                      <circle cx="12" cy="12" r="2" />
+                      <path d="M12 2v3m0 14v3M2 12h3m14 0h3" />
+                    </svg>
+                  </div>
+                  <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-2 sm:mb-2.5 tracking-tight group-hover:text-orange-300 transition-colors">Our Mission</h2>
+                  <p className="text-slate-300 text-xs sm:text-sm md:text-base leading-relaxed text-justify">
+                    To empower businesses globally by providing innovative, scalable, and affordable IT solutions. We strive to be the ultimate technology partner, helping our clients navigate digital transformation seamlessly.
+                  </p>
                 </div>
-                <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-2 sm:mb-2.5 tracking-tight group-hover:text-orange-300 transition-colors">Our Mission</h2>
-                <p className="text-slate-300 text-xs sm:text-sm md:text-base leading-relaxed text-justify">
-                  To empower businesses globally by providing innovative, scalable, and affordable IT solutions. We strive to be the ultimate technology partner, helping our clients navigate digital transformation seamlessly.
-                </p>
               </div>
             </div>
 
-            {/* Vision */}
-            <div className="group relative bg-gradient-to-br from-blue-600 to-blue-700 border border-blue-400/30 hover:border-white/60 rounded-2xl sm:rounded-3xl p-6 sm:p-7 md:p-8 overflow-hidden cursor-pointer shadow-lg hover:shadow-[0_20px_50px_-10px_rgba(37,99,235,0.45)] hover:-translate-y-2 hover:scale-[1.015] transition-all duration-500 flex flex-col justify-between">
-              {/* Top Accent Line on Hover */}
-              <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-cyan-300 via-white to-blue-200 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            {/* Vision Card (Electric Cyan / Royal Blue Glow) */}
+            <div className="group relative rounded-2xl sm:rounded-3xl p-[1.5px] bg-slate-800/80 overflow-hidden cursor-pointer hover:-translate-y-2 hover:scale-[1.015] transition-all duration-500 shadow-xl hover:shadow-[0_20px_50px_-10px_rgba(6,182,212,0.35)] flex flex-col">
+              {/* Rotating Border Beam on Hover */}
+              <div 
+                className="absolute inset-[-150%] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                style={{
+                  background: 'conic-gradient(from 0deg, transparent 0deg 280deg, rgba(6,182,212,0.85) 325deg, #38bdf8 360deg)',
+                  animation: 'borderBeamRotate 3.5s linear infinite'
+                }}
+              />
 
-              {/* Light Sheen Sweep Overlay */}
-              <div className="pointer-events-none absolute -inset-full w-[200%] h-[200%] bg-gradient-to-tr from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
+              {/* Inner Dark Graphite Card */}
+              <div className="relative z-10 w-full h-full bg-[#0B0F19] rounded-[calc(1rem-1.5px)] sm:rounded-[calc(1.5rem-1.5px)] p-6 sm:p-7 md:p-8 overflow-hidden flex flex-col justify-between flex-grow">
+                {/* Light Sheen Sweep Overlay */}
+                <div className="pointer-events-none absolute -inset-full w-[200%] h-[200%] bg-gradient-to-tr from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
 
-              {/* Ambient Glow */}
-              <div className="absolute -top-12 -right-12 w-64 h-64 bg-white/20 blur-[70px] rounded-full group-hover:scale-125 group-hover:bg-white/35 transition-all duration-700 pointer-events-none"></div>
+                {/* Electric Cyan / Blue Ambient Glow */}
+                <div className="absolute -top-12 -right-12 w-64 h-64 bg-cyan-500/20 blur-[70px] rounded-full group-hover:scale-125 group-hover:bg-cyan-500/40 transition-all duration-700 pointer-events-none" />
 
-              <div className="relative z-10">
-                <div className="w-11 h-11 sm:w-13 sm:h-13 bg-white/20 rounded-xl sm:rounded-2xl flex items-center justify-center mb-3.5 sm:mb-4 backdrop-blur-md border border-white/20 group-hover:border-white/60 group-hover:scale-110 group-hover:rotate-6 group-hover:bg-white/30 transition-all duration-500 shadow-sm">
-                  {/* Modern Strategic Compass / Guiding Star Icon for Vision */}
-                  <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:text-cyan-100 transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="12" r="10" />
-                    <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="currentColor" fillOpacity="0.25" />
-                  </svg>
+                <div className="relative z-10">
+                  <div className="w-11 h-11 sm:w-13 sm:h-13 bg-white/10 rounded-xl sm:rounded-2xl flex items-center justify-center mb-3.5 sm:mb-4 backdrop-blur-md border border-white/10 group-hover:border-cyan-400/40 group-hover:scale-110 group-hover:rotate-6 group-hover:bg-cyan-500/20 transition-all duration-500 shadow-sm">
+                    {/* Modern Strategic Compass / Guiding Star Icon for Vision */}
+                    <svg className="w-5 h-5 sm:w-6 sm:h-6 text-cyan-400 group-hover:text-cyan-300 transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="12" r="10" />
+                      <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="currentColor" fillOpacity="0.25" />
+                    </svg>
+                  </div>
+                  <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-2 sm:mb-2.5 tracking-tight group-hover:text-cyan-300 transition-colors">Our Vision</h2>
+                  <p className="text-slate-300 text-xs sm:text-sm md:text-base leading-relaxed text-justify">
+                    To become a globally recognized software development powerhouse known for engineering excellence, rapid innovation, and pushing the boundaries of what technology can achieve for enterprises.
+                  </p>
                 </div>
-                <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-2 sm:mb-2.5 tracking-tight group-hover:text-cyan-100 transition-colors">Our Vision</h2>
-                <p className="text-blue-50 text-xs sm:text-sm md:text-base leading-relaxed text-justify">
-                  To become a globally recognized software development powerhouse known for engineering excellence, rapid innovation, and pushing the boundaries of what technology can achieve for enterprises.
-                </p>
               </div>
             </div>
 
