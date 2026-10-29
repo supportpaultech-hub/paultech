@@ -15,6 +15,9 @@ const EditEmployeeModal = ({ isOpen, onClose, onSuccess, employee }) => {
     phone: '',
     education: '',
     skills: '',
+    bio: '',
+    github: '',
+    linkedin: '',
     image: null
   });
 
@@ -34,6 +37,9 @@ const EditEmployeeModal = ({ isOpen, onClose, onSuccess, employee }) => {
         phone: employee.phone || '',
         education: employee.education || '',
         skills: employee.skills ? employee.skills.join(', ') : '',
+        bio: employee.bio || '',
+        github: employee.github || '',
+        linkedin: employee.linkedin || '',
         image: null
       });
       setSuccess(false);
@@ -68,6 +74,9 @@ const EditEmployeeModal = ({ isOpen, onClose, onSuccess, employee }) => {
     submitData.append('phone', formData.phone);
     submitData.append('education', formData.education);
     submitData.append('skills', skillsArray.join(','));
+    submitData.append('bio', formData.bio || '');
+    submitData.append('github', formData.github || '');
+    submitData.append('linkedin', formData.linkedin || '');
     if (formData.image) {
       submitData.append('image', formData.image);
     }
@@ -186,7 +195,30 @@ const EditEmployeeModal = ({ isOpen, onClose, onSuccess, employee }) => {
 
             <div className="space-y-2">
               <label className="block text-sm font-bold text-slate-700">Skills (Comma Separated)</label>
-              <input type="text" name="skills" value={formData.skills} onChange={handleChange} className="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 px-4 text-sm text-slate-900 focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all" />
+              <input type="text" name="skills" placeholder="e.g. React, Node.js, Python, MongoDB" value={formData.skills} onChange={handleChange} className="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 px-4 text-sm text-slate-900 focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all" />
+            </div>
+
+            <div className="space-y-2">
+              <label className="block text-sm font-bold text-slate-700">Short Bio / About (Displayed on Team Card Flip)</label>
+              <textarea 
+                name="bio" 
+                rows="3"
+                placeholder="e.g. Specialized in architecting modern full-stack web platforms, microservices, and sleek user experiences..." 
+                value={formData.bio} 
+                onChange={handleChange} 
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 px-4 text-sm text-slate-900 focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all resize-none" 
+              />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-2">
+                <label className="block text-sm font-bold text-slate-700">LinkedIn Profile URL (Optional)</label>
+                <input type="url" name="linkedin" placeholder="https://linkedin.com/in/username" value={formData.linkedin} onChange={handleChange} className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 px-4 text-sm text-slate-900 focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all" />
+              </div>
+              <div className="space-y-2">
+                <label className="block text-sm font-bold text-slate-700">GitHub Profile URL (Optional)</label>
+                <input type="url" name="github" placeholder="https://github.com/username" value={formData.github} onChange={handleChange} className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 px-4 text-sm text-slate-900 focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all" />
+              </div>
             </div>
 
             <div className="space-y-2">

@@ -54,7 +54,8 @@ const login = async (req, res) => {
 const registerEmployee = async (req, res) => {
   const { 
     employeeId, username, password, firstName, lastName, 
-    designation, department, experience, phone, education, skills 
+    designation, department, experience, phone, education, skills,
+    bio, github, linkedin 
   } = req.body;
   
   let img = '';
@@ -80,9 +81,13 @@ const registerEmployee = async (req, res) => {
       lastName,
       designation,
       department,
+      experience: experience || '',
       phone,
       education,
-      skills: skills ? (typeof skills === 'string' ? skills.split(',') : skills) : [],
+      skills: skills ? (typeof skills === 'string' ? skills.split(',').map(s => s.trim()).filter(Boolean) : skills) : [],
+      bio: bio || '',
+      github: github || '',
+      linkedin: linkedin || '',
       img
     });
 
@@ -125,7 +130,8 @@ const updateEmployee = async (req, res) => {
     const { id } = req.params;
     const { 
       employeeId, firstName, lastName, 
-      designation, department, experience, phone, education, skills 
+      designation, department, experience, phone, education, skills,
+      bio, github, linkedin
     } = req.body;
 
     const updates = {
@@ -137,8 +143,12 @@ const updateEmployee = async (req, res) => {
       experience,
       phone,
       education,
-      skills: skills ? (typeof skills === 'string' ? skills.split(',') : skills) : []
+      skills: skills ? (typeof skills === 'string' ? skills.split(',').map(s => s.trim()).filter(Boolean) : skills) : []
     };
+
+    if (bio !== undefined) updates.bio = bio;
+    if (github !== undefined) updates.github = github;
+    if (linkedin !== undefined) updates.linkedin = linkedin;
 
     if (req.file) {
       updates.img = req.file.path;
