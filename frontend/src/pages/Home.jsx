@@ -1733,7 +1733,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* 6. MoU Announcements */}
+      {/* 6. MoU Partners with IT Leading Universities */}
       <section className="py-8 sm:py-14 md:py-20 bg-slate-50 relative overflow-hidden">
         {/* Background Decorative Elements */}
         <div className="absolute top-0 right-0 w-64 h-64 bg-orange-400/5 rounded-full blur-[80px] pointer-events-none"></div>
@@ -1742,7 +1742,7 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
           <div className="text-center mb-6 sm:mb-12 md:mb-16">
             <h4 className="text-orange-500 font-semibold tracking-widest text-xs sm:text-sm uppercase mb-1 sm:mb-3">Partnerships</h4>
-            <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-slate-800">MoU Announcements</h2>
+            <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-slate-800">MoU Partners with IT Leading Universities</h2>
             <div className="w-14 sm:w-20 h-1 sm:h-1.5 bg-gradient-to-r from-orange-500 to-green-500 mx-auto mt-2 sm:mt-4 rounded-full"></div>
           </div>
 
