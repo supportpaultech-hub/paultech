@@ -83,12 +83,9 @@ const Services = () => {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[180px] bg-gradient-to-r from-orange-500/20 via-amber-500/20 to-emerald-500/15 blur-[90px] rounded-full pointer-events-none"></div>
 
         <div className="max-w-3xl mx-auto relative z-10">
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/10 border border-white/15 shadow-xs backdrop-blur-md mb-2 sm:mb-2.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span className="text-slate-200 text-[10px] sm:text-xs font-semibold uppercase tracking-widest">
-              End-To-End Software Capabilities
-            </span>
-          </div>
+          <p className="text-orange-400 text-xs sm:text-sm font-semibold uppercase tracking-wider mb-2">
+            End-To-End Software Capabilities
+          </p>
 
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight leading-tight mb-2">
             Our Premium <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-400 to-emerald-400">Software Services</span>
@@ -165,10 +162,9 @@ const Services = () => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
           {/* Header */}
           <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-50 border border-orange-200/80 text-orange-600 text-xs font-bold uppercase tracking-wider mb-4 shadow-sm">
-              <Sparkles className="w-3.5 h-3.5 text-orange-500 fill-orange-500" />
-              <span>Transparent & Value-Driven Pricing</span>
-            </div>
+            <p className="text-orange-600 text-xs sm:text-sm font-semibold uppercase tracking-wider mb-2">
+              Transparent & Value-Driven Pricing
+            </p>
             
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
               Choose the Perfect Plan for <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-orange-600 to-emerald-600">Your Growth</span>
@@ -767,9 +763,9 @@ const Services = () => {
 
             <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-10">
               <div className="text-center lg:text-left">
-                <span className="inline-block px-3 py-1 rounded-full bg-orange-500/20 text-orange-400 font-bold text-xs uppercase tracking-wider mb-3 border border-orange-500/30">
+                <p className="text-orange-400 font-bold text-xs sm:text-sm uppercase tracking-wider mb-2">
                   Custom Requirements?
-                </span>
+                </p>
                 <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-2">
                   Need a Tailored Solution or Enterprise Scope?
                 </h3>

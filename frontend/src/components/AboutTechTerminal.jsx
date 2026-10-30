@@ -179,20 +179,17 @@ const AboutTechTerminal = () => {
           {/* Live Activity Badge */}
           <div className="ml-1 sm:ml-2">
             {activeTab === 'ts' && (
-              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-mono font-medium bg-blue-500/15 text-blue-400 border border-blue-500/25">
-                <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-ping" />
+              <span className="px-2 py-0.5 rounded text-[10px] font-mono font-medium bg-blue-500/15 text-blue-400 border border-blue-500/25">
                 LIVE CODING
               </span>
             )}
             {activeTab === 'sh' && (
-              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-mono font-medium bg-amber-500/15 text-amber-400 border border-amber-500/25">
-                <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+              <span className="px-2 py-0.5 rounded text-[10px] font-mono font-medium bg-amber-500/15 text-amber-400 border border-amber-500/25">
                 DEPLOYING
               </span>
             )}
             {activeTab === 'json' && (
-              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-mono font-medium bg-emerald-500/15 text-emerald-400 border border-emerald-500/25">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+              <span className="px-2 py-0.5 rounded text-[10px] font-mono font-medium bg-emerald-500/15 text-emerald-400 border border-emerald-500/25">
                 TELEMETRY
               </span>
             )}
@@ -313,7 +310,7 @@ const AboutTechTerminal = () => {
 
                 {line.type === 'status' && (
                   <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-xs my-0.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping shrink-0" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
                     <span>{line.text}</span>
                   </div>
                 )}
@@ -335,7 +332,6 @@ const AboutTechTerminal = () => {
                     <span className="text-cyan-300">{line.key}</span>
                     <span className="text-slate-400">: </span>
                     <span className="text-amber-300 font-bold bg-amber-500/10 px-1 rounded">{line.val}</span>
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse inline-block" />
                   </div>
                 )}
 
@@ -358,7 +354,7 @@ const AboutTechTerminal = () => {
       <div className="bg-slate-950/90 border-t border-slate-800/80 px-4 py-2.5 flex flex-wrap items-center justify-between gap-2.5 text-xs font-mono relative z-10">
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-emerald-400" />
             <span className="text-slate-400 text-[11px]">CLUSTER:</span>
             <span className="text-emerald-400 font-semibold text-[11px]">OPERATIONAL</span>
           </div>
