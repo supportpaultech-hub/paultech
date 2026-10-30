@@ -102,7 +102,7 @@ const Portfolio = () => {
           </div>
         </div>
 
-        {/* Portfolio Cards Showcase */}
+        {/* Portfolio Cards Grid (2 Columns on Desktop & Tablet, 1 Column on Mobile) */}
         {loading ? (
           <CardGridSkeleton count={4} />
         ) : filteredProjects.length === 0 ? (
@@ -112,7 +112,7 @@ const Portfolio = () => {
             <p className="text-slate-500 text-sm mt-1">Try adjusting your category filter or search query.</p>
           </div>
         ) : (
-          <div className="flex flex-wrap justify-center gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto justify-items-center">
             {filteredProjects.map((project) => {
               const projectImgUrl = project.img 
                 ? (project.img.startsWith('http') ? project.img : `${API_BASE_URL}${project.img}`) 
@@ -124,18 +124,28 @@ const Portfolio = () => {
                 <div 
                   key={project._id}
                   onClick={() => toggleFlip(project._id)}
-                  className="[perspective:1400px] w-full max-w-[540px] h-[340px] sm:h-[360px] shrink-0 cursor-pointer select-none"
+                  className="w-full max-w-[540px] h-[340px] sm:h-[360px] shrink-0 cursor-pointer select-none"
+                  style={{ perspective: '1400px' }}
                 >
-                  {/* 3D Flipper Box */}
-                  <div className={`relative w-full h-full rounded-[24px] sm:rounded-[28px] transition-transform duration-700 [transform-style:preserve-3d] shadow-[0_12px_35px_-8px_rgba(0,0,0,0.18)] hover:shadow-[0_20px_45px_-6px_rgba(249,115,22,0.25)] hover:-translate-y-1 transition-all duration-300 ${
-                    isFlipped ? '[transform:rotateY(180deg)]' : '[transform:rotateY(0deg)]'
-                  }`}>
+                  {/* 3D Flipper Box - Rotation strictly controlled by click state */}
+                  <div 
+                    className="relative w-full h-full rounded-[24px] sm:rounded-[28px] shadow-[0_12px_35px_-8px_rgba(0,0,0,0.18)] hover:shadow-[0_20px_45px_-6px_rgba(249,115,22,0.25)] hover:-translate-y-1"
+                    style={{
+                      transformStyle: 'preserve-3d',
+                      transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
+                      transition: 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease, transform 0.3s ease'
+                    }}
+                  >
 
                     {/* ================= FRONT FACE (Landscape Full Image + Clean Name & Link Bar) ================= */}
                     <div 
-                      className={`absolute inset-0 w-full h-full rounded-[24px] sm:rounded-[28px] overflow-hidden [backface-visibility:hidden] bg-slate-950 border border-slate-700/60 shadow-xl flex flex-col justify-between transition-opacity duration-300 ${
-                        isFlipped ? 'pointer-events-none opacity-0' : 'pointer-events-auto opacity-100'
-                      }`}
+                      className="absolute inset-0 w-full h-full rounded-[24px] sm:rounded-[28px] overflow-hidden bg-slate-950 border border-slate-700/60 shadow-xl flex flex-col justify-between"
+                      style={{
+                        backfaceVisibility: 'hidden',
+                        WebkitBackfaceVisibility: 'hidden',
+                        transform: 'rotateY(0deg)',
+                        pointerEvents: isFlipped ? 'none' : 'auto'
+                      }}
                     >
                       {/* Full Screenshot Container (ZERO Vignette, 100% Uncropped & Crystal Clear) */}
                       <div className="flex-1 w-full relative overflow-hidden bg-slate-950 flex items-center justify-center p-3 sm:p-4">
@@ -144,7 +154,7 @@ const Portfolio = () => {
                           alt={project.title} 
                           loading="lazy"
                           decoding="async"
-                          className="w-full h-full object-contain rounded-xl shadow-lg transition-transform duration-500" 
+                          className="w-full h-full object-contain rounded-xl shadow-lg" 
                         />
                       </div>
 
@@ -182,9 +192,13 @@ const Portfolio = () => {
 
                     {/* ================= BACK FACE (Description + Tech Stack) ================= */}
                     <div 
-                      className={`absolute inset-0 w-full h-full rounded-[24px] sm:rounded-[28px] overflow-hidden [backface-visibility:hidden] [transform:rotateY(180deg)] bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 border-2 border-orange-500/40 p-5 sm:p-6 flex flex-col justify-between text-left text-white shadow-2xl transition-opacity duration-300 ${
-                        isFlipped ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
-                      }`}
+                      className="absolute inset-0 w-full h-full rounded-[24px] sm:rounded-[28px] overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 border-2 border-orange-500/40 p-5 sm:p-6 flex flex-col justify-between text-left text-white shadow-2xl"
+                      style={{
+                        backfaceVisibility: 'hidden',
+                        WebkitBackfaceVisibility: 'hidden',
+                        transform: 'rotateY(180deg)',
+                        pointerEvents: isFlipped ? 'auto' : 'none'
+                      }}
                     >
                       {/* Back Top: Title & Client */}
                       <div className="pb-2.5 border-b border-white/10 flex items-center justify-between gap-3">
