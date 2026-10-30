@@ -3,14 +3,13 @@ import axios from 'axios';
 import { API_BASE_URL } from '../student-app/config';
 import { CardGridSkeleton } from '../components/SkeletonLoader';
 import { FiExternalLink } from 'react-icons/fi';
-import { Building2, Layers, Search, Code, Globe, Eye, X } from 'lucide-react';
+import { Building2, Layers, Search, Code, Globe } from 'lucide-react';
 
 const Portfolio = () => {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [activeCategory, setActiveCategory] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedImage, setSelectedImage] = useState(null);
 
   const categories = ['All', 'Web Development', 'Mobile App', 'Enterprise ERP', 'Cloud Architecture', 'UI/UX Design'];
 
@@ -30,19 +29,6 @@ const Portfolio = () => {
 
     fetchProjects();
   }, []);
-
-  // Close lightbox on Escape key
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === 'Escape') {
-        setSelectedImage(null);
-      }
-    };
-    if (selectedImage) {
-      window.addEventListener('keydown', handleKeyDown);
-    }
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [selectedImage]);
 
   const filteredProjects = projects.filter(p => {
     const matchesCategory = activeCategory === 'All' || p.category === activeCategory;
@@ -155,10 +141,7 @@ const Portfolio = () => {
                     </div>
 
                     {/* Project Screenshot Container with Proper Proportions and Top Alignment */}
-                    <div 
-                      className="relative aspect-[16/10] bg-slate-950 overflow-hidden cursor-pointer group/img"
-                      onClick={() => setSelectedImage({ src: projectImgUrl, title: project.title })}
-                    >
+                    <div className="relative aspect-[16/10] bg-slate-950 overflow-hidden">
                       <img 
                         src={projectImgUrl} 
                         alt={project.title} 
@@ -167,35 +150,7 @@ const Portfolio = () => {
                         className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105" 
                       />
                       {/* Subtle Vignette Gradient for Depth */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent pointer-events-none" />
-
-                      {/* Hover Sheen & Quick Action Pill */}
-                      <div className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out flex items-center justify-center gap-3 backdrop-blur-[2px]">
-                        <button 
-                          type="button"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setSelectedImage({ src: projectImgUrl, title: project.title });
-                          }}
-                          className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white/95 hover:bg-white text-slate-900 text-xs font-bold shadow-xl hover:scale-105 active:scale-95 transition-all duration-200"
-                        >
-                          <Eye className="w-3.5 h-3.5 text-orange-600" />
-                          <span>View Screenshot</span>
-                        </button>
-
-                        {project.liveUrl && (
-                          <a 
-                            href={project.liveUrl} 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            onClick={(e) => e.stopPropagation()}
-                            className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-orange-500 hover:bg-orange-600 text-white text-xs font-bold shadow-xl hover:scale-105 active:scale-95 transition-all duration-200"
-                          >
-                            <span>Live Site</span>
-                            <FiExternalLink className="w-3.5 h-3.5" />
-                          </a>
-                        )}
-                      </div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent pointer-events-none" />
                     </div>
 
                     {/* Project Content */}
@@ -258,42 +213,6 @@ const Portfolio = () => {
           </div>
         )}
       </div>
-
-      {/* Full-Screen Image Lightbox Modal */}
-      {selectedImage && (
-        <div 
-          className="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 transition-all duration-300"
-          onClick={() => setSelectedImage(null)}
-        >
-          <div 
-            className="relative max-w-5xl w-full bg-slate-900 border border-slate-700 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Modal Top Bar */}
-            <div className="flex items-center justify-between px-5 py-3.5 bg-slate-950/90 border-b border-slate-800">
-              <h4 className="text-white font-bold text-sm sm:text-base truncate pr-4">
-                {selectedImage.title} — Screenshot Preview
-              </h4>
-              <button 
-                onClick={() => setSelectedImage(null)}
-                className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
-                title="Close"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-
-            {/* Modal Image View */}
-            <div className="overflow-auto p-3 sm:p-5 bg-slate-950/50 flex items-center justify-center">
-              <img 
-                src={selectedImage.src} 
-                alt={selectedImage.title}
-                className="max-h-[75vh] w-auto max-w-full object-contain rounded-lg shadow-xl"
-              />
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
