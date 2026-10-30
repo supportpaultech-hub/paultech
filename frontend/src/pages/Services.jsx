@@ -252,43 +252,31 @@ const Services = () => {
                       <div className="w-5 h-5 rounded-full bg-emerald-50 border border-emerald-200/80 flex items-center justify-center shrink-0 text-emerald-600">
                         <Check className="w-3 h-3 stroke-[3]" />
                       </div>
-                      <span><strong className="text-slate-900 font-bold">1 Modern Home Page</strong> with Hero Banner</span>
+                      <span><strong className="text-slate-900 font-bold">1 Modern</strong> Home Page</span>
                     </li>
                     <li className="flex items-center gap-3">
                       <div className="w-5 h-5 rounded-full bg-emerald-50 border border-emerald-200/80 flex items-center justify-center shrink-0 text-emerald-600">
                         <Check className="w-3 h-3 stroke-[3]" />
                       </div>
-                      <span><strong className="text-slate-900 font-bold">5 Static Content Pages</strong> Included</span>
+                      <span><strong className="text-slate-900 font-bold">5 Static</strong> Content Pages</span>
                     </li>
                     <li className="flex items-center gap-3">
                       <div className="w-5 h-5 rounded-full bg-emerald-50 border border-emerald-200/80 flex items-center justify-center shrink-0 text-emerald-600">
                         <Check className="w-3 h-3 stroke-[3]" />
                       </div>
-                      <span><strong className="text-slate-900 font-bold">Interactive Contact Form</strong> (Instant Alert)</span>
+                      <span><strong className="text-slate-900 font-bold">Interactive</strong> Contact Form</span>
                     </li>
                     <li className="flex items-center gap-3">
                       <div className="w-5 h-5 rounded-full bg-emerald-50 border border-emerald-200/80 flex items-center justify-center shrink-0 text-emerald-600">
                         <Check className="w-3 h-3 stroke-[3]" />
                       </div>
-                      <span><strong className="text-slate-900 font-bold">1 Professional Mail</strong> Account</span>
+                      <span><strong className="text-slate-900 font-bold">Free SSL</strong> & Cloud Hosting</span>
                     </li>
                     <li className="flex items-center gap-3">
                       <div className="w-5 h-5 rounded-full bg-emerald-50 border border-emerald-200/80 flex items-center justify-center shrink-0 text-emerald-600">
                         <Check className="w-3 h-3 stroke-[3]" />
                       </div>
-                      <span><strong className="text-slate-900 font-bold">Free SSL Certificate</strong> & Cloud Hosting</span>
-                    </li>
-                    <li className="flex items-center gap-3">
-                      <div className="w-5 h-5 rounded-full bg-emerald-50 border border-emerald-200/80 flex items-center justify-center shrink-0 text-emerald-600">
-                        <Check className="w-3 h-3 stroke-[3]" />
-                      </div>
-                      <span><strong className="text-slate-900 font-bold">100% Mobile & Tablet</strong> Responsive</span>
-                    </li>
-                    <li className="flex items-center gap-3">
-                      <div className="w-5 h-5 rounded-full bg-emerald-50 border border-emerald-200/80 flex items-center justify-center shrink-0 text-emerald-600">
-                        <Check className="w-3 h-3 stroke-[3]" />
-                      </div>
-                      <span><strong className="text-slate-900 font-bold">1 Year Maintenance</strong> & Technical Support</span>
+                      <span><strong className="text-slate-900 font-bold">100% Mobile</strong> Responsive</span>
                     </li>
                   </ul>
                 </div>
@@ -347,43 +335,37 @@ const Services = () => {
                       <div className="w-5 h-5 rounded-full bg-emerald-50 border border-emerald-200/80 flex items-center justify-center shrink-0 text-emerald-600">
                         <Check className="w-3 h-3 stroke-[3]" />
                       </div>
-                      <span><strong className="text-slate-900 font-bold">1 Custom UI/UX Home Page</strong> with Hero</span>
+                      <span><strong className="text-slate-900 font-bold">Custom UI/UX</strong> Home Page</span>
                     </li>
                     <li className="flex items-center gap-3">
                       <div className="w-5 h-5 rounded-full bg-emerald-50 border border-emerald-200/80 flex items-center justify-center shrink-0 text-emerald-600">
                         <Check className="w-3 h-3 stroke-[3]" />
                       </div>
-                      <span><strong className="text-slate-900 font-bold">Up to 10 Dynamic Pages</strong> with CMS</span>
+                      <span><strong className="text-slate-900 font-bold">Up to 10</strong> Dynamic Pages (CMS)</span>
                     </li>
                     <li className="flex items-center gap-3">
                       <div className="w-5 h-5 rounded-full bg-emerald-50 border border-emerald-200/80 flex items-center justify-center shrink-0 text-emerald-600">
                         <Check className="w-3 h-3 stroke-[3]" />
                       </div>
-                      <span><strong className="text-slate-900 font-bold">Catalog / Portfolio Gallery</strong> Module</span>
+                      <span><strong className="text-slate-900 font-bold">Portfolio / Gallery</strong> Module</span>
                     </li>
                     <li className="flex items-center gap-3">
                       <div className="w-5 h-5 rounded-full bg-emerald-50 border border-emerald-200/80 flex items-center justify-center shrink-0 text-emerald-600">
                         <Check className="w-3 h-3 stroke-[3]" />
                       </div>
-                      <span><strong className="text-slate-900 font-bold">Lead Capture & WhatsApp Chat</strong> Integration</span>
+                      <span><strong className="text-slate-900 font-bold">WhatsApp Chat</strong> & Lead Capture</span>
                     </li>
                     <li className="flex items-center gap-3">
                       <div className="w-5 h-5 rounded-full bg-emerald-50 border border-emerald-200/80 flex items-center justify-center shrink-0 text-emerald-600">
                         <Check className="w-3 h-3 stroke-[3]" />
                       </div>
-                      <span><strong className="text-slate-900 font-bold">2 Professional Business Mails</strong></span>
+                      <span><strong className="text-slate-900 font-bold">On-Page SEO</strong> & Analytics</span>
                     </li>
                     <li className="flex items-center gap-3">
                       <div className="w-5 h-5 rounded-full bg-emerald-50 border border-emerald-200/80 flex items-center justify-center shrink-0 text-emerald-600">
                         <Check className="w-3 h-3 stroke-[3]" />
                       </div>
-                      <span><strong className="text-slate-900 font-bold">On-Page SEO & Analytics</strong> Setup</span>
-                    </li>
-                    <li className="flex items-center gap-3">
-                      <div className="w-5 h-5 rounded-full bg-emerald-50 border border-emerald-200/80 flex items-center justify-center shrink-0 text-emerald-600">
-                        <Check className="w-3 h-3 stroke-[3]" />
-                      </div>
-                      <span><strong className="text-slate-900 font-bold">Priority 24/7 Technical Support</strong></span>
+                      <span><strong className="text-slate-900 font-bold">24/7 Technical</strong> Support</span>
                     </li>
                   </ul>
                 </div>
@@ -436,43 +418,37 @@ const Services = () => {
                       <div className="w-5 h-5 rounded-full bg-emerald-50 border border-emerald-200/80 flex items-center justify-center shrink-0 text-emerald-600">
                         <Check className="w-3 h-3 stroke-[3]" />
                       </div>
-                      <span><strong className="text-slate-900 font-bold">Shopping Cart & Fast Checkout</strong></span>
+                      <span><strong className="text-slate-900 font-bold">Shopping Cart</strong> & Fast Checkout</span>
                     </li>
                     <li className="flex items-center gap-3">
                       <div className="w-5 h-5 rounded-full bg-emerald-50 border border-emerald-200/80 flex items-center justify-center shrink-0 text-emerald-600">
                         <Check className="w-3 h-3 stroke-[3]" />
                       </div>
-                      <span><strong className="text-slate-900 font-bold">Payment Gateway</strong> (UPI, Cards, NetBanking)</span>
+                      <span><strong className="text-slate-900 font-bold">Payment Gateway</strong> (UPI & Cards)</span>
                     </li>
                     <li className="flex items-center gap-3">
                       <div className="w-5 h-5 rounded-full bg-emerald-50 border border-emerald-200/80 flex items-center justify-center shrink-0 text-emerald-600">
                         <Check className="w-3 h-3 stroke-[3]" />
                       </div>
-                      <span><strong className="text-slate-900 font-bold">Unlimited Products</strong> & Categories</span>
+                      <span><strong className="text-slate-900 font-bold">Unlimited</strong> Products & Categories</span>
                     </li>
                     <li className="flex items-center gap-3">
                       <div className="w-5 h-5 rounded-full bg-emerald-50 border border-emerald-200/80 flex items-center justify-center shrink-0 text-emerald-600">
                         <Check className="w-3 h-3 stroke-[3]" />
                       </div>
-                      <span><strong className="text-slate-900 font-bold">Customer Accounts & Order Tracking</strong></span>
+                      <span><strong className="text-slate-900 font-bold">Customer Accounts</strong> & Tracking</span>
                     </li>
                     <li className="flex items-center gap-3">
                       <div className="w-5 h-5 rounded-full bg-emerald-50 border border-emerald-200/80 flex items-center justify-center shrink-0 text-emerald-600">
                         <Check className="w-3 h-3 stroke-[3]" />
                       </div>
-                      <span><strong className="text-slate-900 font-bold">Discount Coupons</strong> & Promotional Engine</span>
+                      <span><strong className="text-slate-900 font-bold">Discount Coupons</strong> Engine</span>
                     </li>
                     <li className="flex items-center gap-3">
                       <div className="w-5 h-5 rounded-full bg-emerald-50 border border-emerald-200/80 flex items-center justify-center shrink-0 text-emerald-600">
                         <Check className="w-3 h-3 stroke-[3]" />
                       </div>
-                      <span><strong className="text-slate-900 font-bold">5 Professional Business Mails</strong></span>
-                    </li>
-                    <li className="flex items-center gap-3">
-                      <div className="w-5 h-5 rounded-full bg-emerald-50 border border-emerald-200/80 flex items-center justify-center shrink-0 text-emerald-600">
-                        <Check className="w-3 h-3 stroke-[3]" />
-                      </div>
-                      <span><strong className="text-slate-900 font-bold">Annual Security Audits</strong> & Backups</span>
+                      <span><strong className="text-slate-900 font-bold">Security Audits</strong> & Backups</span>
                     </li>
                   </ul>
                 </div>
