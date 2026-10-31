@@ -51,20 +51,26 @@ const About = () => {
                 At <strong className="font-bold text-slate-900">PaulTech</strong>, we believe in quality work, transparency, and customer satisfaction. We aim to build long-term relationships with our clients while helping businesses and aspiring professionals grow through technology.
               </p>
             </div>
-            <div className="flex flex-wrap sm:flex-nowrap items-center justify-between sm:justify-start gap-4 sm:gap-8 pt-2">
-              <div>
-                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-800">10+</h3>
-                <p className="text-xs sm:text-sm font-semibold text-slate-500 uppercase tracking-wide">Years Exp.</p>
+            <div className="grid grid-cols-3 divide-x divide-slate-200 pt-3 sm:pt-4 max-w-lg">
+              <div className="pr-3 sm:pr-6 text-left">
+                <h3 className="text-xl sm:text-3xl font-black text-slate-800 tracking-tight leading-none">10+</h3>
+                <p className="text-[10px] sm:text-xs font-semibold text-slate-500 uppercase tracking-wider mt-1.5 leading-tight">
+                  Years Exp.
+                </p>
               </div>
-              <div className="w-px h-10 sm:h-12 bg-slate-200 hidden sm:block"></div>
-              <div>
-                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-800">50+</h3>
-                <p className="text-xs sm:text-sm font-semibold text-slate-500 uppercase tracking-wide">Projects Delivered</p>
+
+              <div className="px-3 sm:px-6 text-left">
+                <h3 className="text-xl sm:text-3xl font-black text-slate-800 tracking-tight leading-none">50+</h3>
+                <p className="text-[10px] sm:text-xs font-semibold text-slate-500 uppercase tracking-wider mt-1.5 leading-tight">
+                  Projects Delivered
+                </p>
               </div>
-              <div className="w-px h-10 sm:h-12 bg-slate-200 hidden sm:block"></div>
-              <div>
-                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-800">99%</h3>
-                <p className="text-xs sm:text-sm font-semibold text-slate-500 uppercase tracking-wide">Client Retention</p>
+
+              <div className="pl-3 sm:px-6 text-left">
+                <h3 className="text-xl sm:text-3xl font-black text-slate-800 tracking-tight leading-none">99%</h3>
+                <p className="text-[10px] sm:text-xs font-semibold text-slate-500 uppercase tracking-wider mt-1.5 leading-tight">
+                  Client Retention
+                </p>
               </div>
             </div>
           </div>
