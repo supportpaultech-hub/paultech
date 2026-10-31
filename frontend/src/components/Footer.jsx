@@ -72,13 +72,13 @@ const Footer = () => {
 
             {/* Trust Badges */}
             <div className="space-y-2 mb-6">
-              <div className="flex items-center gap-2.5 px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-slate-300 text-xs font-medium w-full">
-                <FiShield className="text-orange-400 shrink-0 text-sm" />
-                <span className="leading-snug">Govt. Recognized MSME Enterprise</span>
+              <div className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg bg-white/5 border border-white/10 text-slate-300 text-[10.5px] xl:text-[11px] font-medium w-full whitespace-nowrap tracking-tight">
+                <FiShield className="text-orange-400 shrink-0 text-xs" />
+                <span>Govt. Recognized MSME Enterprise</span>
               </div>
-              <div className="flex items-center gap-2.5 px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-slate-300 text-xs font-medium w-full">
-                <FiCheckCircle className="text-emerald-400 shrink-0 text-sm" />
-                <span className="leading-snug">MoU Partner with 6+ Leading Universities & Colleges</span>
+              <div className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg bg-white/5 border border-white/10 text-slate-300 text-[10.5px] xl:text-[11px] font-medium w-full whitespace-nowrap tracking-tight">
+                <FiCheckCircle className="text-emerald-400 shrink-0 text-xs" />
+                <span>MoU Partner with 6+ Leading Universities & Colleges</span>
               </div>
             </div>
 
