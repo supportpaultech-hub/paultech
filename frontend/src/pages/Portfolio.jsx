@@ -3,14 +3,13 @@ import axios from 'axios';
 import { API_BASE_URL } from '../student-app/config';
 import { CardGridSkeleton } from '../components/SkeletonLoader';
 import { FiExternalLink } from 'react-icons/fi';
-import { Building2, Layers, Search, Code } from 'lucide-react';
+import { Building2, Layers, Search, Code, Lock } from 'lucide-react';
 
 const Portfolio = () => {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [activeCategory, setActiveCategory] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');
-  const [flippedCards, setFlippedCards] = useState({});
 
   const categories = ['All', 'Web Development', 'Mobile App', 'Enterprise ERP', 'Cloud Architecture', 'UI/UX Design'];
 
@@ -30,13 +29,6 @@ const Portfolio = () => {
 
     fetchProjects();
   }, []);
-
-  const toggleFlip = (id) => {
-    setFlippedCards(prev => ({
-      ...prev,
-      [id]: !prev[id]
-    }));
-  };
 
   const filteredProjects = projects.filter(p => {
     const matchesCategory = activeCategory === 'All' || p.category === activeCategory;
@@ -69,9 +61,9 @@ const Portfolio = () => {
       </section>
 
       {/* Main Content Area */}
-      <div className="max-w-7xl mx-auto px-3 sm:px-6 py-6 sm:py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
         {/* Category & Search Filter Bar */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-3 sm:gap-6 mb-6 sm:mb-12 bg-white p-3 sm:p-4 rounded-2xl border border-slate-200/90 shadow-sm">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-3 sm:gap-6 mb-8 sm:mb-12 bg-white p-3.5 sm:p-4 rounded-2xl border border-slate-200/90 shadow-sm">
           {/* Search Input */}
           <div className="relative w-full md:w-80">
             <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
@@ -90,7 +82,7 @@ const Portfolio = () => {
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all duration-300 ease-out ${
+                className={`px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all duration-300 ease-out ${
                   activeCategory === cat
                     ? 'bg-orange-500 text-white shadow-md shadow-orange-500/30 -translate-y-0.5'
                     : 'bg-slate-50 text-slate-600 hover:bg-slate-100 hover:text-slate-900 border border-slate-200/80'
@@ -102,7 +94,7 @@ const Portfolio = () => {
           </div>
         </div>
 
-        {/* Portfolio Cards Grid (2 Columns on Desktop & Tablet, 1 Column on Mobile) */}
+        {/* Portfolio Cards Grid */}
         {loading ? (
           <CardGridSkeleton count={4} />
         ) : filteredProjects.length === 0 ? (
@@ -112,158 +104,107 @@ const Portfolio = () => {
             <p className="text-slate-500 text-sm mt-1">Try adjusting your category filter or search query.</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto justify-items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto justify-items-center">
             {filteredProjects.map((project) => {
               const projectImgUrl = project.img 
                 ? (project.img.startsWith('http') ? project.img : `${API_BASE_URL}${project.img}`) 
                 : 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80';
 
-              const isFlipped = !!flippedCards[project._id];
+              const cleanDomain = project.liveUrl 
+                ? project.liveUrl.replace(/^https?:\/\//, '').replace(/\/$/, '') 
+                : `${project.title.toLowerCase().replace(/[^a-z0-9]/g, '')}.com`;
 
               return (
                 <div 
                   key={project._id}
-                  onClick={() => toggleFlip(project._id)}
-                  className="w-full max-w-[540px] h-[330px] sm:h-[360px] shrink-0 cursor-pointer select-none active:scale-[0.99] transition-transform"
-                  style={{ perspective: '1400px' }}
+                  className="w-full max-w-[540px] bg-white rounded-2xl sm:rounded-3xl border border-slate-200/90 shadow-[0_10px_30px_rgba(0,0,0,0.06)] hover:shadow-[0_20px_45px_rgba(0,0,0,0.12)] hover:-translate-y-1.5 transition-all duration-300 overflow-hidden flex flex-col justify-between group"
                 >
-                  {/* 3D Flipper Box - Rotation strictly controlled by click state */}
-                  <div 
-                    className="relative w-full h-full rounded-[22px] sm:rounded-[28px] shadow-[0_12px_35px_-8px_rgba(0,0,0,0.18)] hover:shadow-[0_20px_45px_-6px_rgba(249,115,22,0.25)] hover:-translate-y-1"
-                    style={{
-                      transformStyle: 'preserve-3d',
-                      transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
-                      transition: 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease, transform 0.3s ease'
-                    }}
-                  >
-
-                    {/* ================= FRONT FACE (Landscape Full Image + Clean Name & Link Bar) ================= */}
-                    <div 
-                      className="absolute inset-0 w-full h-full rounded-[22px] sm:rounded-[28px] overflow-hidden bg-slate-950 border border-slate-700/60 shadow-xl flex flex-col justify-between"
-                      style={{
-                        backfaceVisibility: 'hidden',
-                        WebkitBackfaceVisibility: 'hidden',
-                        transform: 'rotateY(0deg)',
-                        pointerEvents: isFlipped ? 'none' : 'auto'
-                      }}
-                    >
-                      {/* Full Screenshot Container (ZERO Vignette, 100% Uncropped & Crystal Clear) */}
-                      <div className="flex-1 w-full relative overflow-hidden bg-slate-950 flex items-center justify-center p-2.5 sm:p-4">
-                        <img 
-                          src={projectImgUrl} 
-                          alt={project.title} 
-                          loading="lazy"
-                          decoding="async"
-                          className="w-full h-full object-contain rounded-lg sm:rounded-xl shadow-lg" 
-                        />
+                  <div>
+                    {/* macOS Style Window Title Bar */}
+                    <div className="bg-slate-100/90 border-b border-slate-200/80 px-4 py-2.5 flex items-center justify-between gap-3 select-none">
+                      {/* macOS Window Control Dots */}
+                      <div className="flex items-center gap-1.5">
+                        <span className="w-3 h-3 rounded-full bg-[#FF5F56] border border-[#E0443E] inline-block shadow-2xs"></span>
+                        <span className="w-3 h-3 rounded-full bg-[#FFBD2E] border border-[#DEA123] inline-block shadow-2xs"></span>
+                        <span className="w-3 h-3 rounded-full bg-[#27C93F] border border-[#1AAB29] inline-block shadow-2xs"></span>
                       </div>
 
-                      {/* Bottom Bar: Name on Left, Link on Right (Clean & Professional) */}
-                      <div className="bg-slate-900/95 border-t border-white/10 px-4 sm:px-6 py-2.5 sm:py-3.5 flex items-center justify-between gap-3">
-                        <div className="min-w-0 flex-1">
-                          <h3 className="text-sm sm:text-lg font-black text-white tracking-tight truncate">
-                            {project.title}
-                          </h3>
-                          {project.clientName && (
-                            <p className="text-[10px] sm:text-[11px] text-slate-400 font-medium truncate">
-                              Client: {project.clientName}
-                            </p>
-                          )}
-                        </div>
-
-                        {project.liveUrl ? (
-                          <a 
-                            href={project.liveUrl} 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            onClick={(e) => e.stopPropagation()}
-                            className="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-orange-500 hover:bg-orange-600 text-white text-[11px] sm:text-xs font-bold shadow-md shadow-orange-500/25 hover:scale-105 active:scale-95 transition-all shrink-0"
-                          >
-                            <span>Explore Live Demo</span>
-                            <FiExternalLink className="w-3 sm:w-3.5 h-3 sm:h-3.5" />
-                          </a>
-                        ) : (
-                          <span className="text-[11px] sm:text-xs text-slate-400 font-semibold flex items-center gap-1.5 shrink-0">
-                            <Code className="w-3.5 h-3.5 text-orange-400" /> Internal Solution
-                          </span>
-                        )}
+                      {/* macOS Browser Address Pill */}
+                      <div className="flex items-center gap-1.5 bg-white border border-slate-200/90 px-3 py-1 rounded-lg text-[11px] font-mono text-slate-500 shadow-2xs truncate max-w-[220px]">
+                        <Lock className="w-3 h-3 text-emerald-600 shrink-0" />
+                        <span className="truncate">{cleanDomain}</span>
                       </div>
+
+                      {/* Category Badge */}
+                      <span className="text-[10px] font-extrabold text-orange-600 uppercase tracking-wider px-2 py-0.5 rounded-md bg-orange-50 border border-orange-200/60 shrink-0">
+                        {project.category || 'Web App'}
+                      </span>
                     </div>
 
-                    {/* ================= BACK FACE (Description + Tech Stack) ================= */}
-                    <div 
-                      className="absolute inset-0 w-full h-full rounded-[22px] sm:rounded-[28px] overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 border-2 border-orange-500/40 p-4 sm:p-6 flex flex-col justify-between text-left text-white shadow-2xl"
-                      style={{
-                        backfaceVisibility: 'hidden',
-                        WebkitBackfaceVisibility: 'hidden',
-                        transform: 'rotateY(180deg)',
-                        pointerEvents: isFlipped ? 'auto' : 'none'
-                      }}
-                    >
-                      {/* Back Top: Title & Client */}
-                      <div className="pb-2 border-b border-white/10 min-w-0">
-                        <h4 className="text-sm sm:text-lg font-black text-white truncate">
+                    {/* Project Screenshot Display (ZERO Vignette, 100% Crisp & Uncropped) */}
+                    <div className="aspect-[16/10] w-full bg-slate-900/5 border-b border-slate-100 flex items-center justify-center p-2.5 sm:p-3 overflow-hidden">
+                      <img 
+                        src={projectImgUrl} 
+                        alt={project.title} 
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full h-full object-contain rounded-lg shadow-sm transition-transform duration-500 group-hover:scale-[1.02]" 
+                      />
+                    </div>
+
+                    {/* Card Content (White Theme) */}
+                    <div className="p-5 sm:p-6 text-left">
+                      <div className="flex items-center justify-between gap-3 mb-2">
+                        <h3 className="text-lg sm:text-xl font-extrabold text-slate-900 tracking-tight group-hover:text-orange-600 transition-colors">
                           {project.title}
-                        </h4>
-                        {project.clientName && (
-                          <p className="text-[10px] sm:text-[11px] text-orange-400 font-medium truncate mt-0.5">
-                            Client: {project.clientName}
-                          </p>
-                        )}
+                        </h3>
                       </div>
 
-                      {/* Back Middle: Description & Tech Stack */}
-                      <div className="space-y-2 sm:space-y-2.5 my-auto py-1">
-                        <div>
-                          <span className="text-[10px] font-extrabold text-orange-400 uppercase tracking-widest block mb-1">
-                            About Project
-                          </span>
-                          <p className="text-slate-300 text-xs sm:text-[13px] leading-relaxed font-light line-clamp-3 sm:line-clamp-4 bg-white/[0.04] p-2.5 sm:p-3 rounded-xl border border-white/5">
-                            {project.description}
-                          </p>
+                      {project.clientName && (
+                        <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-100 border border-slate-200/60 text-slate-600 text-xs font-semibold mb-3">
+                          <Building2 className="w-3.5 h-3.5 text-orange-500 shrink-0" />
+                          <span className="truncate">Client: {project.clientName}</span>
                         </div>
+                      )}
 
-                        {project.techStack && project.techStack.length > 0 && (
-                          <div>
-                            <span className="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest block mb-1">
-                              Tech Stack
+                      <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4 line-clamp-3 font-normal">
+                        {project.description}
+                      </p>
+
+                      {/* Tech Stack Chips */}
+                      {project.techStack && project.techStack.length > 0 && (
+                        <div className="flex flex-wrap gap-1.5 pt-1">
+                          {project.techStack.map((tech, idx) => (
+                            <span 
+                              key={idx}
+                              className="px-2.5 py-1 rounded-lg bg-orange-50 text-orange-700 border border-orange-200/70 text-xs font-semibold font-mono"
+                            >
+                              {tech}
                             </span>
-                            <div className="flex flex-wrap gap-1 sm:gap-1.5 max-h-16 overflow-y-auto custom-scrollbar">
-                              {project.techStack.map((tech, idx) => (
-                                <span 
-                                  key={idx}
-                                  className="px-2 sm:px-2.5 py-0.5 rounded-md bg-orange-500/10 border border-orange-500/30 text-orange-200 text-[10px] sm:text-[11px] font-semibold font-mono"
-                                >
-                                  {tech}
-                                </span>
-                              ))}
-                            </div>
-                          </div>
-                        )}
-                      </div>
-
-                      {/* Back Bottom: Full Width CTA Link */}
-                      <div className="pt-2 border-t border-white/10">
-                        {project.liveUrl ? (
-                          <a 
-                            href={project.liveUrl} 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            onClick={(e) => e.stopPropagation()}
-                            className="w-full inline-flex items-center justify-center gap-1.5 sm:gap-2 px-4 py-2 sm:py-2.5 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-bold text-xs sm:text-sm shadow-md shadow-orange-500/25 transition-all active:scale-[0.98]"
-                          >
-                            <span>Open Live Website</span>
-                            <FiExternalLink className="w-3.5 h-3.5" />
-                          </a>
-                        ) : (
-                          <div className="w-full text-center text-xs text-slate-400 py-1 font-medium">
-                            Enterprise Internal Project
-                          </div>
-                        )}
-                      </div>
-
+                          ))}
+                        </div>
+                      )}
                     </div>
+                  </div>
 
+                  {/* Card Footer: Open Live Website Button */}
+                  <div className="px-5 sm:px-6 pb-5 sm:pb-6 pt-0">
+                    {project.liveUrl ? (
+                      <a 
+                        href={project.liveUrl} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-bold text-xs sm:text-sm px-5 py-2.5 sm:py-3 rounded-xl shadow-md shadow-orange-500/20 hover:shadow-lg hover:shadow-orange-500/30 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
+                      >
+                        <span>Open Live Website</span>
+                        <FiExternalLink className="w-3.5 sm:w-4 h-3.5 sm:h-4" />
+                      </a>
+                    ) : (
+                      <div className="w-full inline-flex items-center justify-center gap-2 bg-slate-50 border border-slate-200 text-slate-500 font-semibold text-xs py-2.5 rounded-xl">
+                        <Code className="w-3.5 h-3.5 text-slate-400" />
+                        <span>Internal Enterprise Solution</span>
+                      </div>
+                    )}
                   </div>
                 </div>
               );
