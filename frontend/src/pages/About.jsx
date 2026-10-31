@@ -31,21 +31,27 @@ const About = () => {
       </section>
 
       {/* 2. Who We Are (Split Layout) */}
-      <section className="py-12 sm:py-16 md:py-20 max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+      <section className="py-12 sm:py-16 md:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-14">
           {/* Left: Text */}
-          <div className="w-full lg:w-1/2">
+          <div className="w-full lg:w-[54%]">
             <h4 className="text-blue-600 font-semibold tracking-widest text-xs sm:text-sm uppercase mb-2">Our Story</h4>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-800 mb-4 sm:mb-6">Driven By Innovation, Built On Trust.</h2>
             <div className="space-y-4 mb-6 sm:mb-8 text-slate-600 text-sm sm:text-base leading-relaxed text-justify">
               <p>
-                Based in Jamshedpur, Jharkhand, <strong className="font-bold text-slate-900">PaulTech Software Services Pvt. Ltd.</strong> was established to bring modern technology, industry best practices, and innovative engineering solutions to businesses in India and beyond. We specialize in customized software development, enterprise ERP implementation &amp; support, mobile applications, and comprehensive IT solutions tailored to diverse enterprise needs.
+                <strong className="font-bold text-slate-900">PaulTech Software Services Pvt. Ltd.</strong> is an IT solutions and software services company based in Jamshedpur, Jharkhand. Our company was established with the aim of helping businesses grow through technology and practical software solutions.
               </p>
               <p>
-                Driven by innovation, agility, and a commitment to excellence, we combine deep technical expertise with business insight to deliver scalable, secure, and cost-effective digital architectures. Alongside our core engineering services, we offer industry-oriented training and internship programs to prepare the next generation of tech talent. At <strong className="font-bold text-slate-900">PaulTech</strong>, we are committed to building enduring partnerships grounded in quality, transparency, and continuous learning.
+                We specialize in customized software development, ERP implementation and support, mobile application development, and other IT services. Our focus is on understanding business needs and delivering reliable, efficient, and cost-effective solutions.
+              </p>
+              <p>
+                Along with our IT services, we also provide industry-oriented training and internship programs where students can gain practical knowledge, work on real-world projects, and develop skills for their careers.
+              </p>
+              <p>
+                At <strong className="font-bold text-slate-900">PaulTech</strong>, we believe in quality work, transparency, and customer satisfaction. We aim to build long-term relationships with our clients while helping businesses and aspiring professionals grow through technology.
               </p>
             </div>
-            <div className="flex flex-wrap sm:flex-nowrap items-center justify-between sm:justify-start gap-4 sm:gap-8">
+            <div className="flex flex-wrap sm:flex-nowrap items-center justify-between sm:justify-start gap-4 sm:gap-8 pt-2">
               <div>
                 <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-800">10+</h3>
                 <p className="text-xs sm:text-sm font-semibold text-slate-500 uppercase tracking-wide">Years Exp.</p>
@@ -64,7 +70,7 @@ const About = () => {
           </div>
           
           {/* Right: Interactive Developer Terminal */}
-          <div className="w-full lg:w-1/2 relative mt-6 lg:mt-0">
+          <div className="w-full lg:w-[46%] relative mt-6 lg:mt-0">
             <AboutTechTerminal />
           </div>
         </div>
@@ -222,7 +228,7 @@ const About = () => {
           }
         `}</style>
 
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             
             {/* Mission Card (Orange / Amber Glow) */}
@@ -320,7 +326,7 @@ const About = () => {
       </section>
 
       {/* 4. Why Choose Us Grid */}
-      <section className="py-12 sm:py-16 md:py-20 max-w-6xl mx-auto px-4 sm:px-6">
+      <section className="py-12 sm:py-16 md:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10 sm:mb-16">
           <h4 className="text-blue-600 font-semibold tracking-widest text-xs sm:text-sm uppercase mb-2">What Sets Us Apart</h4>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-800">Why Partner With Us?</h2>
