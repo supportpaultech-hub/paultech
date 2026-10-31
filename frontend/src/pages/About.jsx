@@ -31,13 +31,13 @@ const About = () => {
       </section>
 
       {/* 2. Who We Are (Split Layout) */}
-      <section className="py-12 sm:py-16 md:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-14">
+      <section className="py-10 sm:py-14 md:py-16 max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16">
+        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12 xl:gap-16">
           {/* Left: Text */}
-          <div className="w-full lg:w-[54%]">
+          <div className="w-full lg:w-[58%] xl:w-[60%]">
             <h4 className="text-blue-600 font-semibold tracking-widest text-xs sm:text-sm uppercase mb-2">Our Story</h4>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-800 mb-4 sm:mb-6">Driven By Innovation, Built On Trust.</h2>
-            <div className="space-y-4 mb-6 sm:mb-8 text-slate-600 text-sm sm:text-base leading-relaxed text-justify">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-800 mb-4 sm:mb-5">Driven By Innovation, Built On Trust.</h2>
+            <div className="space-y-3 sm:space-y-3.5 mb-5 sm:mb-6 text-slate-600 text-sm sm:text-base leading-relaxed text-justify">
               <p>
                 <strong className="font-bold text-slate-900">PaulTech Software Services Pvt. Ltd.</strong> is an IT solutions and software services company based in Jamshedpur, Jharkhand. Our company was established with the aim of helping businesses grow through technology and practical software solutions.
               </p>
@@ -70,7 +70,7 @@ const About = () => {
           </div>
           
           {/* Right: Interactive Developer Terminal */}
-          <div className="w-full lg:w-[46%] relative mt-6 lg:mt-0">
+          <div className="w-full lg:w-[42%] xl:w-[40%] relative mt-6 lg:mt-0">
             <AboutTechTerminal />
           </div>
         </div>
