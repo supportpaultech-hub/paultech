@@ -67,6 +67,7 @@ const AboutTechTerminal = () => {
     json: [
       { type: 'raw', text: '{' },
       { type: 'json-prop', key: '"organization"', val: '"PaulTech Software Services Pvt Ltd"' },
+      { type: 'json-prop', key: '"vendorStatus"', val: '"Approved Vendor (Tata Steel Foundation)"' },
       { type: 'json-prop', key: '"clusterStatus"', val: '"HEALTHY_OPTIMAL"' },
       { type: 'json-dynamic', key: '"activeConnections"', val: liveConnections.toLocaleString() },
       { type: 'json-dynamic', key: '"averageLatency"', val: `"${livePing}ms"` },

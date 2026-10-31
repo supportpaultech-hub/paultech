@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { ShieldCheck } from 'lucide-react';
 import AboutTechTerminal from '../components/AboutTechTerminal';
 
 const About = () => {
@@ -51,6 +52,17 @@ const About = () => {
                 At <strong className="font-bold text-slate-900">PaulTech</strong>, we believe in quality work, transparency, and customer satisfaction. We aim to build long-term relationships with our clients while helping businesses and aspiring professionals grow through technology.
               </p>
             </div>
+
+            {/* Enterprise Approved Vendor Credential Callout */}
+            <div className="mb-5 sm:mb-6 p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-gradient-to-r from-blue-50/90 via-slate-50 to-orange-50/60 border border-blue-200/80 shadow-xs flex items-center gap-3 sm:gap-3.5">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center shrink-0 shadow-xs">
+                <ShieldCheck className="w-5 h-5 text-white" />
+              </div>
+              <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
+                <strong className="font-bold text-slate-900">PaulTech Software Services Pvt. Ltd.</strong> is an approved vendor of <strong className="font-bold text-blue-700">Tata Steel Foundation</strong> providing IT solutions and SAP support services in accordance with project requirements.
+              </p>
+            </div>
+
             <div className="grid grid-cols-3 divide-x divide-slate-200 pt-3 sm:pt-4 max-w-lg">
               <div className="pr-3 sm:pr-6 text-left">
                 <h3 className="text-xl sm:text-3xl font-black text-slate-800 tracking-tight leading-none">10+</h3>

@@ -10,7 +10,7 @@ const Clients = () => {
     { name: "TCS", industry: "IT Services", img: "/tcs-logo.png", desc: "Vendor management systems and secure API gateways." },
     { name: "Amrit Packers and Movers", industry: "Logistics & Supply Chain", img: "/amrit-packers-logo.jpg", desc: "Digital booking management, fleet tracking solutions, and web portal development." },
     { name: "Madadsathi", industry: "Emergency QR Platform", img: "/madadsathi-logo.jpg", desc: "Smart Emergency QR platform, instant alert dispatch system, and public safety infrastructure." },
-    { name: "Tata Steel Foundation", industry: "Non-Profit", img: "/tsf-logo.png", desc: "Data analytics dashboards and reporting portals." },
+    { name: "Tata Steel Foundation", industry: "Non-Profit / CSR", img: "/tsf-logo.png", desc: "PaulTech Software Services Pvt. Ltd. is an approved vendor of Tata Steel Foundation providing IT solutions and SAP support services in accordance with project requirements." },
     { name: "Suncraft Energy", industry: "Renewable", img: "/suncraft-logo.jpg", desc: "IoT monitoring platform and mobile apps." },
     { name: "EduSmart Academy", industry: "Education Technology", img: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=200&q=80", desc: "E-learning platform with seamless video streaming." },
     { name: "TechVision India", industry: "Software", img: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=200&q=80", desc: "B2B SaaS product design and architecture." }
