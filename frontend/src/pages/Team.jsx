@@ -51,12 +51,27 @@ const MemberCard = ({ member, isLeader = false }) => {
       className={`group [perspective:1400px] ${cardSizeClasses} shrink-0 cursor-pointer select-none`}
     >
       {/* 3D Flipper Box */}
-      <div className={`relative w-full h-full rounded-[24px] sm:rounded-[28px] transition-transform duration-700 [transform-style:preserve-3d] ${
-        isFlipped ? '[transform:rotateY(180deg)] shadow-[0_20px_45px_-6px_rgba(249,115,22,0.32)]' : ''
-      } md:group-hover:[transform:rotateY(180deg)] shadow-[0_12px_35px_-8px_rgba(0,0,0,0.18)] md:group-hover:shadow-[0_20px_45px_-6px_rgba(249,115,22,0.32)]`}>
+      <div 
+        style={{
+          transformStyle: 'preserve-3d',
+          WebkitTransformStyle: 'preserve-3d'
+        }}
+        className={`relative w-full h-full rounded-[24px] sm:rounded-[28px] transition-transform duration-700 [transform-style:preserve-3d] ${
+          isFlipped ? '[transform:rotateY(180deg)] shadow-[0_20px_45px_-6px_rgba(249,115,22,0.32)]' : ''
+        } md:group-hover:[transform:rotateY(180deg)] shadow-[0_12px_35px_-8px_rgba(0,0,0,0.18)] md:group-hover:shadow-[0_20px_45px_-6px_rgba(249,115,22,0.32)]`}
+      >
         
         {/* ================= FRONT FACE (Full Box Image + Vignette + Bottom Left Name & Designation) ================= */}
-        <div className="absolute inset-0 w-full h-full rounded-[24px] sm:rounded-[28px] overflow-hidden [backface-visibility:hidden] bg-slate-900 border border-slate-200/40">
+        <div 
+          style={{
+            backfaceVisibility: 'hidden',
+            WebkitBackfaceVisibility: 'hidden',
+            transform: 'rotateY(0deg) translateZ(1px)'
+          }}
+          className={`absolute inset-0 w-full h-full rounded-[24px] sm:rounded-[28px] overflow-hidden bg-slate-900 border border-slate-200/40 transition-opacity duration-300 ${
+            isFlipped ? 'opacity-0 pointer-events-none' : 'opacity-100 pointer-events-auto'
+          } md:group-hover:opacity-0`}
+        >
           {/* Full Cover Image */}
           <img
             src={imageSrc}
@@ -81,7 +96,7 @@ const MemberCard = ({ member, isLeader = false }) => {
           <div className="absolute inset-0 rounded-[24px] sm:rounded-[28px] ring-1 ring-inset ring-white/15 pointer-events-none" />
 
           {/* Bottom-Left Overlay: Name & Designation */}
-          <div className={`absolute ${bottomOverlayClasses} text-left z-20`}>
+          <div className={`absolute ${bottomOverlayClasses} text-left`}>
             <h3 className={`${titleSizeClasses} font-black text-white tracking-tight leading-snug drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]`}>
               {fullName}
             </h3>
@@ -103,7 +118,16 @@ const MemberCard = ({ member, isLeader = false }) => {
         </div>
 
         {/* ================= BACK FACE (3D Flip) ================= */}
-        <div className={`absolute inset-0 w-full h-full rounded-[24px] sm:rounded-[28px] overflow-hidden [backface-visibility:hidden] [transform:rotateY(180deg)] bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 border-2 border-orange-500/40 ${paddingClasses} flex flex-col justify-between text-left text-white shadow-2xl relative`}>
+        <div 
+          style={{
+            backfaceVisibility: 'hidden',
+            WebkitBackfaceVisibility: 'hidden',
+            transform: 'rotateY(180deg) translateZ(1px)'
+          }}
+          className={`absolute inset-0 w-full h-full rounded-[24px] sm:rounded-[28px] overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 border-2 border-orange-500/40 ${paddingClasses} flex flex-col justify-between text-left text-white shadow-2xl transition-opacity duration-300 ${
+            isFlipped ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+          } md:group-hover:opacity-100 md:group-hover:pointer-events-auto`}
+        >
           
           {/* Ambient Glows */}
           <div className="absolute -top-16 -right-16 w-36 h-36 bg-orange-500/15 rounded-full blur-2xl pointer-events-none" />
