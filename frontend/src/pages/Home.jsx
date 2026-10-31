@@ -871,6 +871,9 @@ const Home = () => {
               <p className="text-slate-600 leading-relaxed text-xs sm:text-base text-justify">
                 Our customer-centric approach, technical expertise, and commitment to service excellence enable us to build lasting business relationships and deliver solutions that create meaningful value in today's dynamic digital landscape.
               </p>
+              <p className="text-slate-600 leading-relaxed text-xs sm:text-base text-justify">
+                <strong className="font-bold text-slate-900">PaulTech Software Services Pvt. Ltd.</strong> is an approved vendor of <strong className="font-bold text-slate-900">Tata Steel Foundation</strong> providing IT solutions and SAP support services in accordance with project requirements.
+              </p>
             </div>
           </div>
 
