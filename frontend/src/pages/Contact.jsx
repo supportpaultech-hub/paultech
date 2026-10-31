@@ -9,9 +9,6 @@ import {
   MessageSquare, 
   CheckCircle2, 
   AlertCircle, 
-  ShieldCheck, 
-  Zap, 
-  Sparkles, 
   MessageCircle, 
   ExternalLink, 
   ChevronDown, 
@@ -220,25 +217,9 @@ const Contact = () => {
             Let's Discuss Your Next Big Project
           </h1>
 
-          <p className="text-slate-300 text-xs sm:text-sm max-w-xl mx-auto font-light leading-relaxed mb-4">
+          <p className="text-slate-300 text-xs sm:text-sm max-w-xl mx-auto font-light leading-relaxed">
             Have a product in mind, need enterprise ERP implementation, or want to scale your software architecture? Our engineering team is ready to assist you.
           </p>
-
-          {/* Quick Trust Highlights Strip */}
-          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs font-medium text-slate-300">
-            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
-              <Zap className="w-3.5 h-3.5 text-orange-400" />
-              <span>&lt; 2 Hours Response Time</span>
-            </div>
-            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-              <span>100% Confidential (NDA on Request)</span>
-            </div>
-            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
-              <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-              <span>Free Architecture Consultation</span>
-            </div>
-          </div>
         </div>
       </section>
 
