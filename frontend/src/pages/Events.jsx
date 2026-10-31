@@ -109,8 +109,8 @@ const Events = () => {
       
       {/* 1. Hero Header */}
       <section className="bg-slate-900 py-6 sm:py-8 md:py-10 px-4 sm:px-6 text-center text-white border-b border-slate-800 relative overflow-hidden">
-        {/* Glow ambient effects: Paul's Brand Orange Light */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] bg-gradient-to-b from-orange-500/25 via-amber-500/15 to-transparent blur-[85px] rounded-full pointer-events-none"></div>
+        {/* Glow ambient effects: Matching Brand Light */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] bg-gradient-to-r from-orange-500/20 via-amber-500/20 to-emerald-500/15 blur-[85px] rounded-full pointer-events-none"></div>
 
         <div className="max-w-3xl mx-auto relative z-10 text-center">
           <p className="text-orange-400 text-xs sm:text-sm font-semibold uppercase tracking-wider mb-2">
@@ -118,7 +118,7 @@ const Events = () => {
           </p>
 
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight leading-tight mb-2">
-            Live Webinars, Bootcamps & Workshops
+            Live Webinars, <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-400 to-emerald-400">Bootcamps</span> & Workshops
           </h1>
 
           <motion.p 
