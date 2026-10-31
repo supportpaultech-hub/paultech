@@ -88,7 +88,7 @@ const Services = () => {
           </p>
 
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight leading-tight mb-2">
-            Our Premium <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-400 to-emerald-400">Software Services</span>
+            Our Premium Software Services
           </h1>
 
           <p className="text-slate-300 text-xs sm:text-sm max-w-xl mx-auto font-light leading-relaxed">

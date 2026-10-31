@@ -88,15 +88,12 @@ const VerifyCertificate = () => {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[180px] bg-gradient-to-r from-orange-500/20 via-amber-500/20 to-emerald-500/15 blur-[90px] rounded-full pointer-events-none"></div>
 
         <div className="max-w-3xl mx-auto relative z-10 text-center">
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/10 border border-white/15 shadow-xs backdrop-blur-md mb-2 sm:mb-2.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span className="text-slate-200 text-[10px] sm:text-xs font-semibold uppercase tracking-widest">
-              Official Verification Portal
-            </span>
-          </div>
+          <p className="text-orange-400 text-xs sm:text-sm font-semibold uppercase tracking-wider mb-2">
+            Official Verification Portal
+          </p>
 
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight leading-tight mb-2">
-            Verify <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-400 to-emerald-400">PaulTech Certificate</span>
+            Verify PaulTech Certificate
           </h1>
 
           <p className="text-slate-300 text-xs sm:text-sm max-w-xl mx-auto font-light leading-relaxed mb-4 sm:mb-5 px-2">
