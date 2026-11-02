@@ -59,10 +59,10 @@ const Services = () => {
     },
     { 
       id: "consulting",
-      title: "IT, Non-IT & SAP Consulting", 
+      title: "IT and NON IT Consulting", 
       subtitle: "Strategic Business & Technology Guidance",
-      desc: "We provide comprehensive, end-to-end consulting across IT, Non-IT, and enterprise SAP domains. Whether you require technological transformation, SAP ERP implementation and support, custom software architecture, or Non-IT business consulting and workforce solutions, our experts deliver tailored roadmaps across all of these to optimize operations and propel your business forward.",
-      features: ["IT Strategy & Architecture", "SAP Consulting & ERP Support", "Non-IT Business Consulting", "Process Optimization & Audits"],
+      desc: "We provide comprehensive, end-to-end consulting across IT and Non-IT domains. Whether you require technological transformation, enterprise ERP implementation and support, custom software architecture, or Non-IT business consulting and workforce solutions, our experts deliver tailored roadmaps to optimize operations and propel your business forward.",
+      features: ["IT Strategy & Architecture", "ERP Consulting & Integration", "Non-IT Business Consulting", "Process Optimization & Audits"],
       img: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1000&q=80",
     },
     { 

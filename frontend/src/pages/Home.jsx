@@ -513,8 +513,8 @@ const Home = () => {
       path: "/services"
     },
     {
-      title: "IT, Non-IT & SAP Consulting",
-      desc: "Comprehensive strategic guidance across IT infrastructure, Non-IT business processes, and enterprise SAP solutions to optimize workflows and drive growth.",
+      title: "Consulting",
+      desc: "Our expert IT consultants provide strategic guidance to help you navigate complex technological transformations and optimize your business processes.",
       img: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80",
       path: "/services"
     },

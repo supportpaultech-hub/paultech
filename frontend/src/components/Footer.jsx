@@ -161,7 +161,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link to="/services" className="hover:text-orange-400 hover:translate-x-1 transition-all duration-200 inline-block">
-                  IT, Non-IT & SAP Consulting
+                  IT Strategy & Consulting
                 </Link>
               </li>
               <li>

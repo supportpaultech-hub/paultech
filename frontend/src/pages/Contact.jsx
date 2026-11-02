@@ -447,7 +447,7 @@ const Contact = () => {
                         <option value="AI Solutions & Automation">AI Solutions & Machine Learning</option>
                         <option value="Logo Design & Branding">UI/UX Design, Branding & Graphics</option>
                         <option value="Project Store & Source Code Inquiry">Project Store & Source Code Inquiry</option>
-                        <option value="IT, Non-IT & SAP Consulting">IT, Non-IT & SAP Consulting</option>
+                        <option value="IT Consulting & Staff Augmentation">IT Consulting & Staff Augmentation</option>
                         <option value="Other General Inquiry">Other General Inquiry</option>
                       </select>
                       <div className="absolute inset-y-0 right-0 flex items-center pr-3.5 pointer-events-none text-slate-400">
