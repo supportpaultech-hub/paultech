@@ -72,12 +72,12 @@ const Footer = () => {
 
             {/* Trust Badges */}
             <div className="space-y-2 mb-6">
-              <div className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg bg-white/5 border border-white/10 text-slate-300 text-[10.5px] xl:text-[11px] font-medium w-full whitespace-nowrap tracking-tight">
-                <FiShield className="text-orange-400 shrink-0 text-xs" />
+              <div className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg bg-white/5 border border-white/10 text-slate-300 text-[9.5px] sm:text-[10px] font-medium w-full whitespace-nowrap">
+                <FiShield className="text-orange-400 shrink-0 text-[11px]" />
                 <span>Govt. Recognized MSME Enterprise</span>
               </div>
-              <div className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg bg-white/5 border border-white/10 text-slate-300 text-[10.5px] xl:text-[11px] font-medium w-full whitespace-nowrap tracking-tight">
-                <FiCheckCircle className="text-emerald-400 shrink-0 text-xs" />
+              <div className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg bg-white/5 border border-white/10 text-slate-300 text-[9.5px] sm:text-[10px] font-medium w-full whitespace-nowrap">
+                <FiCheckCircle className="text-emerald-400 shrink-0 text-[11px]" />
                 <span>MoU Partner with 6+ Leading Universities & Colleges</span>
               </div>
             </div>
@@ -315,12 +315,6 @@ const Footer = () => {
               className="text-orange-400 hover:text-orange-300 font-semibold px-2.5 py-1 rounded-md bg-orange-500/10 border border-orange-500/25 transition-colors"
             >
               Employee Portal
-            </Link>
-            <Link 
-              to="/admin-login" 
-              className="hover:text-slate-200 text-slate-400 transition-colors"
-            >
-              Admin Access
             </Link>
             <Link 
               to="/contact" 
