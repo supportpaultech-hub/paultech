@@ -125,7 +125,43 @@ exports.createJob = async (req, res) => {
   }
 };
 
-// 3. Delete a job posting (Admin)
+// 3. Update an existing job opening (Admin)
+exports.updateJob = async (req, res) => {
+  try {
+    const { title, type, location, experience, salary, description, requirements } = req.body;
+    const job = await Job.findById(req.params.id);
+    if (!job) {
+      return res.status(404).json({ error: 'Career opening not found' });
+    }
+
+    if (title !== undefined) job.title = title;
+    if (type !== undefined) job.type = type === 'Internship' ? 'Internship' : 'Job';
+    if (location !== undefined) job.location = location;
+    if (experience !== undefined) job.experience = experience;
+    if (salary !== undefined) job.salary = salary;
+    if (description !== undefined) job.description = description;
+
+    if (requirements !== undefined) {
+      if (Array.isArray(requirements)) {
+        job.requirements = requirements;
+      } else if (typeof requirements === 'string') {
+        try {
+          job.requirements = JSON.parse(requirements);
+        } catch (e) {
+          job.requirements = requirements.split('\n').map(s => s.trim()).filter(Boolean);
+        }
+      }
+    }
+
+    await job.save();
+    res.json({ message: 'Career opening updated successfully', job });
+  } catch (err) {
+    console.error('Error updating job posting:', err);
+    res.status(500).json({ error: err.message || 'Server error' });
+  }
+};
+
+// 4. Delete a job posting (Admin)
 exports.deleteJob = async (req, res) => {
   try {
     const job = await Job.findById(req.params.id);

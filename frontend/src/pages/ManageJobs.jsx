@@ -7,6 +7,7 @@ import {
   GraduationCap, 
   Plus, 
   Trash2, 
+  Edit3,
   MapPin, 
   DollarSign, 
   Clock, 
@@ -44,6 +45,7 @@ const ManageJobs = () => {
 
   // Job Modal State
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editingJob, setEditingJob] = useState(null);
   const [submitting, setSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     title: '',
@@ -54,6 +56,36 @@ const ManageJobs = () => {
     description: '',
     requirements: ''
   });
+
+  const handleOpenCreateModal = () => {
+    setEditingJob(null);
+    setFormData({
+      title: '',
+      type: 'Job',
+      location: 'Jamshedpur / Remote',
+      experience: '0-2 Years',
+      salary: 'Best in Industry',
+      description: '',
+      requirements: ''
+    });
+    setIsModalOpen(true);
+  };
+
+  const handleOpenEditModal = (job) => {
+    setEditingJob(job);
+    setFormData({
+      title: job.title || '',
+      type: job.type || 'Job',
+      location: job.location || 'Jamshedpur / Remote',
+      experience: job.experience || '0-2 Years',
+      salary: job.salary || 'Best in Industry',
+      description: job.description || '',
+      requirements: Array.isArray(job.requirements) 
+        ? job.requirements.join('\n') 
+        : (typeof job.requirements === 'string' ? job.requirements : '')
+    });
+    setIsModalOpen(true);
+  };
 
   const fetchJobs = async () => {
     try {
@@ -103,14 +135,23 @@ const ManageJobs = () => {
         ? formData.requirements.split('\n').map(r => r.trim()).filter(Boolean)
         : [];
 
-      await axios.post(`${API_BASE_URL}/api/jobs`, {
-        ...formData,
-        type: 'Job',
-        requirements: reqArray
-      });
+      if (editingJob) {
+        await axios.put(`${API_BASE_URL}/api/jobs/${editingJob._id}`, {
+          ...formData,
+          requirements: reqArray
+        });
+        alert('Career opening updated successfully!');
+      } else {
+        await axios.post(`${API_BASE_URL}/api/jobs`, {
+          ...formData,
+          type: 'Job',
+          requirements: reqArray
+        });
+        alert('Career opening posted successfully!');
+      }
 
-      alert('Career opening posted successfully!');
       setIsModalOpen(false);
+      setEditingJob(null);
       setFormData({
         title: '',
         type: 'Job',
@@ -122,8 +163,8 @@ const ManageJobs = () => {
       });
       fetchJobs();
     } catch (err) {
-      console.error('Error creating job posting:', err);
-      alert('Failed to post career opening.');
+      console.error('Error saving job posting:', err);
+      alert(editingJob ? 'Failed to update career opening.' : 'Failed to post career opening.');
     } finally {
       setSubmitting(false);
     }
@@ -207,7 +248,7 @@ const ManageJobs = () => {
 
         <div className="flex items-center gap-3">
           <button
-            onClick={() => setIsModalOpen(true)}
+            onClick={handleOpenCreateModal}
             className="inline-flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 sm:px-5 py-2.5 rounded-xl shadow-lg shadow-orange-500/20 transition-all hover:scale-[1.02] active:scale-[0.98] w-full sm:w-auto text-xs sm:text-sm shrink-0"
           >
             <Plus className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -302,13 +343,22 @@ const ManageJobs = () => {
                         Full-Time Job
                       </span>
 
-                      <button
-                        onClick={() => handleDeleteJob(job._id)}
-                        className="p-1.5 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
-                        title="Delete Opening"
-                      >
-                        <Trash2 className="w-4 h-4" />
-                      </button>
+                      <div className="flex items-center gap-1">
+                        <button
+                          onClick={() => handleOpenEditModal(job)}
+                          className="p-1.5 text-slate-400 hover:text-orange-600 hover:bg-orange-50 rounded-lg transition-colors"
+                          title="Modify / Edit Opening"
+                        >
+                          <Edit3 className="w-4 h-4" />
+                        </button>
+                        <button
+                          onClick={() => handleDeleteJob(job._id)}
+                          className="p-1.5 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                          title="Delete Opening"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      </div>
                     </div>
 
                     <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-orange-500 transition-colors">
@@ -347,6 +397,17 @@ const ManageJobs = () => {
                         </div>
                       </div>
                     )}
+                  </div>
+
+                  {/* Card Bottom: Modify Role Action */}
+                  <div className="pt-3 border-t border-slate-100 mt-4 flex items-center justify-end">
+                    <button
+                      onClick={() => handleOpenEditModal(job)}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-orange-600 hover:text-orange-700 bg-orange-50 hover:bg-orange-100 transition-colors cursor-pointer"
+                    >
+                      <Edit3 className="w-3.5 h-3.5" />
+                      Modify Role
+                    </button>
                   </div>
                 </div>
               ))}
@@ -568,7 +629,7 @@ const ManageJobs = () => {
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-fade-in">
           <div className="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-100 max-h-[90vh] overflow-y-auto relative">
             <button
-              onClick={() => setIsModalOpen(false)}
+              onClick={() => { setIsModalOpen(false); setEditingJob(null); }}
               className="absolute top-6 right-6 p-2 rounded-full text-slate-400 hover:bg-slate-100 hover:text-slate-600 transition-all"
             >
               <X className="w-5 h-5" />
@@ -577,10 +638,12 @@ const ManageJobs = () => {
             <div className="mb-6">
               <h2 className="text-2xl font-bold text-slate-900 flex items-center gap-2">
                 <Briefcase className="w-6 h-6 text-orange-500" />
-                Post Full-Time Job Opening
+                {editingJob ? 'Modify Career Opening' : 'Post Full-Time Job Opening'}
               </h2>
               <p className="text-slate-500 text-xs mt-1">
-                Create a full-time engineering or corporate role for candidates on the Careers portal.
+                {editingJob 
+                  ? 'Update details, requirements, location, or package for this career opening.'
+                  : 'Create a full-time engineering or corporate role for candidates on the Careers portal.'}
               </p>
             </div>
 
@@ -668,7 +731,7 @@ const ManageJobs = () => {
               <div className="pt-4 flex justify-end gap-3 border-t border-slate-100">
                 <button
                   type="button"
-                  onClick={() => setIsModalOpen(false)}
+                  onClick={() => { setIsModalOpen(false); setEditingJob(null); }}
                   className="px-5 py-2.5 rounded-xl border border-slate-200 text-slate-600 font-semibold text-sm hover:bg-slate-50"
                 >
                   Cancel
@@ -678,7 +741,9 @@ const ManageJobs = () => {
                   disabled={submitting}
                   className="px-6 py-2.5 rounded-xl bg-orange-500 hover:bg-orange-600 text-white font-semibold text-sm shadow-lg shadow-orange-500/20 disabled:opacity-50"
                 >
-                  {submitting ? 'Publishing...' : 'Publish Opening'}
+                  {submitting 
+                    ? (editingJob ? 'Updating...' : 'Publishing...') 
+                    : (editingJob ? 'Save & Update Opening' : 'Publish Opening')}
                 </button>
               </div>
             </form>

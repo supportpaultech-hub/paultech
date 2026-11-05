@@ -31,6 +31,7 @@ const upload = multer({
 // Job Posting Routes
 router.get('/', jobController.getJobs);
 router.post('/', jobController.createJob);
+router.put('/:id', jobController.updateJob);
 router.delete('/:id', jobController.deleteJob);
 
 // Job Application & Candidate Resume Routes
